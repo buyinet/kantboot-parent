@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kantboot</groupId>
+        <artifactId>kantboot-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>kantboot-util</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>kantboot-util</name>
+    <modules>
+        <module>kantboot-util-http</module>
+        <module>kantboot-util-resolver</module>
+        <module>kantboot-util-rest</module>
+        <module>kantboot-util-cache</module>
+        <module>kantboot-util-crypto</module>
+        <module>kantboot-util-jpa</module>
+        <module>kantboot-util-sc</module>
+        <module>kantboot-util-all</module>
+        <module>kantboot-util-event</module>
+    </modules>
+
+    <dependencies>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>

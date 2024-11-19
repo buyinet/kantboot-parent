@@ -1,0 +1,45 @@
+server:
+  port: 10012
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: woshifangziyuan1
+      timeout: 30s
+      database: 2
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-active: 8
+          max-wait: -1ms
+  application:
+    name: kantboot
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/kantboot_new?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: kantboot_new
+    password: woshifangziyuan1
+  jpa:
+    properties:
+      hibernate:
+        physical_naming_strategy: com.kantboot.util.jpa.strategy.NoForeignKeyNamingStrategy
+        jdbc:
+          batch_size: 500
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: false

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kantboot</groupId>
+        <artifactId>kantboot-starter-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../kantboot-starter-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>kantboot-demo</artifactId>
+
+    <repositories>
+        <!-- 使用阿里云的maven仓库 -->
+        <repository>
+            <id>alibaba</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <!-- 添加自定义的Nexus仓库 -->
+        <repository>
+            <id>maven-releases</id>
+            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>
+        </repository>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+            <version>8.0.32</version>
+        </dependency>
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-email</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
