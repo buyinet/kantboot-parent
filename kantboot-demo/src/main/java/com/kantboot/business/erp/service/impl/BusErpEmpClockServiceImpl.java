@@ -1,26 +1,22 @@
 package com.kantboot.business.erp.service.impl;
 
 import com.kantboot.business.erp.dao.repository.BusErpEmpClockRepository;
+import com.kantboot.business.erp.dao.repository.BusErpEmpRepository;
 import com.kantboot.business.erp.domain.dto.BusErpEmpClockSearchDTO;
+import com.kantboot.business.erp.domain.entity.BusErpEmp;
 import com.kantboot.business.erp.domain.entity.BusErpEmpClock;
 import com.kantboot.business.erp.service.IBusErpEmpClockService;
-import com.kantboot.functional.email.service.IFunctionalEmailService;
 import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.util.http.HttpRequestHeaderUtil;
 import com.kantboot.util.jpa.param.PageParam;
 import com.kantboot.util.jpa.result.PageResult;
 import com.kantboot.util.sc.service.impl.BaseServiceImpl;
 import jakarta.annotation.Resource;
-import lombok.SneakyThrows;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-/**
- * 员工打卡服务实现类
- * Employee clock in service implementation class
- */
 @Service
 public class BusErpEmpClockServiceImpl
         extends BaseServiceImpl<BusErpEmpClock, Long>
@@ -30,15 +26,16 @@ public class BusErpEmpClockServiceImpl
     private BusErpEmpClockRepository repository;
 
     @Resource
-    private IUserAccountService userAccountService;
-
-    @Resource
     private HttpRequestHeaderUtil httpRequestHeaderUtil;
 
-    @SneakyThrows
+    @Resource
+    private BusErpEmpRepository empRepository;
+
+    @Resource
+    private IUserAccountService userAccountService;
+
     @Override
     public BusErpEmpClock clock(BusErpEmpClock entity) {
-
         // 设置打卡时间为当前时间
         // Set the clock in time to the current time
         entity.setGmtClock(new Date());
@@ -49,7 +46,7 @@ public class BusErpEmpClockServiceImpl
 
         // 获取上次的打卡记录
         // Get the last clock in record
-        BusErpEmpClock lastClock = getLastClockInByUserAccountId(entity.getUserAccountId());
+        BusErpEmpClock lastClock = repository.findFirstByEmpIdOrderByGmtClockDesc(entity.getEmpId());
 
         // 如果上次打卡记录为空，直接保存
         // If the last clock in record is empty，save directly
@@ -83,16 +80,21 @@ public class BusErpEmpClockServiceImpl
         return repository.save(entity);
     }
 
-    @Resource
-    private IFunctionalEmailService emailService;
+    @Override
+    public BusErpEmpClock getLastClockBySelf(Long enterpriseId) {
+        BusErpEmp emp = empRepository.getByUserAccountIdAndEnterpriseId(userAccountService.getSelfId(), enterpriseId);
+        return repository.findFirstByEmpIdOrderByGmtClockDesc(emp.getId());
+    }
 
     @Override
-    public BusErpEmpClock clockBySelf(Integer type) {
+    public BusErpEmpClock clockBySelf(Integer type, Long enterpriseId) {
+        BusErpEmp emp = empRepository.getByUserAccountIdAndEnterpriseId(userAccountService.getSelfId(), enterpriseId);
+
         BusErpEmpClock entity = new BusErpEmpClock();
 
-        // 设置打卡的用户账号ID
-        // Set the user account ID of the clock
-        entity.setUserAccountId(userAccountService.getSelfId());
+        // 设置员工ID
+        // Set employee ID
+        entity.setEmpId(emp.getId());
 
         // 设置打卡类型
         // Set clock in type
@@ -106,27 +108,19 @@ public class BusErpEmpClockServiceImpl
     }
 
     @Override
-    public BusErpEmpClock getLastClockInByUserAccountId(Long userAccountId) {
-        return repository.findFirstByUserAccountIdOrderByGmtClockDesc(userAccountId);
-    }
-
-
-    @Override
-    public BusErpEmpClock getLastClockBySelf() {
-        return getLastClockInByUserAccountId(userAccountService.getSelfId());
-    }
-
-    @Override
     public PageResult searchBySelf(PageParam<BusErpEmpClockSearchDTO> param) {
+        Long enterpriseId = param.getData().getEnterpriseId();
+        BusErpEmp emp = empRepository.getByUserAccountIdAndEnterpriseId(userAccountService.getSelfId(), enterpriseId);
+
         if (param.getData() == null) {
             // 如果查询条件为空，初始化一个空的查询条件
             // If the query condition is empty, initialize an empty query condition
             param.setData(new BusErpEmpClockSearchDTO());
         }
 
-        // 设置查询条件的用户账号ID为当前用户账号ID
-        // Set the user account ID of the query condition to the current user account ID
-        param.getData().setUserAccountId(userAccountService.getSelfId());
+        // 设置员工ID
+        // Set employee ID
+        param.getData().setEmpId(emp.getId());
 
         // 设置查询条件的打卡时间范围为当前月份
         // Set the clock in time range of the query condition to the current month

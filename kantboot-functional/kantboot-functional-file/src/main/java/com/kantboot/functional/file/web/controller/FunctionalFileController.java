@@ -33,7 +33,6 @@ public class FunctionalFileController {
      */
     @RequestMapping("/upload")
     public RestResult<FunctionalFile> upload(MultipartFile file, String groupCode, String code) {
-        System.err.println(file.getSize());
         return RestResult.success(fileService.upload(file, groupCode,code), CommonSuccessStateCodeAndMsg.UPLOAD_SUCCESS);
     }
 

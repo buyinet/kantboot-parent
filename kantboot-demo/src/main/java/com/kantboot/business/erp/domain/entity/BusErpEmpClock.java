@@ -1,6 +1,5 @@
 package com.kantboot.business.erp.domain.entity;
 
-import com.kantboot.user.account.domain.entity.UserAccount;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,11 +32,11 @@ public class BusErpEmpClock implements Serializable {
     private Long id;
 
     /**
-     * 员工的用户账号ID，用来关联员工的用户账号
-     * User account ID of employee, used to associate employee's user account
+     * 员工ID
+     * Employee ID
      */
-    @Column(name = "t_user_account_id")
-    private Long userAccountId;
+    @Column(name = "emp_id")
+    private Long empId;
 
     /**
      * 打卡时间
@@ -107,9 +106,6 @@ public class BusErpEmpClock implements Serializable {
     @Column(name = "gmt_reissue")
     private Date gmtReissue;
 
-    @OneToOne
-    @JoinColumn(name = "user_account_id_of_audit_reissue", referencedColumnName = "id", insertable = false, updatable = false)
-    private UserAccount userAccountOfAuditReissue;
 
 
 }

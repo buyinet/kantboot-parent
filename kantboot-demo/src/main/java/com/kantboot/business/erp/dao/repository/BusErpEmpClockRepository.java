@@ -19,18 +19,18 @@ public interface BusErpEmpClockRepository extends JpaRepository<BusErpEmpClock, 
      * 根据用户账号ID获取最近一次打卡记录
      * Get the latest clock record according to the user account ID
      *
-     * @param userAccountId 用户账号ID
-     *                      User account ID
+     * @param empId 员工ID
+     *              employee ID
      *
      * @return BusErpEmpClockIn 最后一次打卡记录
      *                          The last clock record
      */
-    BusErpEmpClock findFirstByUserAccountIdOrderByGmtClockDesc(Long userAccountId);
+    BusErpEmpClock findFirstByEmpIdOrderByGmtClockDesc(Long empId);
 
 
     @Query("""
     FROM BusErpEmpClock
-    WHERE (:#{#param.userAccountId} IS NULL OR userAccountId = :#{#param.userAccountId})
+    WHERE (:#{#param.empId} IS NULL OR empId = :#{#param.empId})
     AND (:#{#param.gmtClockStart} IS NULL OR gmtClock >= :#{#param.gmtClockStart})
     AND (:#{#param.gmtClockEnd} IS NULL OR gmtClock <= :#{#param.gmtClockEnd})
     ORDER BY gmtClock DESC

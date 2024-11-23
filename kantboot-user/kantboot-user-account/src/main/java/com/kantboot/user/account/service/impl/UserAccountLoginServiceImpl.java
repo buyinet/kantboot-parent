@@ -58,4 +58,18 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
         // 退出登录
         userAccountTokenService.removeTokenBySelf();
     }
+
+    @Override
+    public LoginVO loginByUserAccountId(Long userAccountId) {
+        UserAccount byId = repository.findById(userAccountId).orElse(null);
+        if (byId == null) {
+            // 账号不存在
+            throw UserAccountException.ACCOUNT_NOT_EXIST;
+        }
+        // 生成令牌
+        String token = userAccountTokenService.generateToken(byId.getId());
+        return new LoginVO()
+                .setToken(token)
+                .setUserAccount(byId);
+    }
 }

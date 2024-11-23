@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.Serializable;
+import java.util.function.Supplier;
 
 /**
  * 异常处理的基类
@@ -21,8 +22,7 @@ import java.io.Serializable;
 @Getter
 @Accessors(chain = true)
 public class BaseException extends RuntimeException
-implements Serializable
-{
+        implements Serializable, Supplier<BaseException> {
 
     /**
      * 便捷的错误码(数字编码)
@@ -68,6 +68,7 @@ implements Serializable
 
     /**
      * 便捷的创建BaseException对象的方法
+     * Convenient method to create BaseException object
      *
      *  @param stateCode 状态码，此处为用来标识错误的字符串编码
      *                   State code, used to identify the error
@@ -99,4 +100,17 @@ implements Serializable
         return new RestResult<String>().setState(e.getState()).setErrMsg(e.getMessage()).setStateCode(e.getStateCode())
                 .setMsgDictCode(e.getStateCode());
     }
+
+    /**
+     * 获取一个结果
+     * Gets a result.
+     *
+     * @return a result
+     *         一个结果
+     */
+    @Override
+    public BaseException get() {
+        return this;
+    }
+
 }

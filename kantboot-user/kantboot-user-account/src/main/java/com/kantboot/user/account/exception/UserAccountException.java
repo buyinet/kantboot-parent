@@ -41,4 +41,9 @@ public class UserAccountException {
      */
     public static final BaseException SMS_PLUGIN_NOT_USED = BaseException.of("smsPluginNotUsed", "The SMS verification code plugin is not used");
 
+    /**
+     * 账号不存在
+     */
+    public static final BaseException ACCOUNT_NOT_EXIST = BaseException.of("accountNotExist", "Account does not exist");
+
 }

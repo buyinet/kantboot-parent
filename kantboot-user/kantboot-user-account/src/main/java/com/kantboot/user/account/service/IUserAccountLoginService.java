@@ -24,4 +24,11 @@ public interface IUserAccountLoginService {
      */
     void logout();
 
+    /**
+     * 应用内授权登录
+     * @param userAccountId 用户账号ID
+     *                      User account ID
+     */
+    LoginVO loginByUserAccountId(Long userAccountId);
+
 }

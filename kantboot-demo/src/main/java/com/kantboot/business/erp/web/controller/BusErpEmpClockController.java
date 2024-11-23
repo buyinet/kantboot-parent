@@ -23,20 +23,25 @@ public class BusErpEmpClockController {
      * User self clock in
      * @param type 打卡类型 1:上班打卡 2:下班打卡
      *             Clock in type 1:Clock in 2:Clock out
+     * @param enterpriseId 企业ID
+     *                     Enterprise ID
      */
     @RequestMapping("/clockBySelf")
     public RestResult<?> clock(
-            @RequestParam("type") Integer type) {
-        return RestResult.success(service.clockBySelf(type),CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+            @RequestParam("type") Integer type,@RequestParam("enterpriseId") Long enterpriseId) {
+        return RestResult.success(service.clockBySelf(type,enterpriseId), CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
     }
 
     /**
      * 获取用户自身的最近一次打卡记录
      * Get the latest clock in record of the user itself
+     *
+     * @param enterpriseId 企业ID
+     *                     Enterprise ID
      */
     @RequestMapping("/getLastClockBySelf")
-    public RestResult<?> getLastClockBySelf() {
-        return RestResult.success(service.getLastClockBySelf(), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    public RestResult<?> getLastClockBySelf(@RequestParam("enterpriseId") Long enterpriseId) {
+        return RestResult.success(service.getLastClockBySelf(enterpriseId), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 
     @RequestMapping("/searchBySelf")

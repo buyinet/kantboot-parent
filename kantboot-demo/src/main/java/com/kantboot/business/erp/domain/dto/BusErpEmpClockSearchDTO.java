@@ -6,10 +6,16 @@ import lombok.Data;
 public class BusErpEmpClockSearchDTO {
 
     /**
-     * 用户账号ID
-     * User account ID
+     * 员工ID
+     * Employee ID
      */
-    private Long userAccountId;
+    private Long empId;
+
+    /**
+     * 企业ID
+     * Enterprise ID
+     */
+    private Long enterpriseId;
 
     /**
      * 开始打卡时间

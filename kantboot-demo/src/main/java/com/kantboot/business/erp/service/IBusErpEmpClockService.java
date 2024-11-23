@@ -30,28 +30,34 @@ public interface IBusErpEmpClockService extends IBaseService<BusErpEmpClock,Long
      *
      * @param type 打卡类型
      *             Clock type
+     *        enterpriseId 企业ID
+     *             Enterprise ID
      */
-    BusErpEmpClock clockBySelf(Integer type);
-
-    /**
-     * 根据用户账号ID获取最近一次打卡记录
-     * Get the latest clock in record according to the user account ID
-     *
-     * @param userAccountId 用户账号ID
-     *                      User account ID
-     */
-    BusErpEmpClock getLastClockInByUserAccountId(Long userAccountId);
+    BusErpEmpClock clockBySelf(Integer type,Long enterpriseId);
 
     /**
      * 获取用户自身的最近一次打卡记录
      * Get the latest clock in record of the user itself
      *
+     * @param enterpriseId 企业ID
+     *                     Enterprise ID
+     *
      * @return BusErpEmpClockIn 最后一次打卡记录
      *                          The last clock in record
      */
-    BusErpEmpClock getLastClockBySelf();
+    BusErpEmpClock getLastClockBySelf(Long enterpriseId);
 
 
+    /**
+     * 查询用户自身的打卡记录
+     * Query the clock in record of the user itself
+     *
+     * @param param 查询参数
+     *              Query parameter
+     *
+     * @return PageResult<BusErpEmpClock> 打卡记录
+     *                                   Clock in record
+     */
     PageResult searchBySelf(PageParam<BusErpEmpClockSearchDTO> param);
 
     /**
