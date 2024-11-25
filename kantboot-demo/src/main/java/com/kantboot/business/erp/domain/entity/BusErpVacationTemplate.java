@@ -80,4 +80,10 @@ public class BusErpVacationTemplate implements Serializable {
     @JoinColumn(name = "vacation_template_id")
     private List<BusErpVacationRestDay> restDays;
 
+    /**
+     * 是否默认
+     */
+    @Column(name = "is_default")
+    private Boolean isDefault;
+
 }
