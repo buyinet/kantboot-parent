@@ -177,4 +177,14 @@ public class BusErpEmp implements Serializable {
     @Fetch(FetchMode.SELECT)
     private List<BusErpEmpCertificate> empCertificates;
 
+    /**
+     * 假期模板ID
+     */
+    @Column(name = "vacation_template_id")
+    private Long vacationTemplateId;
+
+    @OneToOne
+    @JoinColumn(name = "vacation_template_id", insertable = false, updatable = false)
+    private BusErpVacationTemplate vacationTemplate;
+
 }

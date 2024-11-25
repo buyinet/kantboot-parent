@@ -4,6 +4,10 @@ import com.kantboot.business.erp.domain.entity.BusErpEnterprise;
 
 import java.util.List;
 
+/**
+ * 企业服务
+ * Enterprise service
+ */
 public interface IBusErpEnterpriseService {
 
     /**

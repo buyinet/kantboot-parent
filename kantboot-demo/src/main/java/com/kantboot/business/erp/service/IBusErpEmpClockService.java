@@ -7,10 +7,8 @@ import com.kantboot.util.jpa.result.PageResult;
 import com.kantboot.util.sc.service.IBaseService;
 
 /**
- * 中文:
- *    员工打卡服务
- * English:
- *    Employee clock in service
+ *  员工打卡服务
+ *  Employee clock in service
  */
 public interface IBusErpEmpClockService extends IBaseService<BusErpEmpClock,Long> {
 

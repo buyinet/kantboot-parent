@@ -5,6 +5,10 @@ import com.kantboot.user.account.domain.vo.LoginVO;
 
 import java.util.List;
 
+/**
+ * 员工服务
+ * Employee service
+ */
 public interface IBusErpEmpService {
 
     /**
