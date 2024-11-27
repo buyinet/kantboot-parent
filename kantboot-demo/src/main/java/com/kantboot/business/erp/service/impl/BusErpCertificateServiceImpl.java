@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 证书服务实现
+ * Certificate service implementation
+ * @author 方某方
+ */
 @Service
 public class BusErpCertificateServiceImpl implements IBusErpCertificateService {
 
@@ -32,6 +37,7 @@ public class BusErpCertificateServiceImpl implements IBusErpCertificateService {
      * @param enterpriseId 企业ID
      *                     Enterprise ID
      * @return 证书列表
+     *        Certificate list
      */
     @Override
     public List<BusErpCertificate> getBySelf(Long enterpriseId) {

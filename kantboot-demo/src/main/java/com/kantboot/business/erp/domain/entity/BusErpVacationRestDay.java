@@ -11,6 +11,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 关于 假期模板-休息日 的实体类
+ * Entity class about vacation template-rest day
+ * @author 方某方
+ */
 @Table(name="bus_erp_vacation_rest_day")
 @Entity
 @Getter

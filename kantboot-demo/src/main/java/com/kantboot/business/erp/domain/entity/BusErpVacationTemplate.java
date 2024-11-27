@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * 关于 请假模板 的实体类
  * Entity class about vacation template
+ * @author 方某方
  */
 @Table(name="bus_erp_vacation_template")
 @Entity
