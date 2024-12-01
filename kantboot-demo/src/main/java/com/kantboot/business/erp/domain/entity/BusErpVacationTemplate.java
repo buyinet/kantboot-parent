@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 关于 请假模板 的实体类
+ * 关于 假期模板 的实体类
  * Entity class about vacation template
  * @author 方某方
  */
