@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class KantbootUserAccountSlot {
+public class UserAccountSlot {
 
     /**
      * 发送手机登录验证码的插槽

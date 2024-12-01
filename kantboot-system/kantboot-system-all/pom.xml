@@ -22,6 +22,12 @@
             <artifactId>kantboot-system-dict</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-system-auth</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

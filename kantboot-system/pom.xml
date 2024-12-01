@@ -17,6 +17,7 @@
         <module>kantboot-system-setting</module>
         <module>kantboot-system-dict</module>
         <module>kantboot-system-all</module>
+        <module>kantboot-system-auth</module>
     </modules>
 
     <dependencies>

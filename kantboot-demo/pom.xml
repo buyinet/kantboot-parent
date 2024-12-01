@@ -7,7 +7,7 @@
         <groupId>com.kantboot</groupId>
         <artifactId>kantboot-starter-parent</artifactId>
         <version>0.0.1</version>
-        <relativePath>../kantboot-starter-parent/pom.xml</relativePath>
+        <relativePath/>
     </parent>
 
     <artifactId>kantboot-demo</artifactId>
@@ -56,6 +56,25 @@
             <artifactId>kantboot-functional-email</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-system-all</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-api-baidu-translate</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-global</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
 
     </dependencies>
 

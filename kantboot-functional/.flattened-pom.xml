@@ -19,6 +19,8 @@
   </licenses>
   <modules>
     <module>kantboot-functional-file</module>
+    <module>kantboot-functional-email</module>
+    <module>kantboot-functional-template</module>
   </modules>
   <dependencyManagement>
     <dependencies>

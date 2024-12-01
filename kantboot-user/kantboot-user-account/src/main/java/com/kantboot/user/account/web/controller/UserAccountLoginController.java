@@ -34,6 +34,21 @@ public class UserAccountLoginController {
     }
 
     /**
+     * 根据邮箱和密码登录
+     * @param email 邮箱
+     *              Email
+     * @param password 密码
+     *                 Password
+     */
+    @RequestMapping("/loginByEmailAndPassword")
+    public RestResult<LoginVO> loginByEmailAndPassword(
+            @RequestParam("email") String email,
+            @RequestParam("password") String password) {
+        return RestResult.success(service.loginByEmailAndPassword(email, password),
+                CommonSuccessStateCodeAndMsg.LOGIN_SUCCESS);
+    }
+
+    /**
      * 退出登录
      */
     @RequestMapping("/logout")

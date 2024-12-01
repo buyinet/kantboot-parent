@@ -79,6 +79,11 @@
         <artifactId>kantboot-functional-file</artifactId>
         <version>${revision}</version>
       </dependency>
+      <dependency>
+        <groupId>com.kantboot</groupId>
+        <artifactId>kantboot-functional-email</artifactId>
+        <version>${revision}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>

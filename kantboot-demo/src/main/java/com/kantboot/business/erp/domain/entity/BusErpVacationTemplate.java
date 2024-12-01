@@ -83,6 +83,7 @@ public class BusErpVacationTemplate implements Serializable {
 
     /**
      * 是否默认
+     * Is default
      */
     @Column(name = "is_default")
     private Boolean isDefault;

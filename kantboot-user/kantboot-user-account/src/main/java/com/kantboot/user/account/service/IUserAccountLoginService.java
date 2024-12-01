@@ -13,11 +13,20 @@ public interface IUserAccountLoginService {
     LoginVO loginByUsernameAndPassword(String username, String password);
 
     /**
+     * 根据邮箱和密码登录
+     * @param email 邮箱
+     *              Email
+     * @param password 密码
+     *                 Password
+     */
+    LoginVO loginByEmailAndPassword(String email, String password);
+
+    /**
      * 发送手机验证码
      * @param phoneAreaCode 手机区号
      * @param phone 手机号
      */
-    void sendPhoneVerificationCode(String phoneAreaCode, String phone);
+    void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone);
 
     /**
      * 退出登录

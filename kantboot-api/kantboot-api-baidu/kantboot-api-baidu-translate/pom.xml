@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kantboot</groupId>
+        <artifactId>kantboot-api-baidu</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>kantboot-api-baidu-translate</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-util-all</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-system-all</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- okhttp3 -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

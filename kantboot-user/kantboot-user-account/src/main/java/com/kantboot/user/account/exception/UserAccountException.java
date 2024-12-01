@@ -46,4 +46,9 @@ public class UserAccountException {
      */
     public static final BaseException ACCOUNT_NOT_EXIST = BaseException.of("accountNotExist", "Account does not exist");
 
+    /**
+     * 邮箱或密码错误
+     */
+    public static final BaseException EMAIL_OR_PASSWORD_ERROR = BaseException.of("emailOrPasswordError", "Email or password error");
+
 }

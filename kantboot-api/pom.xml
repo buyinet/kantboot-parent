@@ -14,6 +14,8 @@
     <name>kantboot-api</name>
     <modules>
         <module>kantboot-api-qiniucloud</module>
+        <module>kantboot-api-google</module>
+        <module>kantboot-api-baidu</module>
     </modules>
 
     <dependencies>

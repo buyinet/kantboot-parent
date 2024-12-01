@@ -75,7 +75,7 @@ public interface SysDictI18nRepository extends JpaRepository<SysDictI18n, Long>
      */
     @Query(value = """
         select dictI18n.value from SysDictI18n dictI18n
-        where dictI18n.dictCode = :dictCode 
+        where dictI18n.dictCode = :dictCode
         and dictI18n.dictGroupCode = :dictGroupCode
         and dictI18n.languageCode = :languageCode
         """)

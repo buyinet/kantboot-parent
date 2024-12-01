@@ -20,12 +20,14 @@
         <module>kantboot-functional</module>
         <module>kantboot-starter-parent</module>
         <module>kantboot-api</module>
+        <module>kantboot-global</module>
     </modules>
 
     <properties>
+        <revision>0.0.1</revision>
+
         <java.version>21</java.version>
         <spring-boot.version>3.3.5</spring-boot.version>
-        <revision>0.0.1</revision>
         <fastjson2.version>2.0.37</fastjson2.version>
         <hutool.version>5.8.24</hutool.version>
         <fastjson2-extension.version>2.0.9.graal</fastjson2-extension.version>

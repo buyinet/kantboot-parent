@@ -1,4 +1,4 @@
-package com.kantboot.config;
+package com.kantboot.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author 方某方
  */
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class GlobalCorsConfig implements WebMvcConfigurer {
 
 
     /**

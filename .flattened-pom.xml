@@ -24,6 +24,8 @@
     <module>kantboot-user</module>
     <module>kantboot-functional</module>
     <module>kantboot-starter-parent</module>
+    <module>kantboot-api</module>
+    <module>kantboot-global</module>
   </modules>
   <properties>
     <lombok.version>1.18.34</lombok.version>
