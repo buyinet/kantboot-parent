@@ -23,6 +23,8 @@ public class GlobalInterceptor implements HandlerInterceptor {
          }
          response.setStatus(200);
          response.setContentType("application/json;charset=UTF-8");
+         // 提示没有权限
+         // Prompt for no permission
          response.getWriter().println(JSON.toJSONString(new BaseException().exceptionHandler(SystemAuthException.NO_PERMISSION)));
          return false;
      }
