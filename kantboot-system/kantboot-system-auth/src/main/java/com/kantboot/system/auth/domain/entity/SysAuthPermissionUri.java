@@ -53,7 +53,6 @@ public class SysAuthPermissionUri implements Serializable {
 
     /**
      * 权限ID
-     * 已废弃
      */
     @Deprecated
     @Column(name = "permission_id")
