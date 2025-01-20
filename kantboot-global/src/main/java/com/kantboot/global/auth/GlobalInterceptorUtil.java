@@ -2,9 +2,11 @@ package com.kantboot.global.auth;
 
 import com.kantboot.system.auth.dao.repository.SysAuthPermissionRepository;
 import com.kantboot.system.auth.dao.repository.SysAuthPermissionUriRepository;
+import com.kantboot.system.auth.dao.repository.SysAuthRolePermissionRepository;
 import com.kantboot.user.account.service.IUserAccountAuthRoleService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,8 +30,8 @@ public class GlobalInterceptorUtil {
 
     @Resource
     private IUserAccountAuthRoleService userAccountAuthRoleService;
-
-
+    @Autowired
+    private SysAuthRolePermissionRepository sysAuthRolePermissionRepository;
 
 
     /**
@@ -69,21 +71,24 @@ public class GlobalInterceptorUtil {
             }
         }
         if(!pass){
-            // 获取当前用户的权限
-            // Get the current user's permissions
-            List<Long> permissionIds = userAccountAuthRoleService.getRoleIdsBySelf();
-            // 获取当前uri的权限
-            // Get the permission of the current uri
-            List<String> urisByPermissionIds = permissionUriRepository.findUrisByPermissionIds(permissionIds);
+            List<Long> roleIds = userAccountAuthRoleService.getRoleIdsBySelf();
+            // 根据角色id获取用户的权限
+            // Get user permissions based on role id
+            List<String> permissionCodes = sysAuthRolePermissionRepository.getPermissionCodesByRoleIds(roleIds);
+            // 根据权限编码获取权限uri
+            // Get permission uri based on permission code
+            List<String> urisByPermissionCodes = permissionUriRepository.findUrisByPermissionCodes(permissionCodes);
+
             // 是否有权限
             // Whether there is permission
             boolean hasPermission = false;
-            for (String u : urisByPermissionIds) {
+            for (String u : urisByPermissionCodes) {
                 if (uri.matches(u.replace("*", ".*"))) {
                     hasPermission = true;
                     break;
                 }
             }
+
             // 结束时间
             // End time
             long end = System.currentTimeMillis();

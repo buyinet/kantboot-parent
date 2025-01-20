@@ -30,4 +30,14 @@ public interface SysAuthRolePermissionRepository extends JpaRepository<SysAuthRo
     """)
     List<Long> getPermissionIdsByRoleIds(List<Long> roleIds);
 
+    /**
+     * 通过角色ids获取权限codes
+     */
+    @Query("""
+            SELECT p.code FROM SysAuthRolePermission rp
+            JOIN SysAuthPermission p ON rp.permissionId = p.id
+            WHERE rp.roleId IN (:roleIds)
+            """)
+    List<String> getPermissionCodesByRoleIds(List<Long> roleIds);
+
 }

@@ -53,9 +53,18 @@ public class SysAuthPermissionUri implements Serializable {
 
     /**
      * 权限ID
+     * 已废弃
      */
+    @Deprecated
     @Column(name = "permission_id")
     private Long permissionId;
+
+    /**
+     * 权限编码
+     */
+    @Column(name = "permission_code",length = 64)
+    private String permissionCode;
+
 
     /**
      * URL

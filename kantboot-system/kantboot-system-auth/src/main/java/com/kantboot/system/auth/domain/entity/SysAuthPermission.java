@@ -53,6 +53,12 @@ public class SysAuthPermission implements Serializable {
     private Date gmtModified;
 
     /**
+     * 权限编码
+     */
+    @Column(name = "t_code")
+    private String code;
+
+    /**
      * 权限名称
      * Permission Name
      */

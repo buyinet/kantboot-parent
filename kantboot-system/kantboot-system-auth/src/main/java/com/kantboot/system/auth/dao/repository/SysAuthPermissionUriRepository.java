@@ -29,4 +29,13 @@ public interface SysAuthPermissionUriRepository extends JpaRepository<SysAuthPer
     """)
     List<String> findUrisByPermissionIds(List<Long> permissionIds);
 
+    /**
+     * 根据权限codes获取权限URL
+     */
+    @Query("""
+            SELECT uri.uri FROM SysAuthPermissionUri uri
+            WHERE uri.permissionCode IN (:permissionCodes)
+            """)
+    List<String> findUrisByPermissionCodes(List<String> permissionCodes);
+
 }

@@ -1,4 +1,4 @@
-package com.kantboot.system.setting.admin.controller;
+package com.kantboot.system.setting.web.admin.controller;
 
 import com.kantboot.system.setting.domain.entity.SysSettingGroup;
 import com.kantboot.util.sc.controller.BaseAdminController;

@@ -33,7 +33,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ServletComponentScan
 @SpringBootApplication(scanBasePackages = {"com.kantboot"})
 public class KantbootStartApplication {
-
     public static void main(String[] args) {
 //        System.setProperty("https.proxyHost", "127.0.0.1");
 //        System.setProperty("https.proxyPort", "7890");

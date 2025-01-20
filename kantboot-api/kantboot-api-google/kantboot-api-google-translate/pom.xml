@@ -48,6 +48,12 @@
             <version>${revision}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-api-google-setting</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
 
     </dependencies>
 
