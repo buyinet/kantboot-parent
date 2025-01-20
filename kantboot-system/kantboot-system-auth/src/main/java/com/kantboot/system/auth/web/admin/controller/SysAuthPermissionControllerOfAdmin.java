@@ -8,6 +8,7 @@ import com.kantboot.util.rest.result.RestResult;
 import com.kantboot.util.sc.controller.BaseAdminController;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class SysAuthPermissionControllerOfAdmin extends BaseAdminController<SysA
     private ISysAuthPermissionService service;
 
     @RequestMapping("/getUriList")
-    public RestResult<List<SysAuthPermissionUri>> getUriList(Long permissionId){
+    public RestResult<List<SysAuthPermissionUri>> getUriList(@RequestParam("permissionId") Long permissionId){
         return RestResult.success(service.getUriList(permissionId), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 

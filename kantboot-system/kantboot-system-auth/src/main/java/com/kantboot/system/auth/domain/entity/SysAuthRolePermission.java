@@ -66,4 +66,8 @@ public class SysAuthRolePermission implements Serializable {
     @Column(name = "permission_id")
     private Long permissionId;
 
+    @OneToOne
+    @JoinColumn(name = "permission_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private SysAuthPermission permission;
+
 }
