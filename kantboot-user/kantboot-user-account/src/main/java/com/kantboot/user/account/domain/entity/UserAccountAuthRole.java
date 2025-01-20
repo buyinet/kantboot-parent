@@ -16,6 +16,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 用户账号与角色关联表
+ * User account and role association table
+ * @author 方某方
+ */
 @Entity
 @Getter
 @Setter
@@ -29,6 +34,7 @@ public class UserAccountAuthRole implements Serializable {
 
     /**
      * 主键
+     * Primary key
      */
     @Id
     @GenericGenerator(name = "snowflakeId",strategy = com.kantboot.util.jpa.type.KantbootGenerationType.SNOWFLAKE)
@@ -38,6 +44,7 @@ public class UserAccountAuthRole implements Serializable {
 
     /**
      * 创建时间
+     * Create time
      */
     @CreatedDate
     @Column(name = "gmt_create")
@@ -45,6 +52,7 @@ public class UserAccountAuthRole implements Serializable {
 
     /**
      * 修改时间
+     * Modified time
      */
     @LastModifiedDate
     @Column(name = "gmt_modified")
@@ -52,12 +60,14 @@ public class UserAccountAuthRole implements Serializable {
 
     /**
      * 角色ID
+     * Role ID
      */
     @Column(name = "role_id")
     private Long roleId;
 
     /**
      * 用户账号ID
+     * User account ID
      */
     @Column(name = "user_account_id")
     private Long userAccountId;
