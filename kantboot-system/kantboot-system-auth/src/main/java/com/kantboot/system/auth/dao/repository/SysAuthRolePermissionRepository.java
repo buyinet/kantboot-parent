@@ -1,7 +1,9 @@
 package com.kantboot.system.auth.dao.repository;
 
-import com.kantboot.system.auth.domain.entity.SysAuthRole;
+import com.kantboot.system.auth.domain.entity.SysAuthRolePermission;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
  * @author 方某方
  *
  */
-public interface SysAuthRolePermissionRepository extends JpaRepository<SysAuthRole,Long> {
+public interface SysAuthRolePermissionRepository extends JpaRepository<SysAuthRolePermission,Long> {
 
     /**
      * 通过角色ids获取权限ids
@@ -39,5 +41,13 @@ public interface SysAuthRolePermissionRepository extends JpaRepository<SysAuthRo
             WHERE rp.roleId IN (:roleIds)
             """)
     List<String> getPermissionCodesByRoleIds(List<Long> roleIds);
+
+    /**
+     * 根据角色Id删除
+     */
+    @Modifying
+    @Transactional
+    @Query("delete from SysAuthRolePermission rp where rp.roleId = :roleId")
+    void deleteByRoleId(Long roleId);
 
 }
