@@ -1,0 +1,377 @@
+[
+  {
+    "id": "1",
+    "instantTicketingRequired": false,
+    "itineraries": [
+      {
+        "duration": "PT2H15M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "73E"
+            },
+            "arrival": {
+              "at": "2025-02-08T20:30:00",
+              "iataCode": "PKX"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "FM",
+            "departure": {
+              "at": "2025-02-08T18:15:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "duration": "PT2H15M",
+            "id": "1",
+            "number": "9101",
+            "numberOfStops": 0
+          }
+        ]
+      },
+      {
+        "duration": "PT2H5M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "73E"
+            },
+            "arrival": {
+              "at": "2025-02-10T23:40:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "FM",
+            "departure": {
+              "at": "2025-02-10T21:35:00",
+              "iataCode": "PKX"
+            },
+            "duration": "PT2H5M",
+            "id": "4",
+            "number": "9102",
+            "numberOfStops": 0
+          }
+        ]
+      }
+    ],
+    "lastTicketingDate": "2025-02-08",
+    "nonHomogeneous": false,
+    "numberOfBookableSeats": 9,
+    "oneWay": false,
+    "price": {
+      "base": 2980.0,
+      "currency": "CNY",
+      "fees": [
+        {
+          "amount": 0.0,
+          "type": "SUPPLIER"
+        },
+        {
+          "amount": 0.0,
+          "type": "TICKETING"
+        }
+      ],
+      "grandTotal": 3160.0,
+      "total": 3160.0
+    },
+    "pricingOptions": {
+      "fareType": [
+        "PUBLISHED"
+      ],
+      "includedCheckedBagsOnly": true,
+      "noPenaltyFare": false,
+      "noRestrictionFare": false,
+      "refundableFare": false
+    },
+    "source": "GDS",
+    "travelerPricings": [
+      {
+        "fareDetailsBySegment": [
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "YB",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "1"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "YB",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "4"
+          }
+        ],
+        "fareOption": "STANDARD",
+        "price": {
+          "base": 2980.0,
+          "currency": "CNY",
+          "grandTotal": 0.0,
+          "total": 3160.0
+        },
+        "travelerId": "1",
+        "travelerType": "ADULT"
+      }
+    ],
+    "type": "flight-offer",
+    "validatingAirlineCodes": [
+      "MU"
+    ]
+  },
+  {
+    "id": "2",
+    "instantTicketingRequired": false,
+    "itineraries": [
+      {
+        "duration": "PT2H15M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "330"
+            },
+            "arrival": {
+              "at": "2025-02-08T22:00:00",
+              "iataCode": "PKX"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T19:45:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "duration": "PT2H15M",
+            "id": "2",
+            "number": "8886",
+            "numberOfStops": 0
+          }
+        ]
+      },
+      {
+        "duration": "PT1H55M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "330"
+            },
+            "arrival": {
+              "at": "2025-02-10T14:55:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-10T13:00:00",
+              "iataCode": "PKX"
+            },
+            "duration": "PT1H55M",
+            "id": "5",
+            "number": "8887",
+            "numberOfStops": 0
+          }
+        ]
+      }
+    ],
+    "lastTicketingDate": "2025-02-08",
+    "nonHomogeneous": false,
+    "numberOfBookableSeats": 9,
+    "oneWay": false,
+    "price": {
+      "base": 3260.0,
+      "currency": "CNY",
+      "fees": [
+        {
+          "amount": 0.0,
+          "type": "SUPPLIER"
+        },
+        {
+          "amount": 0.0,
+          "type": "TICKETING"
+        }
+      ],
+      "grandTotal": 3440.0,
+      "total": 3440.0
+    },
+    "pricingOptions": {
+      "fareType": [
+        "PUBLISHED"
+      ],
+      "includedCheckedBagsOnly": true,
+      "noPenaltyFare": false,
+      "noRestrictionFare": false,
+      "refundableFare": false
+    },
+    "source": "GDS",
+    "travelerPricings": [
+      {
+        "fareDetailsBySegment": [
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "Y",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "2"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "Y",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "5"
+          }
+        ],
+        "fareOption": "STANDARD",
+        "price": {
+          "base": 3260.0,
+          "currency": "CNY",
+          "grandTotal": 0.0,
+          "total": 3440.0
+        },
+        "travelerId": "1",
+        "travelerType": "ADULT"
+      }
+    ],
+    "type": "flight-offer",
+    "validatingAirlineCodes": [
+      "CZ"
+    ]
+  },
+  {
+    "id": "3",
+    "instantTicketingRequired": false,
+    "itineraries": [
+      {
+        "duration": "PT2H20M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "321"
+            },
+            "arrival": {
+              "at": "2025-02-08T19:20:00",
+              "iataCode": "PKX"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T17:00:00",
+              "iataCode": "PVG",
+              "terminal": "2"
+            },
+            "duration": "PT2H20M",
+            "id": "3",
+            "number": "8882",
+            "numberOfStops": 0
+          }
+        ]
+      },
+      {
+        "duration": "PT1H55M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "330"
+            },
+            "arrival": {
+              "at": "2025-02-10T14:55:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-10T13:00:00",
+              "iataCode": "PKX"
+            },
+            "duration": "PT1H55M",
+            "id": "5",
+            "number": "8887",
+            "numberOfStops": 0
+          }
+        ]
+      }
+    ],
+    "lastTicketingDate": "2025-02-08",
+    "nonHomogeneous": false,
+    "numberOfBookableSeats": 9,
+    "oneWay": false,
+    "price": {
+      "base": 3260.0,
+      "currency": "CNY",
+      "fees": [
+        {
+          "amount": 0.0,
+          "type": "SUPPLIER"
+        },
+        {
+          "amount": 0.0,
+          "type": "TICKETING"
+        }
+      ],
+      "grandTotal": 3440.0,
+      "total": 3440.0
+    },
+    "pricingOptions": {
+      "fareType": [
+        "PUBLISHED"
+      ],
+      "includedCheckedBagsOnly": true,
+      "noPenaltyFare": false,
+      "noRestrictionFare": false,
+      "refundableFare": false
+    },
+    "source": "GDS",
+    "travelerPricings": [
+      {
+        "fareDetailsBySegment": [
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "Y",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "3"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "Y",
+            "fareBasis": "Y",
+            "includedCheckedBags": {
+              "weight": 20,
+              "weightUnit": "KG"
+            },
+            "segmentId": "5"
+          }
+        ],
+        "fareOption": "STANDARD",
+        "price": {
+          "base": 3260.0,
+          "currency": "CNY",
+          "grandTotal": 0.0,
+          "total": 3440.0
+        },
+        "travelerId": "1",
+        "travelerType": "ADULT"
+      }
+    ],
+    "type": "flight-offer",
+    "validatingAirlineCodes": [
+      "CZ"
+    ]
+  }
+]
