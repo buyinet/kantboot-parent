@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 // TODO 测试API阶段
+// https://developers.amadeus.com/self-service/category/flights/api-doc/flight-offers-search
 @Component
 public class AmadeusSetting {
     private static final String AUTH_URL = "https://test.api.amadeus.com/v1/security/oauth2/token";
