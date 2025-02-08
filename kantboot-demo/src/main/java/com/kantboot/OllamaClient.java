@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.InterruptedIOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -169,8 +168,19 @@ public class OllamaClient {
                                     }
                                     String responseStr = jsonObject.getJSONObject("message").getString("content");
                                     str += responseStr;
+                                    if(responseStr == null||responseStr.isEmpty()){
+                                        break;
+                                    }
                                     line.setLength(0);
-                                    Objects.requireNonNull(outputStream).write(responseStr.getBytes());
+                                    try {
+                                        outputStream.write(responseStr.getBytes());
+                                    }catch (Exception e){
+                                        try{
+                                            outputStream.write(responseStr.getBytes());
+                                        }catch(Exception e1){
+                                            e1.printStackTrace();
+                                        }
+                                    }
                                     outputStream.flush();
                                     if (jsonObject.getBoolean("done")) {
                                         break;
