@@ -4,7 +4,16 @@ server:
 #spring.mvc.view.prefix=/WEB-INF/jsp/
 #spring.mvc.view.suffix=.jsp
 
+# spring.ai.ollama.base-url=http://10.31.128.110:9999
+# spring.ai.ollama.chat.options.model=Qwen2-7b:latest
+
 spring:
+#  ai:
+#    ollama:
+#      base-url: http://localhost:11434/
+#      chat:
+#        options:
+#          model: deepseek-r1:1.5b
   mvc:
     view:
       prefix: /WEB-INF/jsp/

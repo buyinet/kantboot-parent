@@ -15,21 +15,26 @@ public class Main {
     @SneakyThrows
     public static void main(String[] args) {
 
+        System.setProperty("https.proxyHost", "127.0.0.1");
+        System.setProperty("https.proxyPort", "7890");
+
         Amadeus amadeus = new AmadeusSetting().getAmadeus();
         Location[] locations = amadeus.referenceData.locations.get(Params
                 .with("keyword", "SHA")
                 .and("subType", Locations.AIRPORT));
-//        System.out.println(JSON.toJSONString(locations));
 
         FlightOfferSearch[] flightOfferSearches = amadeus.shopping.flightOffersSearch.get(
                 Params.with("originLocationCode", "SHA") // 上海
 //                        .and("destinationLocationCode", "BJS") // 北京
-                        .and("destinationLocationCode", "MAD")
+                        // 马德里
+//                        .and("destinationLocationCode", "MAD")
+                        // 马尔丁
+                        .and("destinationLocationCode", "MRU")
                         .and("departureDate", "2025-02-08")
                         .and("returnDate", "2025-02-10")
-                        .and("adults", 1)
-                        .and("max", 30)
-                        .and("currencyCode", "USD")
+                        .and("adults", 1) // 几个成人
+                        .and("max", 30) // 最多返回30个结果
+                        .and("currencyCode", "CNY") // 货币单位
         );
         System.out.println(JSON.toJSONString(flightOfferSearches));
         FlightOfferSearch offer = flightOfferSearches[0];

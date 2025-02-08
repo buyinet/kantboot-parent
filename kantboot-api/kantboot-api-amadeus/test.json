@@ -4,51 +4,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H15M",
+        "duration": "PT21H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "73E"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "FM",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
+            "duration": "PT10H20M",
+            "id": "11",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T16:40:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T10:00:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H40M",
+            "id": "12",
+            "number": "703",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT18H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "73E"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T23:40:00",
-              "iataCode": "SHA",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "13",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T15:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "FM",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T21:35:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T03:10:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT2H5M",
-            "id": "13",
-            "number": "9102",
+            "duration": "PT7H55M",
+            "id": "14",
+            "number": "302",
             "numberOfStops": 0
           }
         ]
@@ -59,8 +101,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 411.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -71,8 +113,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 435.8,
-      "total": 435.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -89,31 +131,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "2"
+            "segmentId": "11"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
+            },
+            "segmentId": "12"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
             },
             "segmentId": "13"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "14"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 411.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 435.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -121,7 +179,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "MU"
+      "EK"
     ]
   },
   {
@@ -129,51 +187,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H15M",
+        "duration": "PT21H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T19:45:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
+            "duration": "PT10H20M",
+            "id": "11",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T16:40:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T10:00:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H40M",
+            "id": "12",
+            "number": "703",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT1H55M",
+        "duration": "PT18H35M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T14:55:00",
-              "iataCode": "SHA",
+              "at": "2025-02-11T05:05:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T22:30:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H35M",
+            "id": "23",
+            "number": "704",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T21:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T13:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T09:15:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT1H55M",
-            "id": "16",
-            "number": "8887",
+            "duration": "PT7H50M",
+            "id": "24",
+            "number": "304",
             "numberOfStops": 0
           }
         ]
@@ -184,8 +284,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -196,8 +296,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -214,31 +314,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "3"
+            "segmentId": "11"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "16"
+            "segmentId": "12"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "23"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "24"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -246,7 +362,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -254,51 +370,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H20M",
+        "duration": "PT21H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "321"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T19:20:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T17:00:00",
+              "at": "2025-02-08T23:00:00",
               "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H20M",
-            "id": "4",
-            "number": "8882",
+            "duration": "PT10H20M",
+            "id": "11",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T16:40:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T10:00:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H40M",
+            "id": "12",
+            "number": "703",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT1H55M",
+        "duration": "PT24H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T14:55:00",
-              "iataCode": "SHA",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "15",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T21:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T13:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T09:15:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT1H55M",
+            "duration": "PT7H50M",
             "id": "16",
-            "number": "8887",
+            "number": "304",
             "numberOfStops": 0
           }
         ]
@@ -309,8 +467,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -321,8 +479,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -339,31 +497,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "4"
+            "segmentId": "11"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
+            },
+            "segmentId": "12"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "15"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
             },
             "segmentId": "16"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -371,7 +545,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -379,51 +553,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H25M",
+        "duration": "PT21H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T14:50:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T12:25:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H25M",
-            "id": "5",
-            "number": "8880",
+            "duration": "PT10H20M",
+            "id": "11",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T16:40:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T10:00:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H40M",
+            "id": "12",
+            "number": "703",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT1H55M",
+        "duration": "PT36H35M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T14:55:00",
-              "iataCode": "SHA",
+              "at": "2025-02-11T05:05:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T22:30:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H35M",
+            "id": "25",
+            "number": "704",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-12T15:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T13:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-12T03:10:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT1H55M",
-            "id": "16",
-            "number": "8887",
+            "duration": "PT7H55M",
+            "id": "26",
+            "number": "302",
             "numberOfStops": 0
           }
         ]
@@ -434,8 +650,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -446,8 +662,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -464,31 +680,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "5"
+            "segmentId": "11"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "16"
+            "segmentId": "12"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "25"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "26"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -496,7 +728,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -504,51 +736,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H15M",
+        "duration": "PT38H10M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T19:45:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
+            "duration": "PT10H20M",
+            "id": "1",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "2",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT18H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T11:05:00",
-              "iataCode": "SHA",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "13",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T15:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T09:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T03:10:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT2H5M",
-            "id": "9",
-            "number": "8879",
+            "duration": "PT7H55M",
+            "id": "14",
+            "number": "302",
             "numberOfStops": 0
           }
         ]
@@ -556,11 +830,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 3,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -571,8 +845,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -589,31 +863,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "3"
+            "segmentId": "1"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "9"
+            "segmentId": "2"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "13"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "14"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -621,7 +911,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -629,51 +919,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H15M",
+        "duration": "PT38H10M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T19:45:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
+            "duration": "PT10H20M",
+            "id": "1",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "2",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT18H35M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T18:20:00",
-              "iataCode": "SHA",
+              "at": "2025-02-11T05:05:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T22:30:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H35M",
+            "id": "23",
+            "number": "704",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T21:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T16:15:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T09:15:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT2H5M",
-            "id": "11",
-            "number": "8885",
+            "duration": "PT7H50M",
+            "id": "24",
+            "number": "304",
             "numberOfStops": 0
           }
         ]
@@ -681,11 +1013,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 3,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -696,8 +1028,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -714,31 +1046,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "3"
+            "segmentId": "1"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "11"
+            "segmentId": "2"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "23"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "24"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -746,7 +1094,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -754,51 +1102,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H30M",
+        "duration": "PT38H10M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T19:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T16:30:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T23:00:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H30M",
-            "id": "6",
-            "number": "8888",
+            "duration": "PT10H20M",
+            "id": "1",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "2",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT1H55M",
+        "duration": "PT24H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T14:55:00",
-              "iataCode": "SHA",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "15",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T21:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T13:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T09:15:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT1H55M",
+            "duration": "PT7H50M",
             "id": "16",
-            "number": "8887",
+            "number": "304",
             "numberOfStops": 0
           }
         ]
@@ -806,11 +1196,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 3,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -821,8 +1211,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -839,31 +1229,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "6"
+            "segmentId": "1"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
+            },
+            "segmentId": "2"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "15"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
             },
             "segmentId": "16"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -871,7 +1277,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -879,51 +1285,93 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H20M",
+        "duration": "PT38H10M",
         "segments": [
           {
             "aircraft": {
-              "code": "321"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T19:20:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T17:00:00",
+              "at": "2025-02-08T23:00:00",
               "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H20M",
-            "id": "4",
-            "number": "8882",
+            "duration": "PT10H20M",
+            "id": "1",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "2",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT36H35M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T11:05:00",
-              "iataCode": "SHA",
+              "at": "2025-02-11T05:05:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T22:30:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H35M",
+            "id": "25",
+            "number": "704",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-12T15:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T09:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-12T03:10:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT2H5M",
-            "id": "9",
-            "number": "8879",
+            "duration": "PT7H55M",
+            "id": "26",
+            "number": "302",
             "numberOfStops": 0
           }
         ]
@@ -931,11 +1379,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 3,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11400.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -946,8 +1394,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15037.0,
+      "total": 15037.0
     },
     "pricingOptions": {
       "fareType": [
@@ -964,31 +1412,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "4"
+            "segmentId": "1"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "9"
+            "segmentId": "2"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "25"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "26"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11400.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15037.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -996,7 +1460,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -1004,51 +1468,114 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H20M",
+        "duration": "PT21H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "321"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T19:20:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T05:20:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-08T17:00:00",
+              "at": "2025-02-08T23:00:00",
               "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H20M",
-            "id": "4",
-            "number": "8882",
+            "duration": "PT10H20M",
+            "id": "11",
+            "number": "303",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T16:40:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T10:00:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H40M",
+            "id": "12",
+            "number": "703",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT25H40M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "359"
             },
             "arrival": {
-              "at": "2025-02-10T18:20:00",
-              "iataCode": "SHA",
+              "at": "2025-02-10T11:50:00",
+              "iataCode": "JNB",
+              "terminal": "A"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "MK",
+            "departure": {
+              "at": "2025-02-10T09:25:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT4H25M",
+            "id": "29",
+            "number": "851",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T23:45:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T13:25:00",
+              "iataCode": "JNB",
+              "terminal": "B"
+            },
+            "duration": "PT8H20M",
+            "id": "30",
+            "number": "762",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T15:05:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "EK",
             "departure": {
-              "at": "2025-02-10T16:15:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T03:10:00",
+              "iataCode": "DXB",
+              "terminal": "3"
             },
-            "duration": "PT2H5M",
-            "id": "11",
-            "number": "8885",
+            "duration": "PT7H55M",
+            "id": "31",
+            "number": "302",
             "numberOfStops": 0
           }
         ]
@@ -1059,8 +1586,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 12240.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -1071,8 +1598,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 15385.0,
+      "total": 15385.0
     },
     "pricingOptions": {
       "fareType": [
@@ -1089,31 +1616,56 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "4"
+            "segmentId": "11"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "11"
+            "segmentId": "12"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "V",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "29"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "30"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "M",
+            "fareBasis": "MLWFSCN1",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "31"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 12240.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 15385.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -1121,7 +1673,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "EK"
     ]
   },
   {
@@ -1129,51 +1681,89 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H25M",
+        "duration": "PT42H15M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T14:50:00",
-              "iataCode": "PKX"
+              "at": "2025-02-09T06:05:00",
+              "iataCode": "IST"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "TK",
             "departure": {
-              "at": "2025-02-08T12:25:00",
-              "iataCode": "SHA",
+              "at": "2025-02-08T22:50:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
-            "duration": "PT2H25M",
-            "id": "5",
-            "number": "8880",
+            "duration": "PT12H15M",
+            "id": "3",
+            "number": "27",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "333"
+            },
+            "arrival": {
+              "at": "2025-02-10T13:05:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "TK",
+            "departure": {
+              "at": "2025-02-10T02:15:00",
+              "iataCode": "IST"
+            },
+            "duration": "PT9H50M",
+            "id": "4",
+            "number": "176",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT40H35M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "333"
             },
             "arrival": {
-              "at": "2025-02-10T11:05:00",
-              "iataCode": "SHA",
+              "at": "2025-02-11T05:55:00",
+              "iataCode": "IST"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "TK",
+            "departure": {
+              "at": "2025-02-10T20:35:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT10H20M",
+            "id": "27",
+            "number": "177",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-12T17:10:00",
+              "iataCode": "PVG",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "CZ",
+            "carrierCode": "TK",
             "departure": {
-              "at": "2025-02-10T09:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-12T01:45:00",
+              "iataCode": "IST"
             },
-            "duration": "PT2H5M",
-            "id": "9",
-            "number": "8879",
+            "duration": "PT10H25M",
+            "id": "28",
+            "number": "26",
             "numberOfStops": 0
           }
         ]
@@ -1184,8 +1774,8 @@
     "numberOfBookableSeats": 9,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 11020.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -1196,8 +1786,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 17215.0,
+      "total": 17215.0
     },
     "pricingOptions": {
       "fareType": [
@@ -1214,31 +1804,47 @@
         "fareDetailsBySegment": [
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "H",
+            "fareBasis": "HLF2XEX",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "5"
+            "segmentId": "3"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "H",
+            "fareBasis": "HLF2XEX",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "9"
+            "segmentId": "4"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "H",
+            "fareBasis": "HLF2XEX",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "27"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "H",
+            "fareBasis": "HLF2XEX",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "28"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 11020.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 17215.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -1246,7 +1852,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "CZ"
+      "TK"
     ]
   },
   {
@@ -1254,51 +1860,135 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H25M",
+        "duration": "PT22H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "789"
             },
             "arrival": {
-              "at": "2025-02-08T14:50:00",
-              "iataCode": "PKX"
+              "at": "2025-02-08T17:25:00",
+              "iataCode": "CAN",
+              "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-08T12:25:00",
+              "at": "2025-02-08T14:50:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
-            "duration": "PT2H25M",
+            "duration": "PT2H35M",
             "id": "5",
-            "number": "8880",
+            "number": "3538",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-09T00:05:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T19:10:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "duration": "PT8H55M",
+            "id": "6",
+            "number": "383",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "7",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT20H25M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T18:20:00",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "17",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T12:50:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-11T01:55:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "duration": "PT6H55M",
+            "id": "18",
+            "number": "384",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "788"
+            },
+            "arrival": {
+              "at": "2025-02-11T17:10:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-10T16:15:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T15:00:00",
+              "iataCode": "CAN",
+              "terminal": "2"
             },
-            "duration": "PT2H5M",
-            "id": "11",
-            "number": "8885",
+            "duration": "PT2H10M",
+            "id": "19",
+            "number": "3571",
             "numberOfStops": 0
           }
         ]
@@ -1306,11 +1996,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 5,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 42380.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -1321,8 +2011,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 47823.0,
+      "total": 47823.0
     },
     "pricingOptions": {
       "fareType": [
@@ -1338,32 +2028,66 @@
       {
         "fareDetailsBySegment": [
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "D2ASRYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
             "segmentId": "5"
           },
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "cabin": "BUSINESS",
+            "class": "D",
+            "fareBasis": "D2ASRYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "11"
+            "segmentId": "6"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "O",
+            "fareBasis": "D2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "7"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "L",
+            "fareBasis": "U2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "17"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "U",
+            "fareBasis": "U2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "18"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "U",
+            "fareBasis": "U2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "19"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 42380.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 47823.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -1379,51 +2103,135 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H15M",
+        "duration": "PT22H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "789"
             },
             "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-08T17:25:00",
+              "iataCode": "CAN",
+              "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-08T19:45:00",
+              "at": "2025-02-08T14:50:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
+            "duration": "PT2H35M",
+            "id": "5",
+            "number": "3538",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-09T00:05:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T19:10:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "duration": "PT8H55M",
+            "id": "6",
+            "number": "383",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "7",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H15M",
+        "duration": "PT21H25M",
         "segments": [
           {
             "aircraft": {
-              "code": "321"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T22:50:00",
-              "iataCode": "PVG",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "20",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T12:50:00",
+              "iataCode": "CAN",
               "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-10T20:35:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T01:55:00",
+              "iataCode": "DXB",
+              "terminal": "1"
             },
-            "duration": "PT2H15M",
-            "id": "15",
-            "number": "8889",
+            "duration": "PT6H55M",
+            "id": "21",
+            "number": "384",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T18:10:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-11T16:00:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "duration": "PT2H10M",
+            "id": "22",
+            "number": "3503",
             "numberOfStops": 0
           }
         ]
@@ -1431,11 +2239,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 5,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 45330.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -1446,8 +2254,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 50773.0,
+      "total": 50773.0
     },
     "pricingOptions": {
       "fareType": [
@@ -1463,32 +2271,66 @@
       {
         "fareDetailsBySegment": [
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "D2ASRYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "3"
+            "segmentId": "5"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "D",
+            "fareBasis": "D2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "6"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "O",
+            "fareBasis": "D2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "7"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "L",
+            "fareBasis": "K2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "20"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "K",
+            "fareBasis": "K2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "21"
           },
           {
             "cabin": "ECONOMY",
             "class": "Y",
             "fareBasis": "Y",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "15"
+            "segmentId": "22"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 45330.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 50773.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -1504,51 +2346,135 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H30M",
+        "duration": "PT23H20M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-08T19:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-08T16:25:00",
+              "iataCode": "CAN",
+              "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-08T16:30:00",
+              "at": "2025-02-08T13:50:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
-            "duration": "PT2H30M",
-            "id": "6",
-            "number": "8888",
+            "duration": "PT2H35M",
+            "id": "8",
+            "number": "3532",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-09T00:05:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T19:10:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "duration": "PT8H55M",
+            "id": "9",
+            "number": "383",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "10",
+            "number": "701",
             "numberOfStops": 0
           }
         ]
       },
       {
-        "duration": "PT2H5M",
+        "duration": "PT20H25M",
         "segments": [
           {
             "aircraft": {
-              "code": "330"
+              "code": "388"
             },
             "arrival": {
-              "at": "2025-02-10T11:05:00",
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "17",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T12:50:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-11T01:55:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "duration": "PT6H55M",
+            "id": "18",
+            "number": "384",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "788"
+            },
+            "arrival": {
+              "at": "2025-02-11T17:10:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
             "blacklistedInEU": false,
             "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-10T09:00:00",
-              "iataCode": "PKX"
+              "at": "2025-02-11T15:00:00",
+              "iataCode": "CAN",
+              "terminal": "2"
             },
-            "duration": "PT2H5M",
-            "id": "9",
-            "number": "8879",
+            "duration": "PT2H10M",
+            "id": "19",
+            "number": "3571",
             "numberOfStops": 0
           }
         ]
@@ -1556,11 +2482,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 5,
     "oneWay": false,
     "price": {
-      "base": 450.0,
-      "currency": "USD",
+      "base": 51050.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -1571,8 +2497,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 474.8,
-      "total": 474.8
+      "grandTotal": 56493.0,
+      "total": 56493.0
     },
     "pricingOptions": {
       "fareType": [
@@ -1588,32 +2514,66 @@
       {
         "fareDetailsBySegment": [
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "J2AFFYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "6"
+            "segmentId": "8"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "J2AFFYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "9"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "O",
+            "fareBasis": "J2AFFYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "10"
           },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
+            "class": "L",
+            "fareBasis": "U2ASRYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "9"
+            "segmentId": "17"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "U",
+            "fareBasis": "U2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "18"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "U",
+            "fareBasis": "U2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "19"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 450.0,
-          "currency": "USD",
+          "base": 51050.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 474.8
+          "total": 56493.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -1629,1803 +2589,135 @@
     "instantTicketingRequired": false,
     "itineraries": [
       {
-        "duration": "PT2H30M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T19:00:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T16:30:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H30M",
-            "id": "6",
-            "number": "8888",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H5M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-10T18:20:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T16:15:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H5M",
-            "id": "11",
-            "number": "8885",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "6"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "11"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "15",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H20M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-08T19:20:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T17:00:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "duration": "PT2H20M",
-            "id": "4",
-            "number": "8882",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T22:50:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T20:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H15M",
-            "id": "15",
-            "number": "8889",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "4"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "15"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "16",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H25M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T14:50:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T12:25:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H25M",
-            "id": "5",
-            "number": "8880",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T22:50:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T20:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H15M",
-            "id": "15",
-            "number": "8889",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "5"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "15"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "17",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H30M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T19:00:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T16:30:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H30M",
-            "id": "6",
-            "number": "8888",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T22:50:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T20:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H15M",
-            "id": "15",
-            "number": "8889",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "6"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "15"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "18",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T19:45:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H55M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T14:30:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T11:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H55M",
-            "id": "17",
-            "number": "8881",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "3"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "17"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "19",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H20M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-08T19:20:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T17:00:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "duration": "PT2H20M",
-            "id": "4",
-            "number": "8882",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H55M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T14:30:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T11:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H55M",
-            "id": "17",
-            "number": "8881",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "4"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "17"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "20",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H25M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T14:50:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T12:25:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H25M",
-            "id": "5",
-            "number": "8880",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H55M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T14:30:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T11:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H55M",
-            "id": "17",
-            "number": "8881",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "5"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "17"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "21",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H30M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T19:00:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T16:30:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H30M",
-            "id": "6",
-            "number": "8888",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H55M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T14:30:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T11:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H55M",
-            "id": "17",
-            "number": "8881",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 450.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 474.8,
-      "total": 474.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "6"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "Y",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "17"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 450.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 474.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "CZ"
-    ]
-  },
-  {
-    "id": "22",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H10M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "738"
-            },
-            "arrival": {
-              "at": "2025-02-08T22:55:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "MF",
-            "departure": {
-              "at": "2025-02-08T20:45:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "duration": "PT2H10M",
-            "id": "1",
-            "number": "8556",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H5M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "738"
-            },
-            "arrival": {
-              "at": "2025-02-10T19:35:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "MF",
-            "departure": {
-              "at": "2025-02-10T17:30:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H5M",
-            "id": "12",
-            "number": "8555",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 452.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 476.8,
-      "total": 476.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "U",
-            "fareBasis": "UCDIF",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "1"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "U",
-            "fareBasis": "UCDIF",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "12"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 452.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 476.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MF"
-    ]
-  },
-  {
-    "id": "23",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H5M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-10T18:20:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T16:15:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H5M",
-            "id": "11",
-            "number": "8885",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 483.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 507.8,
-      "total": 507.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Q",
-            "fareBasis": "QCN",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "11"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 483.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 507.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "24",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T22:50:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T20:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H15M",
-            "id": "15",
-            "number": "8889",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 483.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 507.8,
-      "total": 507.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Q",
-            "fareBasis": "QCN",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "15"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 483.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 507.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "25",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H55M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "321"
-            },
-            "arrival": {
-              "at": "2025-02-10T14:30:00",
-              "iataCode": "PVG",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-10T11:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H55M",
-            "id": "17",
-            "number": "8881",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 483.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 507.8,
-      "total": 507.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Q",
-            "fareBasis": "QCN",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "17"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 483.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 507.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "26",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "330"
-            },
-            "arrival": {
-              "at": "2025-02-08T22:00:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "CZ",
-            "departure": {
-              "at": "2025-02-08T19:45:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "3",
-            "number": "8886",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H5M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-10T23:40:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-10T21:35:00",
-              "iataCode": "PKX"
-            },
-            "duration": "PT2H5M",
-            "id": "13",
-            "number": "9102",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 483.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 507.8,
-      "total": 507.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Q",
-            "fareBasis": "QCN",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "3"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "13"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 483.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 507.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "27",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "332"
-            },
-            "arrival": {
-              "at": "2025-02-10T11:00:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "MU",
-            "departure": {
-              "at": "2025-02-10T09:00:00",
-              "iataCode": "PEK",
-              "terminal": "2"
-            },
-            "duration": "PT2H",
-            "id": "7",
-            "number": "5104",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 502.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 526.8,
-      "total": 526.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "7"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 502.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 526.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "28",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H",
+        "duration": "PT23H20M",
         "segments": [
           {
             "aircraft": {
               "code": "77W"
             },
             "arrival": {
-              "at": "2025-02-10T13:00:00",
+              "at": "2025-02-08T16:25:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T13:50:00",
+              "iataCode": "SHA",
+              "terminal": "2"
+            },
+            "duration": "PT2H35M",
+            "id": "8",
+            "number": "3532",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-09T00:05:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-08T19:10:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "duration": "PT8H55M",
+            "id": "9",
+            "number": "383",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-09T09:10:00",
+              "iataCode": "MRU"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-09T02:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "duration": "PT6H45M",
+            "id": "10",
+            "number": "701",
+            "numberOfStops": 0
+          }
+        ]
+      },
+      {
+        "duration": "PT21H25M",
+        "segments": [
+          {
+            "aircraft": {
+              "code": "388"
+            },
+            "arrival": {
+              "at": "2025-02-10T23:25:00",
+              "iataCode": "DXB",
+              "terminal": "3"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "EK",
+            "departure": {
+              "at": "2025-02-10T16:45:00",
+              "iataCode": "MRU"
+            },
+            "duration": "PT6H40M",
+            "id": "20",
+            "number": "702",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T12:50:00",
+              "iataCode": "CAN",
+              "terminal": "2"
+            },
+            "blacklistedInEU": false,
+            "carrierCode": "CZ",
+            "departure": {
+              "at": "2025-02-11T01:55:00",
+              "iataCode": "DXB",
+              "terminal": "1"
+            },
+            "duration": "PT6H55M",
+            "id": "21",
+            "number": "384",
+            "numberOfStops": 0
+          },
+          {
+            "aircraft": {
+              "code": "77W"
+            },
+            "arrival": {
+              "at": "2025-02-11T18:10:00",
               "iataCode": "SHA",
               "terminal": "2"
             },
             "blacklistedInEU": false,
-            "carrierCode": "MU",
+            "carrierCode": "CZ",
             "departure": {
-              "at": "2025-02-10T11:00:00",
-              "iataCode": "PEK",
+              "at": "2025-02-11T16:00:00",
+              "iataCode": "CAN",
               "terminal": "2"
             },
-            "duration": "PT2H",
-            "id": "8",
-            "number": "5108",
+            "duration": "PT2H10M",
+            "id": "22",
+            "number": "3503",
             "numberOfStops": 0
           }
         ]
@@ -3433,11 +2725,11 @@
     ],
     "lastTicketingDate": "2025-02-08",
     "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
+    "numberOfBookableSeats": 5,
     "oneWay": false,
     "price": {
-      "base": 502.0,
-      "currency": "USD",
+      "base": 54000.0,
+      "currency": "CNY",
       "fees": [
         {
           "amount": 0.0,
@@ -3448,8 +2740,8 @@
           "type": "TICKETING"
         }
       ],
-      "grandTotal": 526.8,
-      "total": 526.8
+      "grandTotal": 59443.0,
+      "total": 59443.0
     },
     "pricingOptions": {
       "fareType": [
@@ -3465,284 +2757,66 @@
       {
         "fareDetailsBySegment": [
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "J2AFFYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
-          },
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
             "segmentId": "8"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 502.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 526.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "29",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H5M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "77W"
-            },
-            "arrival": {
-              "at": "2025-02-10T13:35:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "MU",
-            "departure": {
-              "at": "2025-02-10T11:30:00",
-              "iataCode": "PEK",
-              "terminal": "2"
-            },
-            "duration": "PT2H5M",
-            "id": "10",
-            "number": "5154",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 502.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 526.8,
-      "total": 526.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
-          {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
-            "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
-            },
-            "segmentId": "2"
           },
           {
-            "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
+            "cabin": "BUSINESS",
+            "class": "J",
+            "fareBasis": "J2AFFYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
+            },
+            "segmentId": "9"
+          },
+          {
+            "cabin": "BUSINESS",
+            "class": "O",
+            "fareBasis": "J2AFFYQF",
+            "includedCheckedBags": {
+              "weight": 0
             },
             "segmentId": "10"
-          }
-        ],
-        "fareOption": "STANDARD",
-        "price": {
-          "base": 502.0,
-          "currency": "USD",
-          "grandTotal": 0.0,
-          "total": 526.8
-        },
-        "travelerId": "1",
-        "travelerType": "ADULT"
-      }
-    ],
-    "type": "flight-offer",
-    "validatingAirlineCodes": [
-      "MU"
-    ]
-  },
-  {
-    "id": "30",
-    "instantTicketingRequired": false,
-    "itineraries": [
-      {
-        "duration": "PT2H15M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "73E"
-            },
-            "arrival": {
-              "at": "2025-02-08T20:30:00",
-              "iataCode": "PKX"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "FM",
-            "departure": {
-              "at": "2025-02-08T18:15:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "duration": "PT2H15M",
-            "id": "2",
-            "number": "9101",
-            "numberOfStops": 0
-          }
-        ]
-      },
-      {
-        "duration": "PT2H10M",
-        "segments": [
-          {
-            "aircraft": {
-              "code": "77W"
-            },
-            "arrival": {
-              "at": "2025-02-10T21:10:00",
-              "iataCode": "SHA",
-              "terminal": "2"
-            },
-            "blacklistedInEU": false,
-            "carrierCode": "MU",
-            "departure": {
-              "at": "2025-02-10T19:00:00",
-              "iataCode": "PEK",
-              "terminal": "2"
-            },
-            "duration": "PT2H10M",
-            "id": "14",
-            "number": "5124",
-            "numberOfStops": 0
-          }
-        ]
-      }
-    ],
-    "lastTicketingDate": "2025-02-08",
-    "nonHomogeneous": false,
-    "numberOfBookableSeats": 9,
-    "oneWay": false,
-    "price": {
-      "base": 502.0,
-      "currency": "USD",
-      "fees": [
-        {
-          "amount": 0.0,
-          "type": "SUPPLIER"
-        },
-        {
-          "amount": 0.0,
-          "type": "TICKETING"
-        }
-      ],
-      "grandTotal": 526.8,
-      "total": 526.8
-    },
-    "pricingOptions": {
-      "fareType": [
-        "PUBLISHED"
-      ],
-      "includedCheckedBagsOnly": true,
-      "noPenaltyFare": false,
-      "noRestrictionFare": false,
-      "refundableFare": false
-    },
-    "source": "GDS",
-    "travelerPricings": [
-      {
-        "fareDetailsBySegment": [
+          },
           {
             "cabin": "ECONOMY",
-            "class": "Y",
-            "fareBasis": "YB",
+            "class": "L",
+            "fareBasis": "K2ASRYQF",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "2"
+            "segmentId": "20"
+          },
+          {
+            "cabin": "ECONOMY",
+            "class": "K",
+            "fareBasis": "K2ASRYQF",
+            "includedCheckedBags": {
+              "weight": 0
+            },
+            "segmentId": "21"
           },
           {
             "cabin": "ECONOMY",
             "class": "Y",
-            "fareBasis": "YB",
+            "fareBasis": "Y",
             "includedCheckedBags": {
-              "weight": 20,
-              "weightUnit": "KG"
+              "weight": 0
             },
-            "segmentId": "14"
+            "segmentId": "22"
           }
         ],
         "fareOption": "STANDARD",
         "price": {
-          "base": 502.0,
-          "currency": "USD",
+          "base": 54000.0,
+          "currency": "CNY",
           "grandTotal": 0.0,
-          "total": 526.8
+          "total": 59443.0
         },
         "travelerId": "1",
         "travelerType": "ADULT"
@@ -3750,7 +2824,7 @@
     ],
     "type": "flight-offer",
     "validatingAirlineCodes": [
-      "MU"
+      "CZ"
     ]
   }
 ]
