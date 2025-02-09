@@ -45,6 +45,13 @@
 <!--            <artifactId>spring-core</artifactId>-->
 <!--            <version>5.3.23</version> &lt;!&ndash; 根据实际版本调整 &ndash;&gt;-->
 <!--        </dependency>-->
+
+        <!-- web-flux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

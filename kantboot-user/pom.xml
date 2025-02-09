@@ -15,6 +15,7 @@
     <description>kantboot-user</description>
     <modules>
         <module>kantboot-user-account</module>
+        <module>kantboot-user-location</module>
     </modules>
 
     <dependencies>
