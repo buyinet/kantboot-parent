@@ -9,12 +9,13 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-
+    <artifactId>kantboot-official-plugin</artifactId>
     <packaging>pom</packaging>
+<!--    kantboot-official-plugin-user-account-->
     <modules>
+<!--        <module>kantboot-official-plugin-user-account</module>-->
         <module>kantboot-official-plugin-user-account</module>
     </modules>
 
-    <artifactId>official</artifactId>
 
 </project>

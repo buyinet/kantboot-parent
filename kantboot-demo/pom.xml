@@ -103,6 +103,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- kantboot-functional-template -->
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-template</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -21,7 +21,6 @@
         <module>kantboot-starter-parent</module>
         <module>kantboot-api</module>
         <module>kantboot-global</module>
-        <module>kantboot-api/kantboot-api-amadeus</module>
         <module>kantboot-official-plugin</module>
     </modules>
 

@@ -12,5 +12,12 @@
 
     <artifactId>kantboot-official-plugin-user-account</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-user-account</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 
 </project>
