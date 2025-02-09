@@ -21,6 +21,7 @@
     <module>kantboot-functional-file</module>
     <module>kantboot-functional-email</module>
     <module>kantboot-functional-template</module>
+    <module>kantboot-functional-verify-code</module>
   </modules>
   <dependencyManagement>
     <dependencies>
