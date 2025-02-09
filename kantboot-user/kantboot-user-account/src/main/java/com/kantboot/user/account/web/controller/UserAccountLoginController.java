@@ -57,4 +57,66 @@ public class UserAccountLoginController {
         return RestResult.success(null, CommonSuccessStateCodeAndMsg.LOGOUT_SUCCESS);
     }
 
+
+    /**
+     * 根据手机号和验证码登录
+     * @param phoneAreaCode 手机号前缀
+     *                      Phone number prefix
+     * @param phone 手机号
+     *              Phone number
+     * @param verifyCode 验证码
+     *                   Verification code
+     */
+    @RequestMapping("/loginByPhoneVerifyCode")
+    public RestResult<LoginVO> loginByPhoneVerifyCode(
+            @RequestParam("phoneAreaCode") String phoneAreaCode,
+            @RequestParam("phone") String phone,
+            @RequestParam("verifyCode") String verifyCode) {
+        return RestResult.success(service.loginByPhoneVerifyCode(phoneAreaCode, phone, verifyCode),
+                CommonSuccessStateCodeAndMsg.LOGIN_SUCCESS);
+    }
+
+    /**
+     * 根据邮箱和验证码登录
+     * @param email 邮箱
+     *              Email
+     * @param verifyCode 验证码
+     *                   Verification code
+     */
+    @RequestMapping("/loginByEmailVerifyCode")
+    public RestResult<LoginVO> loginByEmailVerifyCode(
+            @RequestParam("email") String email,
+            @RequestParam("verifyCode") String verifyCode) {
+        return RestResult.success(service.loginByEmailVerifyCode(email, verifyCode),
+                CommonSuccessStateCodeAndMsg.LOGIN_SUCCESS);
+    }
+
+    /**
+     * 发送登录手机登录验证码
+     * @param phoneAreaCode 手机号前缀
+     *                      Phone number prefix
+     * @param phone 手机号
+     *              Phone number
+     */
+    @RequestMapping("/sendLoginVerifyCodeByPhone")
+    public RestResult<Void> sendLoginVerifyCodeByPhone(
+            @RequestParam("phoneAreaCode") String phoneAreaCode,
+            @RequestParam("phone") String phone) {
+        service.sendLoginVerifyCodeByPhone(phoneAreaCode, phone);
+        return RestResult.success(null, CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+    }
+
+    /**
+     * 发送登录邮箱登录验证码
+     * @param email 邮箱
+     *              Email
+     */
+    @RequestMapping("/sendLoginVerifyCodeByEmail")
+    public RestResult<Void> sendLoginVerifyCodeByEmail(
+            @RequestParam("email") String email) {
+        service.sendLoginVerifyCodeByEmail(email);
+        return RestResult.success(null, CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+    }
+
+
 }
