@@ -22,6 +22,7 @@
         <module>kantboot-api</module>
         <module>kantboot-global</module>
         <module>kantboot-api/kantboot-api-amadeus</module>
+        <module>kantboot-official-plugin</module>
     </modules>
 
     <properties>
@@ -41,30 +42,30 @@
             <id>alibaba</id>
             <url>https://maven.aliyun.com/repository/public</url>
         </repository>
-        <!-- 添加自定义的Nexus仓库 -->
-        <repository>
-            <id>maven-releases</id>
-            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>
-        </repository>
-        <repository>
-            <id>maven-snapshots</id>
-            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>
-        </repository>
+<!--        &lt;!&ndash; 添加自定义的Nexus仓库 &ndash;&gt;-->
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        <repository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>-->
+<!--        </repository>-->
     </repositories>
 
     <!-- 发布时使用的仓库配置 -->
-    <distributionManagement>
-        <repository>
-            <id>maven-releases</id>
-            <name>Releases Repository</name>
-            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>maven-snapshots</id>
-            <name>Snapshots Repository</name>
-            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <name>Releases Repository</name>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <name>Snapshots Repository</name>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
     <dependencyManagement>
         <dependencies>
