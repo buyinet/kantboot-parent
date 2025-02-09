@@ -151,6 +151,11 @@ public class UserAccountServiceImpl implements IUserAccountService {
     }
 
     @Override
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
+    }
+
+    @Override
     public UserAccount getByEmail(String email) {
         UserAccount byEmail = repository.findByEmail(email);
         if (byEmail == null) {
@@ -159,4 +164,15 @@ public class UserAccountServiceImpl implements IUserAccountService {
         }
         return byEmail;
     }
+
+    @Override
+    public UserAccount getByPhone(String phoneAreaCode, String phone) {
+        UserAccount byPhone = repository.findByPhoneAreaCodeAndPhone(phoneAreaCode, phone);
+        if (byPhone == null) {
+            // 用户账号不存在
+            throw UserAccountException.NOT_EXIST;
+        }
+        return byPhone;
+    }
+
 }

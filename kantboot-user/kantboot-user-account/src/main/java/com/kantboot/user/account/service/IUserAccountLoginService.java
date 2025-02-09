@@ -26,7 +26,35 @@ public interface IUserAccountLoginService {
      * @param phoneAreaCode 手机区号
      * @param phone 手机号
      */
-    void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone);
+    void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone);
+
+    /**
+     * 发送邮箱验证码
+     * @param email 邮箱
+     */
+    void sendLoginVerifyCodeByEmail(String email);
+
+    /**
+     * 验证手机验证码是否登录成功
+     * @param phoneAreaCode 手机区号
+     *                      Phone area code
+     * @param phone 手机号
+     *              Phone
+     *
+     * @param verifyCode 验证码
+     *                   Verify code
+     */
+    LoginVO loginByPhoneVerifyCode(String phoneAreaCode, String phone,String verifyCode);
+
+    /**
+     * 验证邮箱验证码是否登录成功
+     * @param email 邮箱
+     *              Email
+     *
+     * @param verifyCode 验证码
+     *                   Verify code
+     */
+    LoginVO loginByEmailVerifyCode(String email, String verifyCode);
 
     /**
      * 退出登录

@@ -18,10 +18,39 @@ public class UserAccountSlot {
      * 发送手机登录验证码的插槽
      * Send login verification code by phone slot
      */
-    public void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone) {
-        log.info("sendLoginVerificationCodeByPhone phoneAreaCode: {}, phone: {}", phoneAreaCode, phone);
+    public void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone) {
+        log.info("sendLoginVerifyCodeByPhone phoneAreaCode: {}, phone: {}", phoneAreaCode, phone);
         // 提示用户账户模块未使用短信插件
         throw UserAccountException.SMS_PLUGIN_NOT_USED;
     }
+
+    /**
+     * 发送邮箱登录验证码的插槽
+     * Send login verification code by email slot
+     */
+    public void sendLoginVerifyCodeByEmail(String email) {
+        log.info("sendLoginVerifyCodeByEmail email: {}", email);
+        // 提示用户账户模块未使用邮件插件
+        throw UserAccountException.EMAIL_PLUGIN_NOT_USED;
+    }
+
+    /**
+     * 验证手机登录验证码的是否成功的插槽
+     */
+    public Boolean matchLoginVerifyCodeByPhone(String phoneAreaCode, String phone, String verifyCode) {
+        log.info("matchLoginVerifyCodeByPhone phoneAreaCode: {}, phone: {}, verificationCode: {}", phoneAreaCode, phone, verifyCode);
+        // 提示用户账户模块未使用短信插件
+        throw UserAccountException.SMS_PLUGIN_NOT_USED;
+    }
+
+    /**
+     * 验证码邮箱登录验证码的是否成功的插槽
+     */
+    public Boolean matchLoginVerifyCodeByEmail(String email, String verifyCode) {
+        log.info("matchLoginVerifyCodeByEmail email: {}, verificationCode: {}", email, verifyCode);
+        // 提示用户账户模块未使用邮件插件
+        throw UserAccountException.EMAIL_PLUGIN_NOT_USED;
+    }
+
 
 }

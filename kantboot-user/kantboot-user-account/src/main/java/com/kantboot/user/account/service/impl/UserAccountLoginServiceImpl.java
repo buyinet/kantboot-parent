@@ -6,6 +6,7 @@ import com.kantboot.user.account.domain.entity.UserAccount;
 import com.kantboot.user.account.domain.vo.LoginVO;
 import com.kantboot.user.account.exception.UserAccountException;
 import com.kantboot.user.account.service.IUserAccountLoginService;
+import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.user.account.service.IUserAccountTokenService;
 import com.kantboot.user.account.slot.UserAccountSlot;
 import com.kantboot.util.crypto.password.impl.KantbootPassword;
@@ -26,6 +27,9 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
 
     @Resource
     private UserAccountSlot userAccountSlot;
+
+    @Resource
+    private IUserAccountService userAccountService;
 
     @Override
     public LoginVO loginByUsernameAndPassword(String username, String password) {
@@ -77,8 +81,57 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
                 .setUserAccount(byEmail);
     }
 
-    public void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone) {
-        userAccountSlot.sendLoginVerificationCodeByPhone(phoneAreaCode, phone);
+    public void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone) {
+        userAccountSlot.sendLoginVerifyCodeByPhone(phoneAreaCode, phone);
+    }
+
+    @Override
+    public void sendLoginVerifyCodeByEmail(String email) {
+        userAccountSlot.sendLoginVerifyCodeByEmail(email);
+    }
+
+    @Override
+    public LoginVO loginByPhoneVerifyCode(String phoneAreaCode, String phone,String verifyCode) {
+        if (!userAccountSlot.matchLoginVerifyCodeByPhone(phoneAreaCode, phone, verifyCode)) {
+            // 验证码错误
+            throw UserAccountException.VERIFY_CODE_ERROR;
+        }
+        if(userAccountService.existsByPhone(phoneAreaCode, phone)){
+            UserAccount byPhone = userAccountService.getByPhone(phoneAreaCode, phone);
+            // 生成令牌
+            String token = userAccountTokenService.generateToken(byPhone.getId());
+            return new LoginVO()
+                    .setToken(token)
+                    .setUserAccount(byPhone);
+        }
+        UserAccount userAccount = userAccountService.createUserAccount(new UserAccount()
+                .setPhoneAreaCode(phoneAreaCode)
+                .setPhone(phone));
+        return new LoginVO()
+                .setToken(userAccountTokenService.generateToken(userAccount.getId()))
+                .setUserAccount(userAccount);
+    }
+
+
+    @Override
+    public LoginVO loginByEmailVerifyCode(String email, String verifyCode) {
+       if (!userAccountSlot.matchLoginVerifyCodeByEmail(email, verifyCode)) {
+           // 验证码错误
+           throw UserAccountException.VERIFY_CODE_ERROR;
+       }
+       if(userAccountService.existsByEmail(email)){
+           UserAccount byEmail = userAccountService.getByEmail(email);
+           // 生成令牌
+           String token = userAccountTokenService.generateToken(byEmail.getId());
+           return new LoginVO()
+                   .setToken(token)
+                   .setUserAccount(byEmail);
+       }
+       UserAccount userAccount = userAccountService.createUserAccount(new UserAccount()
+               .setEmail(email));
+       return new LoginVO()
+               .setToken(userAccountTokenService.generateToken(userAccount.getId()))
+               .setUserAccount(userAccount);
     }
 
     @Override

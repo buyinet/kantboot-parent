@@ -42,6 +42,11 @@ public class UserAccountException {
     public static final BaseException SMS_PLUGIN_NOT_USED = BaseException.of("smsPluginNotUsed", "The SMS verification code plugin is not used");
 
     /**
+     * 未使用邮箱验证码插件
+     */
+    public static final BaseException EMAIL_PLUGIN_NOT_USED = BaseException.of("emailPluginNotUsed", "The email verification code plugin is not used");
+
+    /**
      * 账号不存在
      */
     public static final BaseException ACCOUNT_NOT_EXIST = BaseException.of("accountNotExist", "Account does not exist");
@@ -50,5 +55,10 @@ public class UserAccountException {
      * 邮箱或密码错误
      */
     public static final BaseException EMAIL_OR_PASSWORD_ERROR = BaseException.of("emailOrPasswordError", "Email or password error");
+
+    /**
+     * 验证码错误
+     */
+    public static final BaseException VERIFY_CODE_ERROR = BaseException.of("verifyCodeError", "Verification code error");
 
 }

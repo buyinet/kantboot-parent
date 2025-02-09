@@ -55,8 +55,18 @@ public interface IUserAccountService {
     boolean existsByPhone(String phoneAreaCode, String phone);
 
     /**
+     * 判断是否存在邮箱
+     */
+    boolean existsByEmail(String email);
+
+    /**
      * 根据邮箱获取用户
      */
     UserAccount getByEmail(String email);
+
+    /**
+     * 根据手机号获取用户
+     */
+    UserAccount getByPhone(String phoneAreaCode, String phone);
 
 }
