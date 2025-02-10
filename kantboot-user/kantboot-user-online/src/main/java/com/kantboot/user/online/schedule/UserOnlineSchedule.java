@@ -24,17 +24,17 @@ public class UserOnlineSchedule {
     private IUserAccountOnlineService userAccountOnlineService;
 
     /**
-     * 3分钟执行一次
+     * 半分钟执行一次
      */
-    @Scheduled(fixedRate = 1000*60*3)
+    @Scheduled(fixedRate = 1000*30)
     public void matchUserAccountOnline() {
         // 获取三分钟之前的时间，查询出在线且三分钟未进行心跳的用户
-        List<UserAccountOnline> byMaxGmtLastHeartbeatAndIsOnline = userAccountOnlineRepository.getByMaxGmtLastHeartbeatAndIsOnline(new Date(System.currentTimeMillis() - 1000 * 60 * 3));
+        List<UserAccountOnline> byMaxGmtLastHeartbeatAndIsOnline = userAccountOnlineRepository.getByMaxGmtLastHeartbeatAndIsOnline(new Date(System.currentTimeMillis() - 1000 *20));
         int size = byMaxGmtLastHeartbeatAndIsOnline.size();
         if(size > 0){
-            log.info("有"+size+"个用户三分钟未进行心跳，进行下线");
+            log.info("有"+size+"个用户20秒没进行心跳，进行下线");
         }else{
-            log.info("三分钟内没有过期在线用户");
+            log.info("20秒内没有过期在线用户");
             return;
         }
         for (UserAccountOnline userAccountOnline : byMaxGmtLastHeartbeatAndIsOnline) {
