@@ -24,12 +24,9 @@ public class PayOrderGenerateDTO {
     private BigDecimal amount;
 
     /**
-     * 产品编码
-     * 用于区分不同的产品
-     * 例如：oMoney
-     * 例如：oVip
+     * 业务编码
      */
-    private String productCode;
+    private String businessCode;
 
     /**
      * 描述

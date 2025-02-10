@@ -15,4 +15,14 @@ public interface IFunctionalPayOrderService {
      */
     FunctionalPayOrder getById(Long id);
 
+    /**
+     * 取消订单
+     */
+    FunctionalPayOrder cancel(Long id);
+
+    /**
+     * 对应的支付方式已支付
+     */
+    void paySuccess(Long id, String payMethodCode, String payMethodAdditionalInfo);
+
 }

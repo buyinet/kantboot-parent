@@ -91,13 +91,13 @@ public class FunctionalPayOrder implements Serializable {
     private String paidAfterCheckFailReasonDescription;
 
     /**
-     * 产品编码
-     * 用于区分不同的产品
-     * 例如：oMoney
-     * 例如：oVip
+     * 业务编码
+     * 用于区分不同的业务类型
+     * 例如：ovoClion
      */
-    @Column(name="product_code")
-    private String productCode;
+    @Column(name="business_code")
+    private String businessCode;
+
 
     /**
      * 描述
@@ -120,5 +120,11 @@ public class FunctionalPayOrder implements Serializable {
      */
     @Column(name="pay_method_code")
     private String payMethodCode;
+
+    /**
+     * 支付方式的附加信息
+     */
+    @Column(name="pay_method_additional_info",length = 30000)
+    private String payMethodAdditionalInfo;
 
 }
