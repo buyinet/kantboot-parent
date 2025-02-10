@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.kantboot</groupId>
-    <artifactId>kantboot-functional</artifactId>
+    <artifactId>kantboot-user</artifactId>
     <version>0.0.1</version>
   </parent>
   <groupId>com.kantboot</groupId>
-  <artifactId>kantboot-functional-verify-code</artifactId>
+  <artifactId>kantboot-user-balance</artifactId>
   <version>0.0.1</version>
   <licenses>
     <license>
@@ -19,7 +19,7 @@
   <dependencies>
     <dependency>
       <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-system-all</artifactId>
+      <artifactId>kantboot-util-all</artifactId>
       <version>${revision}</version>
     </dependency>
   </dependencies>

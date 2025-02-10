@@ -22,6 +22,7 @@
     <module>kantboot-functional-email</module>
     <module>kantboot-functional-template</module>
     <module>kantboot-functional-verify-code</module>
+    <module>kantboot-functional-sms</module>
   </modules>
   <dependencyManagement>
     <dependencies>

@@ -123,6 +123,12 @@
             <version>${revision}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-user-balance</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

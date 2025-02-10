@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.kantboot</groupId>
-    <artifactId>kantboot-official-plugin</artifactId>
+    <artifactId>kantboot-user</artifactId>
     <version>0.0.1</version>
   </parent>
   <groupId>com.kantboot</groupId>
-  <artifactId>kantboot-official-plugin-user-account</artifactId>
+  <artifactId>kantboot-user-online</artifactId>
   <version>0.0.1</version>
   <licenses>
     <license>
@@ -19,27 +19,12 @@
   <dependencies>
     <dependency>
       <groupId>com.kantboot</groupId>
+      <artifactId>kantboot-util-all</artifactId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.kantboot</groupId>
       <artifactId>kantboot-user-account</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-functional-email</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-functional-template</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-functional-verify-code</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-functional-sms</artifactId>
       <version>${revision}</version>
     </dependency>
   </dependencies>
