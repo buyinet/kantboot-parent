@@ -18,6 +18,30 @@
             <artifactId>kantboot-user-account</artifactId>
             <version>${revision}</version>
         </dependency>
+        <!-- kantboot-functional-email -->
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-email</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-template</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- 验证码 -->
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-verify-code</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- 发送短信 -->
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-sms</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

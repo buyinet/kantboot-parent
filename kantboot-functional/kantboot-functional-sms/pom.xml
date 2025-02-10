@@ -10,12 +10,17 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kantboot-functional-verify-code</artifactId>
+    <artifactId>kantboot-functional-sms</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.kantboot</groupId>
-            <artifactId>kantboot-system-all</artifactId>
+            <artifactId>kantboot-system-setting</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-api-qiniucloud</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

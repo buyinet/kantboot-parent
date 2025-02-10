@@ -45,6 +45,8 @@ public class FunctionalEmailServiceImpl implements IFunctionalEmailService {
         try {
             MailUtil.send(mailAccount, save.getTo(), save.getSubject(), save.getContent(), save.getIsHtml());
         } catch (Exception e) {
+            // 输出异常
+            e.printStackTrace();
             // 异常信息
             // Exception information
             BaseException emailServerError = FunctionalEmailException.EMAIL_SERVER_ERROR;
@@ -72,7 +74,7 @@ public class FunctionalEmailServiceImpl implements IFunctionalEmailService {
     private FunctionalEmail getFunctionalEmail(EmailMessageDTO messageDTO) {
         FunctionalEmail functionalEmail = new FunctionalEmail();
         // 设置接收者
-        functionalEmail.setTo(messageDTO.getEmail());
+        functionalEmail.setTo(messageDTO.getEmail().trim());
         // 设置主题
         functionalEmail.setSubject(messageDTO.getSubject());
         // 设置内容

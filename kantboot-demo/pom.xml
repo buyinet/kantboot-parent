@@ -111,6 +111,13 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-official-plugin-user-account</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

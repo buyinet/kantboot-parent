@@ -36,7 +36,7 @@ public class EventEmit implements ApplicationContextAware {
      */
     @Async
     public void to(String code, Object ...value) {
-        log.info("GlobalEventEmit.emit: code={}, value={}", code, value);
+        log.info("GlobalEventEmit.emit: code={}", code);
         // 获取监听事件所在的方法
         // Get the method where the listener event is located
         List<Method> method = EmitUtil.getMethod(code);

@@ -83,13 +83,13 @@ public class FunctionalEmailSetting {
         // end: Set the mailbox port
 
         MailAccount account = new MailAccount();
-        account.setHost(functionalEmailSmtpHost);
+        account.setHost(functionalEmailSmtpHost.strip());
         account.setPort(port);
         account.setAuth(true);
         account.setSslEnable(true);
-        account.setFrom(functionalEmailSmtpEmail);
-        account.setUser(functionalEmailSmtpUsername);
-        account.setPass(functionalEmailSmtpPassword);
+        account.setFrom(functionalEmailSmtpEmail.strip());
+        account.setUser(functionalEmailSmtpUsername.strip());
+        account.setPass(functionalEmailSmtpPassword.strip());
         return account;
     }
 
