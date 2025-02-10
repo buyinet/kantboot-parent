@@ -1,13 +1,10 @@
 package com.kantboot;
 
-import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.rest.exception.BaseException;
 import com.kantboot.util.rest.result.RestResult;
-import jakarta.annotation.Resource;
 import lombok.SneakyThrows;
 import okhttp3.*;
 import org.springframework.http.HttpHeaders;
@@ -269,10 +266,10 @@ public class OllamaClient {
                                         break;
                                     }
 //                                    line.setLength(0);
-                                    System.err.println(responseStr);
+                                    System.err.print(responseStr);
                                     line = new StringWriter();
                                             outputStream.write(responseStr.getBytes());
-//                                            outputStream.flush();
+                                            outputStream.flush();
 
 
                                     if (jsonObject.getBoolean("done")) {

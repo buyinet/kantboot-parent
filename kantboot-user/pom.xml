@@ -16,6 +16,7 @@
     <modules>
         <module>kantboot-user-account</module>
         <module>kantboot-user-location</module>
+        <module>kantboot-user-online</module>
     </modules>
 
     <dependencies>
