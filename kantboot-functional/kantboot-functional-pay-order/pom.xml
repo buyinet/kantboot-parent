@@ -10,6 +10,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kantboot-functional-order</artifactId>
+    <artifactId>kantboot-functional-pay-order</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-util-all</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 
 </project>

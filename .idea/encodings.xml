@@ -15,7 +15,7 @@
     <file url="file://$PROJECT_DIR$/kantboot-demo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-email/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-file/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-pay-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-sms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-template/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-verify-code/src/main/java" charset="UTF-8" />

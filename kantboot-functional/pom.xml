@@ -18,7 +18,7 @@
         <module>kantboot-functional-template</module>
         <module>kantboot-functional-verify-code</module>
         <module>kantboot-functional-sms</module>
-        <module>kantboot-functional-order</module>
+        <module>kantboot-functional-pay-order</module>
     </modules>
 
     <dependencies>
