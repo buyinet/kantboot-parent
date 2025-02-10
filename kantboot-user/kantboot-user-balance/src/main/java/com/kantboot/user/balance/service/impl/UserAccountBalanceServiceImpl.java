@@ -50,7 +50,24 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
             // 余额记录不存在
             throw BaseException.of("balanceRecordNotExist", "Balance record does not exist");
         }
+
         UserAccountBalanceChangeRecord record = byId1.get();
+
+        // 如果为是扣除余额时
+        if (record.getNumber().doubleValue() < 0) {
+            // 如果是扣除余额，则判断余额是否充足
+            UserAccountBalance balance =
+                    repository.findByUserAccountIdAndBalanceTypeCode(record.getUserAccountId(), record.getBalanceTypeCode());
+            if (balance == null || balance.getNumber().doubleValue() < -(record.getNumber().doubleValue())) {
+                // 设置状态为“处理失败”
+                record.setStatusCode(UserAccountBalanceChangeRecordStatusCodeConstants.FAILED);
+                // 设置失败原因编码为“余额不足”
+                record.setFailReasonCode("balanceNotEnough");
+                changeRecordRepository.save(record);
+                // 余额不足
+                throw BaseException.of("balanceNotEnough", "Balance not enough");
+            }
+        }
 
         String cacheKey = "userAccountBalanceChangeRecord:handleSuccess:"
                 + record.getUserAccountId() + ":" + record.getBalanceTypeCode();
