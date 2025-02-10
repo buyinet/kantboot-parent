@@ -16,6 +16,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * 插件配置
+ * @author 方某方
+ */
 @Configuration
 public class KantbootOfficialPluginUserAccountConfig {
 

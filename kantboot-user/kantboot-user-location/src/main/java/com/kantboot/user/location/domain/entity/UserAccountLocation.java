@@ -78,4 +78,17 @@ public class UserAccountLocation implements Serializable {
     @Column(name = "t_ip")
     private String ip;
 
+    /**
+     * 根据经纬度定位的城市编码
+     */
+    @Column(name = "city_code_of_latitude_and_longitude")
+    private String cityCodeOfLatitudeAndLongitude;
+
+    /**
+     * 根据ip定位的城市编码
+     */
+    @Column(name = "city_code_of_ip")
+    private String cityCodeOfIp;
+
+
 }
