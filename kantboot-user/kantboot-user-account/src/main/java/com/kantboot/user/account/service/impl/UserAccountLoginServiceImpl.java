@@ -81,17 +81,17 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
                 .setUserAccount(byEmail);
     }
 
-    public void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone) {
+    public void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone) {
         userAccountSlot.sendLoginVerifyCodeByPhone(phoneAreaCode, phone);
     }
 
     @Override
-    public void sendLoginVerifyCodeByEmail(String email) {
+    public void sendLoginVerificationCodeByEmail(String email) {
         userAccountSlot.sendLoginVerifyCodeByEmail(email);
     }
 
     @Override
-    public LoginVO loginByPhoneVerifyCode(String phoneAreaCode, String phone,String verifyCode) {
+    public LoginVO loginByPhoneVerificationCode(String phoneAreaCode, String phone, String verifyCode) {
         if (!userAccountSlot.matchLoginVerifyCodeByPhone(phoneAreaCode, phone, verifyCode)) {
             // 验证码错误
             throw UserAccountException.VERIFY_CODE_ERROR;
@@ -114,8 +114,8 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
 
 
     @Override
-    public LoginVO loginByEmailVerifyCode(String email, String verifyCode) {
-       if (!userAccountSlot.matchLoginVerifyCodeByEmail(email, verifyCode)) {
+    public LoginVO loginByEmailVerificationCode(String email, String verificationCode) {
+       if (!userAccountSlot.matchLoginVerifyCodeByEmail(email, verificationCode)) {
            // 验证码错误
            throw UserAccountException.VERIFY_CODE_ERROR;
        }

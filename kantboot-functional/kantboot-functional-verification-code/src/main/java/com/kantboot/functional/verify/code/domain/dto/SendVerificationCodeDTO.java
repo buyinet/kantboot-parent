@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class SendVerifyCodeDTO implements Serializable {
+public class SendVerificationCodeDTO implements Serializable {
 
     /**
      * 接收者

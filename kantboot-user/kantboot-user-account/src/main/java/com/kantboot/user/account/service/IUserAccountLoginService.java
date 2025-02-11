@@ -26,13 +26,13 @@ public interface IUserAccountLoginService {
      * @param phoneAreaCode 手机区号
      * @param phone 手机号
      */
-    void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone);
+    void sendLoginVerificationCodeByPhone(String phoneAreaCode, String phone);
 
     /**
      * 发送邮箱验证码
      * @param email 邮箱
      */
-    void sendLoginVerifyCodeByEmail(String email);
+    void sendLoginVerificationCodeByEmail(String email);
 
     /**
      * 验证手机验证码是否登录成功
@@ -44,17 +44,17 @@ public interface IUserAccountLoginService {
      * @param verifyCode 验证码
      *                   Verify code
      */
-    LoginVO loginByPhoneVerifyCode(String phoneAreaCode, String phone,String verifyCode);
+    LoginVO loginByPhoneVerificationCode(String phoneAreaCode, String phone, String verifyCode);
 
     /**
      * 验证邮箱验证码是否登录成功
      * @param email 邮箱
      *              Email
      *
-     * @param verifyCode 验证码
-     *                   Verify code
+     * @param verificationCode 验证码
+     *                         Verification code
      */
-    LoginVO loginByEmailVerifyCode(String email, String verifyCode);
+    LoginVO loginByEmailVerificationCode(String email, String verificationCode);
 
     /**
      * 退出登录

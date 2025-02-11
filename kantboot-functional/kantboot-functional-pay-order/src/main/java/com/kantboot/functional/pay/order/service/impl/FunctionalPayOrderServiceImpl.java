@@ -8,6 +8,7 @@ import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrder;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrderLog;
 import com.kantboot.functional.pay.order.exception.FunctionalPayOrderException;
 import com.kantboot.functional.pay.order.service.IFunctionalPayOrderService;
+import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.event.EventEmit;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
     @Resource
     private EventEmit eventEmit;
+
+    @Resource
+    private CacheUtil cacheUtil;
 
     @Override
     public FunctionalPayOrder generate(PayOrderGenerateDTO dto) {
@@ -67,7 +71,8 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
     @Override
     public void paySuccess(Long id,String payMethodCode, String payMethodAdditionalInfo) {
-        FunctionalPayOrder functionalPayOrder = repository.findById(id).orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        FunctionalPayOrder functionalPayOrder = repository.findById(id)
+                .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
         // 设置订单状态为已支付
         functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.PAID);
         // 设置订单状态的支付方式

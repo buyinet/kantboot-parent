@@ -17,13 +17,13 @@ import java.util.Date;
  * 验证码的实体类
  * @author 方某方
  */
-@Table(name="functional_verify_code")
+@Table(name="functional_verification_code")
 @Entity
 @Getter
 @Setter
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
-public class FunctionalVerifyCode implements Serializable {
+public class FunctionalVerificationCode implements Serializable {
 
     /**
      * 主键

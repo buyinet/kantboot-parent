@@ -16,7 +16,7 @@
         <module>kantboot-functional-file</module>
         <module>kantboot-functional-email</module>
         <module>kantboot-functional-template</module>
-        <module>kantboot-functional-verify-code</module>
+        <module>kantboot-functional-verification-code</module>
         <module>kantboot-functional-sms</module>
         <module>kantboot-functional-pay-order</module>
     </modules>

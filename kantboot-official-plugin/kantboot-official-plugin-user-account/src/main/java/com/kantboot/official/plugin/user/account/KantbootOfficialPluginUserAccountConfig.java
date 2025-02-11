@@ -6,9 +6,9 @@ import com.kantboot.functional.sms.domain.dto.SmsMessageDTO;
 import com.kantboot.functional.sms.service.IFunctionalSmsService;
 import com.kantboot.functional.template.domain.vo.FunctionalTemplateGenerateVO;
 import com.kantboot.functional.template.service.IFunctionalTemplateService;
-import com.kantboot.functional.verify.code.domain.dto.SendVerifyCodeDTO;
-import com.kantboot.functional.verify.code.domain.entity.FunctionalVerifyCode;
-import com.kantboot.functional.verify.code.service.IFunctionalVerifyCodeService;
+import com.kantboot.functional.verify.code.domain.dto.SendVerificationCodeDTO;
+import com.kantboot.functional.verify.code.domain.entity.FunctionalVerificationCode;
+import com.kantboot.functional.verify.code.service.IFunctionalVerificationCodeService;
 import com.kantboot.user.account.slot.UserAccountSlot;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
@@ -33,7 +33,7 @@ public class KantbootOfficialPluginUserAccountConfig {
     private IFunctionalTemplateService functionalTemplateService;
 
     @Resource
-    private IFunctionalVerifyCodeService functionalVerifyCodeService;
+    private IFunctionalVerificationCodeService functionalVerifyCodeService;
 
     @Bean
     public UserAccountSlot userAccountSlot(){
@@ -41,13 +41,13 @@ public class KantbootOfficialPluginUserAccountConfig {
 
             @Override
             public void sendLoginVerifyCodeByPhone(String phoneAreaCode, String phone) {
-                SendVerifyCodeDTO dto = new SendVerifyCodeDTO()
+                SendVerificationCodeDTO dto = new SendVerificationCodeDTO()
                         .setTo(phoneAreaCode + phone)
                         .setTypeCode("sms")
                         .setSceneCode("login")
                         .setExpire(300000L);
 
-                FunctionalVerifyCode send = functionalVerifyCodeService.send(dto);
+                FunctionalVerificationCode send = functionalVerifyCodeService.send(dto);
 
                 FunctionalTemplateGenerateVO template =
                         functionalTemplateService.getTemplate("smsLoginVerificationCode",
@@ -64,13 +64,13 @@ public class KantbootOfficialPluginUserAccountConfig {
 
             @Override
             public void sendLoginVerifyCodeByEmail(String email) {
-                SendVerifyCodeDTO dto = new SendVerifyCodeDTO()
+                SendVerificationCodeDTO dto = new SendVerificationCodeDTO()
                         .setTo(email)
                         .setTypeCode("email")
                         .setSceneCode("login")
                         .setExpire(300000L);
 
-                FunctionalVerifyCode send = functionalVerifyCodeService.send(dto);
+                FunctionalVerificationCode send = functionalVerifyCodeService.send(dto);
 
                 FunctionalTemplateGenerateVO template =
                         functionalTemplateService.getTemplate("emailLoginVerificationCode",
@@ -86,7 +86,7 @@ public class KantbootOfficialPluginUserAccountConfig {
 
             @Override
             public Boolean matchLoginVerifyCodeByPhone(String phoneAreaCode, String phone, String verifyCode) {
-                return functionalVerifyCodeService.verify(new SendVerifyCodeDTO()
+                return functionalVerifyCodeService.verify(new SendVerificationCodeDTO()
                         .setTo(phoneAreaCode + phone)
                         .setTypeCode("sms")
                         .setSceneCode("login"), verifyCode);
@@ -94,7 +94,7 @@ public class KantbootOfficialPluginUserAccountConfig {
 
             @Override
             public Boolean matchLoginVerifyCodeByEmail(String email, String verifyCode) {
-                return functionalVerifyCodeService.verify(new SendVerifyCodeDTO()
+                return functionalVerifyCodeService.verify(new SendVerificationCodeDTO()
                         .setTo(email)
                         .setTypeCode("email")
                         .setSceneCode("login"), verifyCode);

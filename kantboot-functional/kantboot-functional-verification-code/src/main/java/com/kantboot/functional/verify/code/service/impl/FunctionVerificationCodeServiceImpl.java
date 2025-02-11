@@ -1,9 +1,9 @@
 package com.kantboot.functional.verify.code.service.impl;
 
-import com.kantboot.functional.verify.code.domain.dto.SendVerifyCodeDTO;
-import com.kantboot.functional.verify.code.domain.entity.FunctionalVerifyCode;
-import com.kantboot.functional.verify.code.repository.FunctionalVerifyCodeRepository;
-import com.kantboot.functional.verify.code.service.IFunctionalVerifyCodeService;
+import com.kantboot.functional.verify.code.domain.dto.SendVerificationCodeDTO;
+import com.kantboot.functional.verify.code.domain.entity.FunctionalVerificationCode;
+import com.kantboot.functional.verify.code.repository.FunctionalVerificationCodeRepository;
+import com.kantboot.functional.verify.code.service.IFunctionalVerificationCodeService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class FunctionVerifyCodeServiceImpl implements IFunctionalVerifyCodeService {
+public class FunctionVerificationCodeServiceImpl implements IFunctionalVerificationCodeService {
 
     @Resource
-    private FunctionalVerifyCodeRepository repository;
+    private FunctionalVerificationCodeRepository repository;
 
     /**
      * 生成验证码
@@ -35,7 +35,7 @@ public class FunctionVerifyCodeServiceImpl implements IFunctionalVerifyCodeServi
      * @param dto 验证码发送数据传输对象
      */
     @Override
-    public FunctionalVerifyCode send(SendVerifyCodeDTO dto) {
+    public FunctionalVerificationCode send(SendVerificationCodeDTO dto) {
         // 生成验证码
         String code = generateCode();
         // 过期时长 默认300秒
@@ -43,7 +43,7 @@ public class FunctionVerifyCodeServiceImpl implements IFunctionalVerifyCodeServi
         // 过期时间
         Date gmtExpire = new Date((System.currentTimeMillis() + expire * 1000)+5000);
 
-        FunctionalVerifyCode verifyCode = new FunctionalVerifyCode();
+        FunctionalVerificationCode verifyCode = new FunctionalVerificationCode();
         verifyCode.setTo(dto.getTo());
         verifyCode.setTypeCode(dto.getTypeCode());
         verifyCode.setSceneCode(dto.getSceneCode());
@@ -62,12 +62,12 @@ public class FunctionVerifyCodeServiceImpl implements IFunctionalVerifyCodeServi
      * @return 是否验证通过
      */
     @Override
-    public Boolean verify(SendVerifyCodeDTO dto, String verifyCode) {
+    public Boolean verify(SendVerificationCodeDTO dto, String verifyCode) {
         if (dto == null || verifyCode == null) {
             return false;
         }
-        List<FunctionalVerifyCode> param = repository.findParam(dto);
-        for (FunctionalVerifyCode functionalVerifyCode : param) {
+        List<FunctionalVerificationCode> param = repository.findParam(dto);
+        for (FunctionalVerificationCode functionalVerifyCode : param) {
             if(verifyExpire(functionalVerifyCode)){
                 // 如果过期就删除
                 repository.delete(functionalVerifyCode);
@@ -84,7 +84,7 @@ public class FunctionVerifyCodeServiceImpl implements IFunctionalVerifyCodeServi
     /**
      * 验证是否过期
      */
-    private Boolean verifyExpire(FunctionalVerifyCode functionalVerifyCode) {
+    private Boolean verifyExpire(FunctionalVerificationCode functionalVerifyCode) {
         Date now = new Date();
         return functionalVerifyCode.getGmtExpire().after(now);
     }
