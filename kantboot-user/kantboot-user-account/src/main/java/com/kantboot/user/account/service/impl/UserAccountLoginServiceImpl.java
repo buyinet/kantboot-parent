@@ -69,7 +69,8 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
             throw UserAccountException.PASSWORD_NOT_SET;
         }
         // 密码校验
-        if (!kantbootPassword.matches(password, byEmail.getPassword())) {
+        Boolean matches = kantbootPassword.matches(password, byEmail.getPassword());
+        if (!matches) {
             // 账号或密码错误
             throw UserAccountException.EMAIL_OR_PASSWORD_ERROR;
         }
@@ -114,7 +115,7 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
 
 
     @Override
-    public LoginVO loginByEmailVerificationCode(String email, String verificationCode) {
+    public LoginVO loginByEmailAndVerificationCode(String email, String verificationCode) {
        if (!userAccountSlot.matchLoginVerifyCodeByEmail(email, verificationCode)) {
            // 验证码错误
            throw UserAccountException.VERIFY_CODE_ERROR;
@@ -153,4 +154,5 @@ public class UserAccountLoginServiceImpl implements IUserAccountLoginService {
                 .setToken(token)
                 .setUserAccount(byId);
     }
+
 }

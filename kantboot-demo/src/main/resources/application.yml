@@ -6,7 +6,7 @@ server:
 
 # spring.ai.ollama.base-url=http://10.31.128.110:9999
 # spring.ai.ollama.chat.options.model=Qwen2-7b:latest
-
+#  spring.mvc.async.request-timeout=60000 # 单位毫秒（60秒）
 spring:
 #  ai:
 #    ollama:
@@ -15,6 +15,8 @@ spring:
 #        options:
 #          model: deepseek-r1:1.5b
   mvc:
+    async:
+      request-timeout: 3600000 # 设置请求超时时间，单位毫秒（600秒）
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp

@@ -54,7 +54,7 @@ public interface IUserAccountLoginService {
      * @param verificationCode 验证码
      *                         Verification code
      */
-    LoginVO loginByEmailVerificationCode(String email, String verificationCode);
+    LoginVO loginByEmailAndVerificationCode(String email, String verificationCode);
 
     /**
      * 退出登录

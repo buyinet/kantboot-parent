@@ -86,12 +86,6 @@
 
         <dependency>
             <groupId>com.kantboot</groupId>
-            <artifactId>kantboot-api-baidu-translate</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kantboot</groupId>
             <artifactId>kantboot-global</artifactId>
             <version>${revision}</version>
         </dependency>
@@ -128,6 +122,18 @@
             <artifactId>kantboot-user-balance</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-api-baidu-translate</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.kantboot</groupId>-->
+<!--            <artifactId>kantboot-api-google-translate</artifactId>-->
+<!--            <version>${revision}</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 

@@ -2,14 +2,14 @@ package com.kantboot.api.google.setting;
 
 import com.kantboot.system.setting.service.ISysSettingService;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 谷歌设置
  * Google setting
  * @author 方某方
  */
-@Service
+@Component
 public class ApiGoogleSetting {
 
     @Resource
