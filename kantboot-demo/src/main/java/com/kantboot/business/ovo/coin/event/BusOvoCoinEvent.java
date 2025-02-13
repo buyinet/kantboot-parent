@@ -62,7 +62,7 @@ public class BusOvoCoinEvent {
             throw BaseException.of("ovoCoinRechargeOrderAmountChanged", "The order amount has been modified");
         }
         Optional<BusOvoCoinRechargeOption> byId1 = optionRepository.findById(byPayOrderId.getOptionId());
-        if(!byId1.isPresent()) {
+        if(byId1.isEmpty()) {
             // 提示充值选项已不存在
             throw BaseException.of("ovoCoinRechargeOptionNotExist", "The recharge option does not exist");
         }

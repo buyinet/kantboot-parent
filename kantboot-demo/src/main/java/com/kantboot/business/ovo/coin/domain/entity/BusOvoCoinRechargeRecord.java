@@ -82,7 +82,6 @@ public class BusOvoCoinRechargeRecord implements Serializable {
     @Column(name = "option_id")
     private Long optionId;
 
-
     /**
      * 支付订单ID
      */
