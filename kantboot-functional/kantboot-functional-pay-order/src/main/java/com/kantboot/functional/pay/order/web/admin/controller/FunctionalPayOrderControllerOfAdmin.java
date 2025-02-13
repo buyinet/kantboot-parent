@@ -18,7 +18,7 @@ public class FunctionalPayOrderControllerOfAdmin {
 
     @RequestMapping("/paySuccess")
     public RestResult<Void> paySuccess(@RequestBody PaySuccessDTO dto) {
-        service.paySuccess(dto);
+        service.payComplete(dto);
         return RestResult.success(null, CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
     }
 

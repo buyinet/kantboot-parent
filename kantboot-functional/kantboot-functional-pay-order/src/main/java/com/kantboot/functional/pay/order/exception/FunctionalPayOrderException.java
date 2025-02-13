@@ -29,4 +29,24 @@ public class FunctionalPayOrderException {
      */
     public static final BaseException PAY_ORDER_OPERATING = BaseException.of("payOrderOperating", "The payment order is being operated");
 
+    /**
+     * 该订单已退款
+     */
+    public static final BaseException PAY_ORDER_REFUNDED = BaseException.of("payOrderRefunded", "The payment order has been refunded");
+
+    /**
+     * 该订单正在退款中
+     */
+    public static final BaseException PAY_ORDER_REFUNDING = BaseException.of("payOrderRefunding", "The payment order is being refunded");
+
+    /**
+     * 该订单并未支付完成
+     */
+    public static final BaseException PAY_ORDER_NOT_PAID = BaseException.of("payOrderNotPaid", "The payment order has not been paid");
+
+    /**
+     * 等待退款确认
+     */
+    public static final BaseException PAY_ORDER_WAIT_REFUND_CHECK = BaseException.of("payOrderWaitRefundCheck", "Waiting for refund confirmation");
+
 }

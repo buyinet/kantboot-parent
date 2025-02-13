@@ -16,6 +16,11 @@ public class PayOrderStatusCodeConstants {
     public static final String PAID = "paid";
 
     /**
+     * 订单状态：等待退款确认 refund_checking
+     */
+    public static final String REFUND_CHECKING = "refund_checking";
+
+    /**
      * 订单状态：退款中 refunding
      */
     public static final String REFUNDING = "refunding";

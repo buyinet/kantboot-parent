@@ -69,6 +69,8 @@ public class FunctionalPayOrder implements Serializable {
      * 订单状态，驼峰式
      * 未支付 unpaid
      * 已支付 paid
+     * 等待退款确认 refund_checking
+     * 退款中 refunding
      * 已退款 refunded
      * 已取消 canceled
      * 异常 error
@@ -137,5 +139,47 @@ public class FunctionalPayOrder implements Serializable {
      */
     @Column(name="paid_amount")
     private BigDecimal paidAmount;
+
+    /**
+     * 退款原因编码
+     */
+    @Column(name="refund_reason_code")
+    private String refundReasonCode;
+
+    /**
+     * 退款原因描述
+     */
+    @Column(name="refund_reason_description")
+    private String refundReasonDescription;
+
+    /**
+     * 退款金额
+     */
+    @Column(name="refund_amount")
+    private BigDecimal refundAmount;
+
+    /**
+     * 是否全额退款
+     */
+    @Column(name="is_all_refund")
+    private Boolean isAllRefund;
+
+    /**
+     * 退款是是否扣除手续费
+     */
+    @Column(name="is_subtract_fee_when_refund")
+    private Boolean isSubtractFeeWhenRefund;
+
+    /**
+     * 实际退款金额
+     */
+    @Column(name="actual_refund_amount")
+    private BigDecimal actualRefundAmount;
+
+    /**
+     * 退款时的附加信息
+     */
+    @Column(name="refund_additional_info",length = 30000)
+    private String refundAdditionalInfo;
 
 }

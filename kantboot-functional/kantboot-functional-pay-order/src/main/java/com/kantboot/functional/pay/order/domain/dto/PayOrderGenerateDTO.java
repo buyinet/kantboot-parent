@@ -4,6 +4,7 @@ package com.kantboot.functional.pay.order.domain.dto;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Accessors(chain = true)
-public class PayOrderGenerateDTO {
+public class PayOrderGenerateDTO implements Serializable {
 
     /**
      * 用户id

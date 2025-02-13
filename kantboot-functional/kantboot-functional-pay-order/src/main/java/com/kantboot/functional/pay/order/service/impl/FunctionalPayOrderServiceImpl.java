@@ -6,6 +6,7 @@ import com.kantboot.functional.pay.order.dao.repository.FunctionalPayOrderLogRep
 import com.kantboot.functional.pay.order.dao.repository.FunctionalPayOrderRepository;
 import com.kantboot.functional.pay.order.domain.dto.PayOrderGenerateDTO;
 import com.kantboot.functional.pay.order.domain.dto.PaySuccessDTO;
+import com.kantboot.functional.pay.order.domain.dto.RefundDTO;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrder;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrderLog;
 import com.kantboot.functional.pay.order.exception.FunctionalPayOrderException;
@@ -34,6 +35,17 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
     @Resource
     private CacheUtil cacheUtil;
 
+    /**
+     * 添加到支付订单日志
+     */
+    private void addToPayOrderLog(FunctionalPayOrder order) {
+        // 保存支付订单日志到数据库
+        FunctionalPayOrderLog orderLog = BeanUtil.copyProperties(order, FunctionalPayOrderLog.class);
+        orderLog.setId(null);
+        orderLog.setPayOrderId(order.getId());
+        logRepository.save(orderLog);
+    }
+
     @Override
     public FunctionalPayOrder generate(PayOrderGenerateDTO dto) {
         // 生成支付订单
@@ -55,11 +67,8 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
         // 保存支付订单到数据库
         FunctionalPayOrder save = repository.save(order);
-        // 保存支付订单日志到数据库
-        FunctionalPayOrderLog orderLog = BeanUtil.copyProperties(save, FunctionalPayOrderLog.class);
-        orderLog.setId(null);
-        orderLog.setPayOrderId(save.getId());
-        logRepository.save(orderLog);
+        // 添加支付订单日志
+        addToPayOrderLog(save);
         return save;
     }
 
@@ -84,10 +93,8 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
         }
         functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.CANCELED);
         FunctionalPayOrder save = repository.save(functionalPayOrder);
-        // 添加到日志
-        FunctionalPayOrderLog orderLog = BeanUtil.copyProperties(save, FunctionalPayOrderLog.class);
-        orderLog.setId(null);
-        orderLog.setPayOrderId(save.getId());
+        // 添加支付订单日志
+        addToPayOrderLog(save);
 
         cacheUtil.unlock("payOrder:cancelOrPaySuccess"+orderId);
         return save;
@@ -120,7 +127,7 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
     @Transactional
     @Override
-    public void paySuccess(PaySuccessDTO dto) {
+    public void payComplete(PaySuccessDTO dto) {
         Long payOrderId = dto.getPayOrderId();
         String payMethodCode = dto.getPayMethodCode();
         String payMethodAdditionalInfo = dto.getPayMethodAdditionalInfo();
@@ -146,14 +153,141 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
         // 设置订单实付金额
         functionalPayOrder.setPaidAmount(functionalPayOrder.getAmount().add(fee));
 
+        // 保存支付订单到数据库
         repository.save(functionalPayOrder);
-        // 添加到日志
-        FunctionalPayOrderLog orderLog = BeanUtil.copyProperties(functionalPayOrder, FunctionalPayOrderLog.class);
-        orderLog.setId(null);
-        orderLog.setPayOrderId(functionalPayOrder.getId());
-        logRepository.save(orderLog);
+        // 添加支付订单日志
+        addToPayOrderLog(functionalPayOrder);
+
         // 通知对应的业务系统
         eventEmit.to("functionalPayOrder:payOrderPaid:"+functionalPayOrder.getBusinessCode(),payOrderId);
     }
 
+    @Override
+    public void refundApply(RefundDTO dto) {
+        Long payOrderId = dto.getPayOrderId();
+        FunctionalPayOrder functionalPayOrder = repository.findById(payOrderId)
+                .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+
+        // 判断订单状态是否为已退款
+        if(PayOrderStatusCodeConstants.REFUNDED.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为已退款
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDED;
+        }
+
+        // 判断订单是否为退款中
+        if(PayOrderStatusCodeConstants.REFUNDING.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为退款中
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDING;
+        }
+
+        // 判断是否在等待退款确认中
+        if(PayOrderStatusCodeConstants.REFUND_CHECKING.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为等待退款确认
+            throw FunctionalPayOrderException.PAY_ORDER_WAIT_REFUND_CHECK;
+        }
+
+        // 判断订单是否非已支付
+        if(!PayOrderStatusCodeConstants.PAID.equals(functionalPayOrder.getStatusCode())){
+            // 提示该订单并未支付
+            throw FunctionalPayOrderException.PAY_ORDER_NOT_PAID;
+        }
+
+        // 修改状态为等待退款确认
+        functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.REFUND_CHECKING);
+        functionalPayOrder.setRefundReasonCode(dto.getRefundReasonCode());
+        functionalPayOrder.setRefundReasonDescription(dto.getRefundReasonDescription());
+        functionalPayOrder.setRefundAmount(dto.getRefundAmount());
+        functionalPayOrder.setIsAllRefund(dto.getIsAllRefund());
+        functionalPayOrder.setIsSubtractFeeWhenRefund(dto.getIsSubtractFeeWhenRefund());
+        functionalPayOrder.setRefundAdditionalInfo(dto.getRefundAdditionalInfo());
+        repository.save(functionalPayOrder);
+
+        // 添加支付订单日志
+        addToPayOrderLog(functionalPayOrder);
+    }
+
+    @Override
+    public void refund(RefundDTO dto) {
+        Long payOrderId = dto.getPayOrderId();
+        FunctionalPayOrder functionalPayOrder = repository.findById(payOrderId)
+                .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        if(PayOrderStatusCodeConstants.REFUNDED.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为已退款
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDED;
+        }
+        if(PayOrderStatusCodeConstants.REFUNDING.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为退款中
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDING;
+        }
+        if(!PayOrderStatusCodeConstants.REFUND_CHECKING.equals(functionalPayOrder.getStatusCode())
+                || !PayOrderStatusCodeConstants.PAID.equals(functionalPayOrder.getStatusCode())
+        ){
+            // 提示订单状态为非支付状态
+            throw FunctionalPayOrderException.PAY_ORDER_NOT_PAID;
+        }
+
+        // 设置订单状态为退款中
+        functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.REFUNDING);
+        functionalPayOrder.setRefundReasonCode(dto.getRefundReasonCode());
+        functionalPayOrder.setRefundReasonDescription(dto.getRefundReasonDescription());
+        functionalPayOrder.setRefundAmount(dto.getRefundAmount());
+        functionalPayOrder.setIsAllRefund(dto.getIsAllRefund());
+        functionalPayOrder.setIsSubtractFeeWhenRefund(dto.getIsSubtractFeeWhenRefund());
+        functionalPayOrder.setRefundAdditionalInfo(dto.getRefundAdditionalInfo());
+        repository.save(functionalPayOrder);
+        // 添加支付订单日志
+        addToPayOrderLog(functionalPayOrder);
+
+        // 发送事件给支付方式处理
+        eventEmit.to("functionalPayOrder:refund:toPayMethod:"+functionalPayOrder.getBusinessCode(),payOrderId);
+    }
+
+    @Override
+    public void refundById(Long payOrderId) {
+        FunctionalPayOrder functionalPayOrder = repository.findById(payOrderId)
+                .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        if(PayOrderStatusCodeConstants.REFUNDED.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为已退款
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDED;
+        }
+        if(PayOrderStatusCodeConstants.REFUNDING.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为退款中
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDING;
+        }
+        if(!PayOrderStatusCodeConstants.REFUND_CHECKING.equals(functionalPayOrder.getStatusCode())
+                || !PayOrderStatusCodeConstants.PAID.equals(functionalPayOrder.getStatusCode())
+        ){
+            // 提示订单状态为非支付状态
+            throw FunctionalPayOrderException.PAY_ORDER_NOT_PAID;
+        }
+
+        // 设置订单状态为退款中
+        functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.REFUNDING);
+        repository.save(functionalPayOrder);
+
+        // 添加到支付订单日志
+        addToPayOrderLog(functionalPayOrder);
+
+        // 发送事件给支付方式处理
+        eventEmit.to("functionalPayOrder:refund:toPayMethod:"+functionalPayOrder.getBusinessCode(),payOrderId);
+    }
+
+    @Override
+    public void refundComplete(Long payOrderId) {
+        FunctionalPayOrder functionalPayOrder = repository.findById(payOrderId)
+                .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        if(PayOrderStatusCodeConstants.REFUNDED.equals(functionalPayOrder.getStatusCode())){
+            // 提示订单状态为已退款
+            throw FunctionalPayOrderException.PAY_ORDER_REFUNDED;
+        }
+        // 设置订单状态为已退款
+        functionalPayOrder.setStatusCode(PayOrderStatusCodeConstants.REFUNDED);
+        repository.save(functionalPayOrder);
+
+        // 添加到支付订单日志
+        addToPayOrderLog(functionalPayOrder);
+
+        // 发送事件给业务系统处理
+        eventEmit.to("functionalPayOrder:refundComplete:"+functionalPayOrder.getBusinessCode(),payOrderId);
+    }
 }
