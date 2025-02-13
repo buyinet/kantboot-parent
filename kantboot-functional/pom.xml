@@ -19,6 +19,7 @@
         <module>kantboot-functional-verification-code</module>
         <module>kantboot-functional-sms</module>
         <module>kantboot-functional-pay-order</module>
+        <module>kantboot-functional-chain</module>
     </modules>
 
     <dependencies>

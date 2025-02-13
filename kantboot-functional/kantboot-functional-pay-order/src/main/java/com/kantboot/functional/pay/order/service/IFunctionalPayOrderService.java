@@ -21,8 +21,14 @@ public interface IFunctionalPayOrderService {
     FunctionalPayOrder cancel(Long id);
 
     /**
+     * 支付前校验
+     */
+    void checkPrePay(Long orderId);
+
+    /**
      * 对应的支付方式已支付
      */
     void paySuccess(Long payOrderId, String payMethodCode, String payMethodAdditionalInfo);
+
 
 }

@@ -72,7 +72,7 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
         String cacheKey = "userAccountBalanceChangeRecord:handleSuccess:"
                 + record.getUserAccountId() + ":" + record.getBalanceCode();
 
-        if(cacheUtil.lock(cacheKey,2, TimeUnit.HOURS)){
+        if(!cacheUtil.lock(cacheKey,2, TimeUnit.HOURS)){
             // 有别的金额在处理
             log.info("Have another amount processing");
             // 将余额记录设置为“处理中”

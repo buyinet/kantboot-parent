@@ -15,6 +15,8 @@ import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService {
 
@@ -66,14 +68,14 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
     @Transactional
     @Override
-    public FunctionalPayOrder cancel(Long id) {
-        // 锁住，防止取消和支付订单同时进行
-        if(!cacheUtil.lock("payOrder:cancelOrPaySuccess"+id)){
+    public FunctionalPayOrder cancel(Long orderId) {
+        // 锁住，防止取消订单和支付订单同时进行
+        if(!cacheUtil.lock("payOrder:cancelOrPay"+orderId,10, TimeUnit.MINUTES)) {
             // 提示订单正在被操作
             throw FunctionalPayOrderException.PAY_ORDER_OPERATING;
         }
 
-        FunctionalPayOrder functionalPayOrder = repository.findById(id).orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        FunctionalPayOrder functionalPayOrder = repository.findById(orderId).orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
         if(!PayOrderStatusCodeConstants.UNPAID.equals(functionalPayOrder.getStatusCode())){
             // 提示订单状态已不为未支付，不能取消
             throw FunctionalPayOrderException.PAY_ORDER_NOT_UNPAID;
@@ -85,9 +87,34 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
         orderLog.setId(null);
         orderLog.setPayOrderId(save.getId());
 
-        cacheUtil.unlock("payOrder:cancelOrPaySuccess"+id);
+        cacheUtil.unlock("payOrder:cancelOrPaySuccess"+orderId);
         return save;
     }
+
+
+    @Override
+    public void checkPrePay(Long payOrderId) {
+        // 锁住，防止取消订单和支付订单同时进行
+        if(!cacheUtil.lock("payOrder:checkPrePay"+payOrderId,10, TimeUnit.MINUTES)) {
+            // 提示订单正在被操作
+            throw FunctionalPayOrderException.PAY_ORDER_OPERATING;
+        }
+        // 检查订单状态是否为未支付
+        FunctionalPayOrder functionalPayOrder
+                = repository.findById(payOrderId).orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
+        if(PayOrderStatusCodeConstants.PAID.equals(functionalPayOrder.getStatusCode())) {
+            // 提示订单状态为已支付，提示订单异常
+            // TODO 订单异常 要增加处理方
+            throw FunctionalPayOrderException.PAY_ORDER_NOT_UNPAID;
+        }
+        if(PayOrderStatusCodeConstants.CANCELED.equals(functionalPayOrder.getStatusCode())) {
+            // 提示订单状态为已取消，提示订单异常
+            throw FunctionalPayOrderException.PAY_ORDER_EXCEPTION;
+        }
+        // 发送支付订单检查
+        eventEmit.to("functionalPayOrder:checkPrePay:"+functionalPayOrder.getBusinessCode(),payOrderId);
+    }
+
 
     @Transactional
     @Override

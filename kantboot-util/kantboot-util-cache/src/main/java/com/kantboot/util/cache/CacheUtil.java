@@ -34,7 +34,7 @@ public class CacheUtil {
      * @return 成功锁定返回true，否则返回false
      */
     public Boolean lock(String key, long timeout, TimeUnit unit) {
-        return Boolean.FALSE.equals(stringRedisTemplate.opsForValue().setIfAbsent(key, "1", timeout, unit));
+        return stringRedisTemplate.opsForValue().setIfAbsent(key, "1", timeout, unit);
     }
 
     /**
@@ -43,7 +43,7 @@ public class CacheUtil {
      * @return 成功锁定返回true，否则返回false
      */
     public Boolean lock(String key) {
-        return Boolean.FALSE.equals(stringRedisTemplate.opsForValue().setIfAbsent(key, "1"));
+        return stringRedisTemplate.opsForValue().setIfAbsent(key, "1");
     }
 
     /**

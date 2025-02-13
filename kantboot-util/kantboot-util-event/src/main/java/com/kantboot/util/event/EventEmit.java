@@ -4,7 +4,6 @@ import com.kantboot.util.event.emit.EmitUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -22,7 +21,7 @@ public class EventEmit implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext){
+    public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
@@ -32,10 +31,8 @@ public class EventEmit implements ApplicationContextAware {
      *
      * @param code 事件编码，用于区分不同的事件
      *             Event code, used to distinguish different events
-     *
      */
-    @Async
-    public void to(String code, Object ...value) {
+    public void to(String code, Object... value) {
         log.info("GlobalEventEmit.emit: code={}", code);
         // 获取监听事件所在的方法
         // Get the method where the listener event is located
@@ -64,10 +61,16 @@ public class EventEmit implements ApplicationContextAware {
                 // 如果发生InvocationTargetException，则记录其原因
                 // If an InvocationTargetException occurs, log its cause
                 log.error("GlobalEventEmit.emit: InvocationTargetException cause", e.getCause());
+                throw new RuntimeException(e.getCause());
             } catch (Exception e) {
                 // 如果发生异常，则记录日志
                 // If an exception occurs, log it
                 log.error("GlobalEventEmit.emit: Error", e);
+                try {
+                    throw e;
+                } catch (IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 
