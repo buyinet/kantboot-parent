@@ -17,6 +17,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+/**
+ * 关于OVO币充值事件处理
+ */
 @Component
 public class BusOvoCoinEvent {
 
@@ -35,24 +38,10 @@ public class BusOvoCoinEvent {
     @Resource
     private BusOvoCoinRechargeOptionRepository optionRepository;
 
-    @EventOn("functionalPayOrder:payOrderPaid:ovo.coin.recharge")
-    public void ovoCoinRechargePayOrderPaid(Long payOrderId) {
-        BusOvoCoinRechargeRecord byPayOrderId = rechargeRecordRepository.findByPayOrderId(payOrderId);
-        BusOvoCoinRecord record = new BusOvoCoinRecord()
-                .setTypeCode("recharge")
-                .setAmount(byPayOrderId.getAmount())
-                .setUserAccountId(byPayOrderId.getUserAccountId())
-                .setNumber(byPayOrderId.getNumber());
-        coinRecordRepository.save(record);
-        userAccountBalanceService.add(
-                new ChangeRecordDTO()
-                        .setUserAccountId(byPayOrderId.getUserAccountId())
-                        .setReasonCode("ovo.coin.recharge")
-                        .setNumber(byPayOrderId.getNumber())
-                        .setBalanceCode("ovoCoin")
-        );
-    }
-
+    /**
+     * 关于充值订单的预支付检查
+     * @param payOrderId 订单ID
+     */
     @EventOn("functionalPayOrder:checkPrePay:ovo.coin.recharge")
     public void ovoCoinRechargeCheckPrePay(Long payOrderId) {
         BusOvoCoinRechargeRecord byPayOrderId = rechargeRecordRepository.findByPayOrderId(payOrderId);
@@ -85,5 +74,29 @@ public class BusOvoCoinEvent {
         }
 
     }
+
+    /**
+     * 监听支付订单支付成功事件，处理OVO币充值记录和用户账户余额
+     *
+     * @param payOrderId 支付订单ID
+     */
+    @EventOn("functionalPayOrder:payOrderPaid:ovo.coin.recharge")
+    public void ovoCoinRechargePayOrderPaid(Long payOrderId) {
+        BusOvoCoinRechargeRecord byPayOrderId = rechargeRecordRepository.findByPayOrderId(payOrderId);
+        BusOvoCoinRecord record = new BusOvoCoinRecord()
+                .setTypeCode("recharge")
+                .setAmount(byPayOrderId.getAmount())
+                .setUserAccountId(byPayOrderId.getUserAccountId())
+                .setNumber(byPayOrderId.getNumber());
+        coinRecordRepository.save(record);
+        userAccountBalanceService.add(
+                new ChangeRecordDTO()
+                        .setUserAccountId(byPayOrderId.getUserAccountId())
+                        .setReasonCode("ovo.coin.recharge")
+                        .setNumber(byPayOrderId.getNumber())
+                        .setBalanceCode("ovoCoin")
+        );
+    }
+
 
 }
