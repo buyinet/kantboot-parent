@@ -127,4 +127,16 @@ public class FunctionalPayOrderLog implements Serializable {
     @Column(name="pay_method_code")
     private String payMethodCode;
 
+    /**
+     * 手续费
+     */
+    @Column(name="fee")
+    private BigDecimal fee;
+
+    /**
+     * 实付金额
+     */
+    @Column(name="paid_amount")
+    private BigDecimal paidAmount;
+
 }

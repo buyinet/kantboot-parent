@@ -98,7 +98,6 @@ public class FunctionalPayOrder implements Serializable {
     @Column(name="business_code")
     private String businessCode;
 
-
     /**
      * 描述
      */
@@ -126,5 +125,17 @@ public class FunctionalPayOrder implements Serializable {
      */
     @Column(name="pay_method_additional_info",length = 30000)
     private String payMethodAdditionalInfo;
+
+    /**
+     * 手续费
+     */
+    @Column(name="fee")
+    private BigDecimal fee;
+
+    /**
+     * 实付金额
+     */
+    @Column(name="paid_amount")
+    private BigDecimal paidAmount;
 
 }

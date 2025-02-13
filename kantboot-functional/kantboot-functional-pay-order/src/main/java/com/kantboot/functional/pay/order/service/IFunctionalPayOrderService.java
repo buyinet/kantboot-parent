@@ -1,6 +1,7 @@
 package com.kantboot.functional.pay.order.service;
 
 import com.kantboot.functional.pay.order.domain.dto.PayOrderGenerateDTO;
+import com.kantboot.functional.pay.order.domain.dto.PaySuccessDTO;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrder;
 
 public interface IFunctionalPayOrderService {
@@ -28,7 +29,7 @@ public interface IFunctionalPayOrderService {
     /**
      * 对应的支付方式已支付
      */
-    void paySuccess(Long payOrderId, String payMethodCode, String payMethodAdditionalInfo);
+    void paySuccess(PaySuccessDTO dto);
 
 
 }

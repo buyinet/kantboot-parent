@@ -5,6 +5,7 @@ import com.kantboot.functional.pay.order.constants.PayOrderStatusCodeConstants;
 import com.kantboot.functional.pay.order.dao.repository.FunctionalPayOrderLogRepository;
 import com.kantboot.functional.pay.order.dao.repository.FunctionalPayOrderRepository;
 import com.kantboot.functional.pay.order.domain.dto.PayOrderGenerateDTO;
+import com.kantboot.functional.pay.order.domain.dto.PaySuccessDTO;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrder;
 import com.kantboot.functional.pay.order.domian.entity.FunctionalPayOrderLog;
 import com.kantboot.functional.pay.order.exception.FunctionalPayOrderException;
@@ -15,6 +16,7 @@ import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -118,7 +120,12 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
 
     @Transactional
     @Override
-    public void paySuccess(Long payOrderId,String payMethodCode, String payMethodAdditionalInfo) {
+    public void paySuccess(PaySuccessDTO dto) {
+        Long payOrderId = dto.getPayOrderId();
+        String payMethodCode = dto.getPayMethodCode();
+        String payMethodAdditionalInfo = dto.getPayMethodAdditionalInfo();
+        BigDecimal fee = dto.getFee();
+
         FunctionalPayOrder functionalPayOrder = repository.findById(payOrderId)
                 .orElseThrow(() -> FunctionalPayOrderException.PAY_ORDER_NOT_FOUND);
 
@@ -134,6 +141,11 @@ public class FunctionalPayOrderServiceImpl implements IFunctionalPayOrderService
         functionalPayOrder.setPayMethodCode(payMethodCode);
         // 设置支付方式的额外信息
         functionalPayOrder.setPayMethodAdditionalInfo(payMethodAdditionalInfo);
+        // 设置支付汇率
+        functionalPayOrder.setFee(fee);
+        // 设置订单实付金额
+        functionalPayOrder.setPaidAmount(functionalPayOrder.getAmount().add(fee));
+
         repository.save(functionalPayOrder);
         // 添加到日志
         FunctionalPayOrderLog orderLog = BeanUtil.copyProperties(functionalPayOrder, FunctionalPayOrderLog.class);
