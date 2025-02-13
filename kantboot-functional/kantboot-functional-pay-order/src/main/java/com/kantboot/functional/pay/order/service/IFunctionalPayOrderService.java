@@ -23,6 +23,6 @@ public interface IFunctionalPayOrderService {
     /**
      * 对应的支付方式已支付
      */
-    void paySuccess(Long id, String payMethodCode, String payMethodAdditionalInfo);
+    void paySuccess(Long payOrderId, String payMethodCode, String payMethodAdditionalInfo);
 
 }

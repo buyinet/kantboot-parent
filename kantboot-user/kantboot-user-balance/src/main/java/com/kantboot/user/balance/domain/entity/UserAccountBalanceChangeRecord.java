@@ -62,8 +62,8 @@ public class UserAccountBalanceChangeRecord implements Serializable {
     /**
      * 余额类型编码
      */
-    @Column(name = "balance_type_code", length = 64)
-    private String balanceTypeCode;
+    @Column(name = "balance_code", length = 64)
+    private String balanceCode;
 
     /**
      * 用户id

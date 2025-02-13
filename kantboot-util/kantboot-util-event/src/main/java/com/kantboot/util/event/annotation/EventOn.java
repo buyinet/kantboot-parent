@@ -19,5 +19,5 @@ public @interface EventOn {
      * 事件编码
      * Event code
      */
-    String code();
+    String value();
 }

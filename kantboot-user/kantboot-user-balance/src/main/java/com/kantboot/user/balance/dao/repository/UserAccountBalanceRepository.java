@@ -8,6 +8,6 @@ public interface UserAccountBalanceRepository extends JpaRepository<UserAccountB
     /**
      * 根据用户ID和余额类型代码查询
      */
-    UserAccountBalance findByUserAccountIdAndBalanceTypeCode(Long userAccountId, String balanceTypeCode);
+    UserAccountBalance findByUserAccountIdAndBalanceCode(Long userAccountId, String balanceCode);
 
 }

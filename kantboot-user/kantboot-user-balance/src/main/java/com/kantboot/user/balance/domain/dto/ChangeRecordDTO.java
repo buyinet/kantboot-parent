@@ -1,23 +1,23 @@
 package com.kantboot.user.balance.domain.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
 @Data
+@Accessors(chain = true)
 public class ChangeRecordDTO {
 
     /**
      * 事由编码
      */
-    @Column(name = "reason_code", length = 64)
     private String reasonCode;
 
     /**
      * 余额类型编码
      */
-    private String balanceTypeCode;
+    private String balanceCode;
 
     /**
      * 用户账号id

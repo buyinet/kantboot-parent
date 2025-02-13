@@ -34,7 +34,7 @@ public class FunctionalEmailServiceImpl implements IFunctionalEmailService {
         eventEmit.to("sendEmail", messageDTO);
     }
 
-    @EventOn(code="sendEmail")
+    @EventOn(value ="sendEmail")
     private void sendEmail(EmailMessageDTO messageDTO) {
         FunctionalEmail functionalEmail = getFunctionalEmail(messageDTO);
         // 保存消息

@@ -34,7 +34,7 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
     public UserAccountBalanceChangeRecord add(ChangeRecordDTO record) {
         // 创建一条记录,且设置状态为“未处理”
         UserAccountBalanceChangeRecord changeRecord = new UserAccountBalanceChangeRecord()
-                .setBalanceTypeCode(record.getBalanceTypeCode())
+                .setBalanceCode(record.getBalanceCode())
                 .setNumber(record.getNumber())
                 .setReasonCode(record.getReasonCode())
                 .setUserAccountId(record.getUserAccountId())
@@ -57,7 +57,7 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
         if (record.getNumber().doubleValue() < 0) {
             // 如果是扣除余额，则判断余额是否充足
             UserAccountBalance balance =
-                    repository.findByUserAccountIdAndBalanceTypeCode(record.getUserAccountId(), record.getBalanceTypeCode());
+                    repository.findByUserAccountIdAndBalanceCode(record.getUserAccountId(), record.getBalanceCode());
             if (balance == null || balance.getNumber().doubleValue() < -(record.getNumber().doubleValue())) {
                 // 设置状态为“处理失败”
                 record.setStatusCode(UserAccountBalanceChangeRecordStatusCodeConstants.FAILED);
@@ -70,7 +70,7 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
         }
 
         String cacheKey = "userAccountBalanceChangeRecord:handleSuccess:"
-                + record.getUserAccountId() + ":" + record.getBalanceTypeCode();
+                + record.getUserAccountId() + ":" + record.getBalanceCode();
 
         if(cacheUtil.lock(cacheKey,2, TimeUnit.HOURS)){
             // 有别的金额在处理
@@ -81,12 +81,12 @@ public class UserAccountBalanceServiceImpl implements IUserAccountBalanceService
         }
 
         UserAccountBalance balance =
-                repository.findByUserAccountIdAndBalanceTypeCode(record.getUserAccountId(), record.getBalanceTypeCode());
+                repository.findByUserAccountIdAndBalanceCode(record.getUserAccountId(), record.getBalanceCode());
 
         if(balance == null){
             balance = new UserAccountBalance()
                     .setUserAccountId(record.getUserAccountId())
-                    .setBalanceTypeCode(record.getBalanceTypeCode())
+                    .setBalanceCode(record.getBalanceCode())
                     .setNumber(BigDecimal.ZERO);
         }
 

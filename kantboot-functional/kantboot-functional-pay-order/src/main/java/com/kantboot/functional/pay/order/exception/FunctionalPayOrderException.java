@@ -11,12 +11,22 @@ public class FunctionalPayOrderException {
      * 支付订单未找到
      * payOrderNotFound
      */
-    public static final BaseException PAY_ORDER_NOT_FOUND = new BaseException("payOrderNotFound", "支付订单未找到");
+    public static final BaseException PAY_ORDER_NOT_FOUND = BaseException.of("payOrderNotFound", "The payment order was not found");
 
     /**
      * 支付订单不是未支付状态
      * payOrderNotUnpaid
      */
-    public static final BaseException PAY_ORDER_NOT_UNPAID = new BaseException("payOrderNotUnpaid", "支付订单不是未支付状态");
+    public static final BaseException PAY_ORDER_NOT_UNPAID = BaseException.of("payOrderNotUnpaid", "The payment order is not in the unpaid state");
+
+    /**
+     * 订单异常
+     */
+    public static final BaseException PAY_ORDER_EXCEPTION = BaseException.of("payOrderException", "Payment order exception");
+
+    /**
+     * 订单正在进行其它操作
+     */
+    public static final BaseException PAY_ORDER_OPERATING = BaseException.of("payOrderOperating", "The payment order is being operated");
 
 }

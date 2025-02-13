@@ -278,13 +278,15 @@ public class OllamaClient {
 //                                    line.setLength(0);
                                     System.err.print(responseStr);
                                     line = new StringWriter();
+                                    if (jsonObject.getBoolean("done")) {
+                                        break;
+                                    }
+
                                     outputStream.write(responseStr.getBytes());
                                     outputStream.flush();
 
 
-                                    if (jsonObject.getBoolean("done")) {
-                                        break;
-                                    }
+
                                 }
                             }
                         }

@@ -32,7 +32,7 @@ public class EmitUtil {
             for (Method method : declaredMethods) {
                 if (method.isAnnotationPresent(EventOn.class)) {
                     EventOn annotation = method.getAnnotation(EventOn.class);
-                    String code = annotation.code();
+                    String code = annotation.value();
                     // 如果map中已经存在code，则添加到list中
                     if (map.containsKey(code)) {
                         List<Method> methods = map.get(code);

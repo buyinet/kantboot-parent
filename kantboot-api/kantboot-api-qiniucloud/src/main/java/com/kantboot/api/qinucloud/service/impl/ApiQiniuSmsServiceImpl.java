@@ -22,7 +22,7 @@ public class ApiQiniuSmsServiceImpl implements IApiQiniuSmsService {
         eventEmit.to("qiniucloudSendFulltextMessageOne", phone, content);
     }
 
-    @EventOn(code = "qiniucloudSendFulltextMessageOne")
+    @EventOn(value = "qiniucloudSendFulltextMessageOne")
     public void qiniucloudSendFulltextMessageOne(String phone, String content) {
         ApiQiniuCloudUtil.sendFulltextMessageOne(phone, content, setting.getQiniuAuth());
     }

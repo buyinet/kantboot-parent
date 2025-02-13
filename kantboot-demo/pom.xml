@@ -135,6 +135,12 @@
 <!--            <version>${revision}</version>-->
 <!--        </dependency>-->
 
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-pay-order</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
