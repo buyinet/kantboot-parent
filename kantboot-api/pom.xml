@@ -16,7 +16,7 @@
         <module>kantboot-api-qiniucloud</module>
         <module>kantboot-api-google</module>
         <module>kantboot-api-baidu</module>
-        <module>kantboot-api-ollama</module>
+<!--        <module>kantboot-api-ollama</module>-->
     </modules>
 
     <dependencies>

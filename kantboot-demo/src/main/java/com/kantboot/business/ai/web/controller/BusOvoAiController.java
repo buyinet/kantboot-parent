@@ -1,9 +1,9 @@
-package com.kantboot.business.ovo.ai.controller;
+package com.kantboot.business.ai.web.controller;
 
 import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.kantboot.business.ovo.ai.util.OvoAIRequestChat;
+import com.kantboot.business.ai.util.OvoAIRequestChat;
 import lombok.SneakyThrows;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/business-ovo-web/ai")
+@RequestMapping("/business-ai-web/ai")
 public class BusOvoAiController {
 
     private static final MediaType mediaType = MediaType.get("application/json; charset=utf-8");

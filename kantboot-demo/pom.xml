@@ -52,6 +52,14 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
+        <!-- okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+
+
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -34,7 +34,7 @@
     </dependency>
     <dependency>
       <groupId>com.kantboot</groupId>
-      <artifactId>kantboot-functional-verify-code</artifactId>
+      <artifactId>kantboot-functional-verification-code</artifactId>
       <version>${revision}</version>
     </dependency>
     <dependency>

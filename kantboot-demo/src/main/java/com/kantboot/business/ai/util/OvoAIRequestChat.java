@@ -1,4 +1,4 @@
-package com.kantboot.business.ovo.ai.util;
+package com.kantboot.business.ai.util;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;

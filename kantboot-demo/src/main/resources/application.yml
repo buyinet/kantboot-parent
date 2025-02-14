@@ -28,9 +28,9 @@ spring:
     allow-bean-definition-overriding: true
   data:
     redis:
-      host: maven.aaarfyh.com
+      host: 127.0.0.1
       port: 6379
-      password: woshifangziyuan1
+      password:
       timeout: 30s
       database: 2
       lettuce:
