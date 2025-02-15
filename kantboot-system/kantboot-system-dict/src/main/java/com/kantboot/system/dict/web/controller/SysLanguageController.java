@@ -23,6 +23,11 @@ public class SysLanguageController {
         return RestResult.success(service.getBySupport(), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 
+    @RequestMapping("/getAll")
+    public RestResult<List<SysLanguage>> getAll() {
+        return RestResult.success(service.getAll(), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    }
+
     /**
      * 获取所有的语言本地化信息
      * @return 语言本地化信息列表

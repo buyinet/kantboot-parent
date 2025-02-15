@@ -28,4 +28,10 @@ public class SysLanguageServiceImpl implements ISysLanguageService {
     public List<SysLanguageLocalized> getLocalizedList() {
         return localizedRepository.findAll();
     }
+
+    @Override
+    public List<SysLanguage> getAll() {
+        return repository.findAll();
+    }
+
 }

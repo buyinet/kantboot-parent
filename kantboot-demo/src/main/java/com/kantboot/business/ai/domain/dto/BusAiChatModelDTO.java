@@ -41,6 +41,16 @@ public class BusAiChatModelDTO implements Serializable {
      */
     private String introduction;
 
+    /**
+     * 生日
+     */
+    private String gmtBirthday;
+
+    /**
+     * 年龄
+     */
+    private Integer age;
+
     List<BusAiChatModelLabel> labels;
 
     BusAiChatModelSetting setting;

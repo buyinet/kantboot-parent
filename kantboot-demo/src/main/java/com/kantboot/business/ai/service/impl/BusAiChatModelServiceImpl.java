@@ -66,6 +66,7 @@ public class BusAiChatModelServiceImpl implements IBusAiChatModelService {
         }
         BusAiChatModel entity = BeanUtil.copyProperties(dto, BusAiChatModel.class);
         entity.setLabels(null);
+        entity.setLanguageSupports(null);
         BusAiChatModel save = repository.save(entity);
         // 发送事件-模型保存成功
         emit.to("busAiChatModel.save",save.getId());

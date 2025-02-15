@@ -3,7 +3,7 @@ package com.kantboot.business.ai.web.controller;
 import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.kantboot.business.ai.util.OvoAIRequestChat;
+import com.kantboot.business.ai.util.OvoAIRequestChatUtil;
 import lombok.SneakyThrows;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -98,7 +98,7 @@ public class BusOvoAiController {
 
             ThreadUtil.execute(() -> {
 
-                OvoAIRequestChat ovoAIRequestChat = new OvoAIRequestChat(json.toString()) {
+                OvoAIRequestChatUtil ovoAIRequestChat = new OvoAIRequestChatUtil(json.toString()) {
                     @SneakyThrows
                     @Override
                     public void run(String responseStr, String str) {
@@ -111,7 +111,7 @@ public class BusOvoAiController {
 
                     @SneakyThrows
                     @Override
-                    public void finish() {
+                    public void finish(String str) {
                         try {
                             flag[0] = false;
                             outputStream.close();

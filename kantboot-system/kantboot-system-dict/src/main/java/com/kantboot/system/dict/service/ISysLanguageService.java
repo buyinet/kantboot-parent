@@ -11,4 +11,9 @@ public interface ISysLanguageService {
 
     List<SysLanguageLocalized> getLocalizedList();
 
+    /**
+     * 获取所有语言
+     */
+    List<SysLanguage> getAll();
+
 }

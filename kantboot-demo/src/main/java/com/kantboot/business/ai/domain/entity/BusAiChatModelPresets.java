@@ -68,7 +68,13 @@ public class BusAiChatModelPresets implements Serializable {
     /**
      * 模型ID
      */
-    @Column(name = "t_model_id")
+    @Column(name = "model_id")
     private Long modelId;
+
+    /**
+     * 语言编码
+     */
+    @Column(name = "language_code")
+    private String languageCode;
 
 }

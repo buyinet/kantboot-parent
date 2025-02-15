@@ -9,6 +9,7 @@ import com.kantboot.util.rest.exception.BaseException;
 import com.kantboot.util.rest.result.RestResult;
 import com.kantboot.util.sc.controller.BaseAdminController;
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ public class BusAiChatModelTypeControllerOfAdmin extends BaseAdminController<Bus
 
     @RequestMapping("/save")
     @Override
-    public RestResult<Object> save(BusAiChatModelType busAiChatModelType) {
+    public RestResult<Object> save(@RequestBody BusAiChatModelType busAiChatModelType) {
 
         if(busAiChatModelType.getId() != null
                 &&cacheUtil.hasKey("busAiChatModelType:save:"+busAiChatModelType.getId())){

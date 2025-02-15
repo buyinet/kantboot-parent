@@ -115,6 +115,12 @@ public class BusAiChatModel implements Serializable {
     @Column(name = "file_id_of_avatar")
     private Long fileIdOfAvatar;
 
+    /**
+     * 优先级
+     */
+    @Column(name = "t_priority")
+    private Integer priority;
+
     @OneToMany
     @JoinColumn(name = "model_id")
     private List<BusAiChatModelLabel> labels;

@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class OvoAIRequestChat {
+public abstract class OvoAIRequestChatUtil {
 
     private final MediaType mediaType = MediaType.get("application/json; charset=utf-8");
     private final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -21,9 +21,9 @@ public abstract class OvoAIRequestChat {
 
     public abstract void run(String responseStr, String str);
 
-    public abstract void finish();
+    public abstract void finish(String str);
 
-    public OvoAIRequestChat(String json) {
+    public OvoAIRequestChatUtil(String json) {
         inChatStream(json);
     }
 
@@ -34,6 +34,8 @@ public abstract class OvoAIRequestChat {
                 .post(reqBody)
                 .build();
         Call call = client.newCall(request);
+        StringWriter str = new StringWriter();
+
         try (Response response = call.execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
@@ -45,7 +47,6 @@ public abstract class OvoAIRequestChat {
                     InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
                     {
                         final StringWriter[] line = {new StringWriter()};
-                        StringWriter str = new StringWriter();
                         final int[] data = {1};
                         final AtomicBoolean[] found = {new AtomicBoolean(true)};
 
@@ -96,10 +97,10 @@ public abstract class OvoAIRequestChat {
                 }
             }
         } catch (IOException e) {
-            this.finish();
+            this.finish(str.toString());
             e.printStackTrace();
         } finally {
-            this.finish();
+            this.finish(str.toString());
         }
     }
 

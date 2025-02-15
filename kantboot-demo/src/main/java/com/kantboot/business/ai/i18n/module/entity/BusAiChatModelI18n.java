@@ -84,7 +84,7 @@ public class BusAiChatModelI18n implements Serializable {
     private String introduction;
 
     @OneToMany
-    @JoinColumn(name = "body_id",referencedColumnName = "id",insertable = false,updatable = false)
+    @JoinColumn(name = "model_i18n_id",referencedColumnName = "id",insertable = false,updatable = false)
     private List<BusAiChatModelLabelI18n> labels;
 
 }

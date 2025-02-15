@@ -18,6 +18,6 @@ public interface IBusAiChatModelService {
     BusAiChatModel getById(Long id);
 
 
-    void newSave(BusAiChatModelDTO busAiChatModelDTO);
+    void newSave(BusAiChatModelDTO dto);
 
 }

@@ -32,7 +32,7 @@ public class UserOnlineSchedule {
         List<UserAccountOnline> byMaxGmtLastHeartbeatAndIsOnline = userAccountOnlineRepository.getByMaxGmtLastHeartbeatAndIsOnline(new Date(System.currentTimeMillis() - 1000 *20));
         int size = byMaxGmtLastHeartbeatAndIsOnline.size();
         if(size > 0){
-            log.info("有"+size+"个用户20秒没进行心跳，进行下线");
+            log.info("有{}个用户20秒没进行心跳，进行下线",size );
         }else{
             log.info("20秒内没有过期在线用户");
             return;

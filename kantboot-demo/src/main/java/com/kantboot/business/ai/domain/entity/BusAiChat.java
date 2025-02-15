@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -11,20 +12,21 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name="bus_ai_chat_model_label")
+@Table(name="bus_ai_chat")
 @Entity
 @Getter
 @Setter
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
-public class BusAiChatModelLabel implements Serializable {
+public class BusAiChat implements Serializable {
 
     /**
      * 主键
      * Primary key
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "snowflakeId",strategy = com.kantboot.util.jpa.type.KantbootGenerationType.SNOWFLAKE)
+    @GeneratedValue(generator = "snowflakeId")
     @Column(name = "id")
     private Long id;
 
@@ -45,23 +47,17 @@ public class BusAiChatModelLabel implements Serializable {
     private Date gmtModified;
 
     /**
-     * 标签文字
-     */
-    @Column(name = "t_text")
-    private String text;
-
-    /**
-     * 优先级，倒序
-     */
-    @OrderBy
-    @Column(name = "t_priority")
-    private Integer priority;
-
-    /**
      * 模型ID
+     * Model ID
      */
     @Column(name = "model_id")
     private Long modelId;
+
+    /**
+     * 默认语言编码
+     */
+    @Column(name = "default_language_code")
+    private String defaultLanguageCode;
 
 
 }

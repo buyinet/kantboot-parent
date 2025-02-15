@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface BusAiChatModelI18nRepository extends JpaRepository<BusAiChatModelI18n,Long> {
 
     /**
@@ -15,6 +17,12 @@ public interface BusAiChatModelI18nRepository extends JpaRepository<BusAiChatMod
     @Modifying
     @Query("DELETE FROM BusAiChatModelI18n WHERE bodyId = ?1")
     void deleteByBodyId(Long bodyId);
+
+    /**
+     * 根据主体ID的集合查询
+     */
+    @Query("SELECT i FROM BusAiChatModelI18n i WHERE i.bodyId IN ?1 AND i.languageCode =?2")
+    List<BusAiChatModelI18n> getByBodyIds(List<Long> bodyIdList, String languageCode);
 
 
 }
