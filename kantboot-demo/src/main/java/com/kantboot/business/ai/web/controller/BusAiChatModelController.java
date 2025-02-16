@@ -22,5 +22,12 @@ public class BusAiChatModelController {
                 CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 
+    @RequestMapping("/getAll")
+    public RestResult<?> getAll() {
+        return RestResult.success(
+                IBusAiChatModelService.getAll(),
+                CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    }
+
 
 }

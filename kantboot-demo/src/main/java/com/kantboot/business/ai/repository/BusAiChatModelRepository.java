@@ -14,4 +14,7 @@ public interface BusAiChatModelRepository extends JpaRepository<BusAiChatModel,L
     @Query("SELECT m FROM BusAiChatModel m WHERE m.typeId =?1 ORDER BY m.priority DESC")
     List<BusAiChatModel> getByTypeId(Long typeId);
 
+    @Query("SELECT m FROM BusAiChatModel m ORDER BY m.priority DESC")
+    List<BusAiChatModel> getAll();
+
 }

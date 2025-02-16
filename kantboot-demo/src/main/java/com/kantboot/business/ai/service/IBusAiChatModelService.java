@@ -13,6 +13,11 @@ public interface IBusAiChatModelService {
     List<BusAiChatModel> getByTypeId(Long typeId);
 
     /**
+     * 获取所有
+     */
+    List<BusAiChatModel> getAll();
+
+    /**
      * 根据ID获取
      */
     BusAiChatModel getById(Long id);

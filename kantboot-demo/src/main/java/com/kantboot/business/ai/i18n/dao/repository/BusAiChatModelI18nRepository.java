@@ -24,5 +24,11 @@ public interface BusAiChatModelI18nRepository extends JpaRepository<BusAiChatMod
     @Query("SELECT i FROM BusAiChatModelI18n i WHERE i.bodyId IN ?1 AND i.languageCode =?2")
     List<BusAiChatModelI18n> getByBodyIds(List<Long> bodyIdList, String languageCode);
 
+    /**
+     * 查询所有
+     */
+    @Query("SELECT i FROM BusAiChatModelI18n i WHERE i.languageCode =?1")
+    List<BusAiChatModelI18n> getAll(String languageCode);
+
 
 }

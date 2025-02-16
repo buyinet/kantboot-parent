@@ -122,6 +122,7 @@ public class BusAiChatModel implements Serializable {
     private Integer priority;
 
     @OneToMany
+    @OrderBy("priority DESC")
     @JoinColumn(name = "model_id")
     private List<BusAiChatModelLabel> labels;
 

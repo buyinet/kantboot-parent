@@ -56,8 +56,14 @@ public class BusAiChat implements Serializable {
     /**
      * 默认语言编码
      */
-    @Column(name = "default_language_code")
-    private String defaultLanguageCode;
+    @Column(name = "language_code")
+    private String languageCode;
+
+    /**
+     * 用户账号ID
+     */
+    @Column(name = "user_account_id")
+    private Long userAccountId;
 
 
 }

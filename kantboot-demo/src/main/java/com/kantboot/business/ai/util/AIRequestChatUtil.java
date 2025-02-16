@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class OvoAIRequestChatUtil {
+public abstract class AIRequestChatUtil {
 
     private final MediaType mediaType = MediaType.get("application/json; charset=utf-8");
     private final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -23,7 +23,7 @@ public abstract class OvoAIRequestChatUtil {
 
     public abstract void finish(String str);
 
-    public OvoAIRequestChatUtil(String json) {
+    public AIRequestChatUtil(String json) {
         inChatStream(json);
     }
 

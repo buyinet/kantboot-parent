@@ -11,4 +11,9 @@ public interface IBusAiChatModelI18nService {
      */
     List<BusAiChatModelI18n> getByBodyIds(List<Long> bodyIds, String languageCode);
 
+    /**
+     * 查询所有
+     */
+    List<BusAiChatModelI18n> getAll(String languageCode);
+
 }

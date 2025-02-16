@@ -22,5 +22,10 @@ public class BusAiChatModelI18nController {
         return RestResult.success(service.getByBodyIds(bodyIds,null), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 
+    @RequestMapping("/getAll")
+    public RestResult<?> getAll(@RequestParam("languageCode") String languageCode) {
+        return RestResult.success(service.getAll(null), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    }
+
 
 }

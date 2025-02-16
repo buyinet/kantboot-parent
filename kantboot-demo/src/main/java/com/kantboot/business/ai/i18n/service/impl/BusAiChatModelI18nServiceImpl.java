@@ -25,4 +25,12 @@ public class BusAiChatModelI18nServiceImpl implements IBusAiChatModelI18nService
         }
         return repository.getByBodyIds(bodyIds, languageCode);
     }
+
+    @Override
+    public List<BusAiChatModelI18n> getAll(String languageCode) {
+        if (languageCode == null) {
+            languageCode = httpRequestHeaderUtil.getLanguageCode();
+        }
+        return repository.getAll(languageCode);
+    }
 }

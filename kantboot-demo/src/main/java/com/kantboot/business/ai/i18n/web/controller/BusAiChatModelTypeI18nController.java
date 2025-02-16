@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/business-ai-web/aiChatModelTypeI18n")
+@RequestMapping("/business-ai-web/chatModelTypeI18n")
 public class BusAiChatModelTypeI18nController {
 
     @Resource

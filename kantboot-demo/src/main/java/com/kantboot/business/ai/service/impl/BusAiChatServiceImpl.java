@@ -4,15 +4,15 @@ import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
-import com.kantboot.business.ai.domain.entity.BusAiChat;
-import com.kantboot.business.ai.domain.entity.BusAiChatMessage;
-import com.kantboot.business.ai.domain.entity.BusAiChatModelPresets;
+import com.kantboot.business.ai.domain.entity.*;
+import com.kantboot.business.ai.exception.BusAiException;
 import com.kantboot.business.ai.repository.BusAiChatMessageRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelPresetsRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelRepository;
 import com.kantboot.business.ai.repository.BusAiChatRepository;
 import com.kantboot.business.ai.service.IBusAiChatService;
-import com.kantboot.business.ai.util.OvoAIRequestChatUtil;
+import com.kantboot.business.ai.util.AIRequestChatUtil;
+import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.rest.exception.BaseException;
 import jakarta.annotation.Resource;
@@ -43,10 +43,38 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
     @Resource
     private CacheUtil cacheUtil;
 
+    @Resource
+    private IUserAccountService userAccountService;
+
+    @Override
+    public void createChat(Long modelId, String languageCode) {
+        BusAiChatModel busAiChatModel = modelRepository.findById(modelId).orElseThrow(() -> {
+            throw BusAiException.MODEL_NOT_EXIST;
+        });
+        // 查询支持由对应的语言编码
+        List<BusAiChatModelLanguageSupport> languageSupports = busAiChatModel.getLanguageSupports();
+        boolean hasLanguageSupports = false;
+        for (BusAiChatModelLanguageSupport languageSupport : languageSupports) {
+            if (languageSupport.getLanguageCode().equals(languageCode)) {
+                // 创建一个聊天记录
+                BusAiChat busAiChat = new BusAiChat()
+                        .setModelId(modelId)
+                        .setUserAccountId(userAccountService.getSelfId())
+                        .setLanguageCode(languageCode);
+                repository.save(busAiChat);
+                // 创建一个消息记录
+                messageRepository.save(new BusAiChatMessage()
+                        .setChatId(busAiChat.getId()));
+                hasLanguageSupports = true;
+            }
+        }
+        if (!hasLanguageSupports) {
+            throw BusAiException.MODEL_NOT_EXIST;
+        }
+    }
 
     @Override
     public ResponseEntity<StreamingResponseBody> sendMessage(BusAiChatDTO dto) {
-
         StreamingResponseBody stream = outputStream -> {
             BusAiChat chat = repository.findById(dto.getChatId())
                     .orElseThrow(() ->
@@ -59,7 +87,7 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                             BaseException.of("modelNotFound", "The model does not exist"));
             // 获取模型前置内容
             List<BusAiChatModelPresets> presets
-                    = modelPresetsRepository.getByModelIdAndLanguageCode(modelId, chat.getDefaultLanguageCode());
+                    = modelPresetsRepository.getByModelIdAndLanguageCode(modelId, chat.getLanguageCode());
             if (presets.isEmpty()) {
                 // 如果没有完全创建
                 throw BaseException.of("modelNotComplete", "The model is not complete");
@@ -96,17 +124,15 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
 
             json.put("messages", messagesOfJsonArray);
 
-            // 缓存锁
-            if (!cacheUtil.lock("busAiChatServiceImpl:sendMessage:" + dto.getChatId(), 30, TimeUnit.MINUTES)) {
-                // 提示正在回答中
-                throw BaseException.of("busAiChatServiceImpl:sendMessage:lock", "The request is being answered");
-            }
-
             final Boolean[] flag = {true};
 
             ThreadUtil.execute(() -> {
-
-                OvoAIRequestChatUtil ovoAIRequestChat = new OvoAIRequestChatUtil(json.toString()) {
+                // 缓存锁
+                if (!cacheUtil.lock("busAiChatServiceImpl:sendMessage:" + dto.getChatId(), 30, TimeUnit.MINUTES)) {
+                    // 提示正在回答中
+                    throw BaseException.of("busAiChatServiceImpl:sendMessage:lock", "The request is being answered");
+                }
+                AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(json.toString()) {
                     @SneakyThrows
                     @Override
                     public void run(String responseStr, String str) {
@@ -127,6 +153,7 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+
                         busAiChatFinish(dto.getChatId(), str);
                     }
                 };
@@ -135,6 +162,7 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
             while (flag[0]) {
                 try {
                     Thread.sleep(100);
+                    System.err.print("·");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -146,13 +174,14 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                 .body(stream);
     }
 
-    private void busAiChatFinish(Long chatId,String str) {
+    private void busAiChatFinish(Long chatId, String str) {
         messageRepository.save(new BusAiChatMessage()
-               .setChatId(chatId)
-               .setRole("assistant")
-               .setContent(str));
+                .setChatId(chatId)
+                .setRole("assistant")
+                .setContent(str));
         // 解锁
         cacheUtil.unlock("busAiChatServiceImpl:sendMessage:" + chatId);
+
     }
 
 }

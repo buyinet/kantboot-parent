@@ -46,6 +46,11 @@ public class BusAiChatModelServiceImpl implements IBusAiChatModelService {
     }
 
     @Override
+    public List<BusAiChatModel> getAll() {
+        return repository.getAll();
+    }
+
+    @Override
     public BusAiChatModel getById(Long id) {
         return repository.findById(id).orElse(null);
     }

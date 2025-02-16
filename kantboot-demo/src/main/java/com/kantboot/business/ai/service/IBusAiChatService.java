@@ -7,6 +7,11 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 public interface IBusAiChatService {
 
     /**
+     * 创建对话
+     */
+    void createChat(Long modelId, String languageCode);
+
+    /**
      * 发送消息
      */
     ResponseEntity<StreamingResponseBody> sendMessage(BusAiChatDTO dto);
