@@ -12,6 +12,8 @@ import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -32,13 +34,15 @@ public class SocketWebsocketServiceImpl implements ISocketWebsocketService {
         Long selfId = userAccountService.getSelfId();
         // 生成UUID
         String memory = UUID.randomUUID().toString().replaceAll("-", "")
-                +"."+selfId+System.currentTimeMillis();
+                +"."+selfId+"."+System.currentTimeMillis();
 
         SocketWebsocket socketWebsocket = new SocketWebsocket();
         socketWebsocket.setUserAccountId(selfId);
         socketWebsocket.setStatusCode(WebsocketStatusCodeConstants.WAITING);
         socketWebsocket.setMemory(memory);
         SocketWebsocketRecord record = BeanUtil.copyProperties(socketWebsocket, SocketWebsocketRecord.class);
+        record.setId(null);
+        record.setWebsocketId(socketWebsocket.getId());
         repository.save(socketWebsocket);
         recordRepository.save(record);
         return memory;
@@ -48,4 +52,28 @@ public class SocketWebsocketServiceImpl implements ISocketWebsocketService {
     public SocketWebsocket getByMemory(String memory) {
         return repository.getByMemory(memory);
     }
+
+    @Override
+    public List<SocketWebsocket> getByUserAccountId(Long userAccountId) {
+        return repository.getByUserAccountIdAndStatusCode(userAccountId,WebsocketStatusCodeConstants.CONNECTING);
+    }
+
+    @Override
+    public SocketWebsocket update(String memory, String statusCode) {
+        SocketWebsocket byMemory = repository.getByMemory(memory);
+        byMemory.setStatusCode(statusCode);
+        SocketWebsocketRecord record = BeanUtil.copyProperties(byMemory, SocketWebsocketRecord.class);
+        record.setId(null);
+        record.setWebsocketId(byMemory.getId());
+        recordRepository.save(record);
+        return repository.save(byMemory);
+    }
+
+    @Override
+    public void heartbeat(String memory) {
+        SocketWebsocket byMemory = repository.getByMemory(memory);
+        byMemory.setGmtLastHeartbeat(new Date());
+        repository.save(byMemory);
+    }
+
 }

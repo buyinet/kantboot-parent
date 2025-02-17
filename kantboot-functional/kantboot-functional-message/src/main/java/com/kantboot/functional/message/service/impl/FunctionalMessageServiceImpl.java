@@ -24,7 +24,9 @@ public class FunctionalMessageServiceImpl implements IFunctionalMessageService {
         message.setToolCode(dto.getToolCode());
         message.setUserAccountId(dto.getUserAccountId());
         message.setEmit(dto.getEmit());
-        message.setDataStr(JSON.toJSONString(dto.getData()));
+        if(dto.getData()!=null){
+            message.setDataStr(JSON.toJSONString(dto.getData()));
+        }
         FunctionalMessage save = repository.save(message);
         eventEmit.to("functionalMessage:message:"+dto.getToolCode(),save);
         return save;

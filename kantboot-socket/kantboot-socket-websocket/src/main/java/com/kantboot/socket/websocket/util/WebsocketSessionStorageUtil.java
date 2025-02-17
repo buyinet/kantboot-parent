@@ -1,6 +1,7 @@
 package com.kantboot.socket.websocket.util;
 
 import com.kantboot.socket.websocket.domain.dto.WebsocketSessionStorageDTO;
+import lombok.SneakyThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,10 @@ public class WebsocketSessionStorageUtil {
                 sessionList.remove(dto);
                 // 总数减1
                 count.decrementAndGet();
+                try{
+                    dto.getSession().close();
+                }catch (Exception e){
+                }
                 break;
             }
         }
@@ -68,12 +73,40 @@ public class WebsocketSessionStorageUtil {
         return null;
     }
 
+    /**
+     * 根据用户账号ID查询
+     */
+    public static List<WebsocketSessionStorageDTO> getByUserAccountId(Long userAccountId) {
+        List<WebsocketSessionStorageDTO> list = new ArrayList<>();
+        for (WebsocketSessionStorageDTO dto : sessionList) {
+            if (dto.getUserAccountId().equals(userAccountId)) {
+                list.add(dto);
+            }
+        }
+        return list;
+    }
+
     public static void sendMessage(String memory,String message) {
         WebsocketSessionStorageDTO dto = getByMemory(memory);
         if (dto == null) {
             return;
         }
         dto.getSession().getAsyncRemote().sendText(message);
+    }
+
+    /**
+     * 根据用户账号ID发送消息
+     */
+    @SneakyThrows
+    public static void sendMessageByUserAccountId(Long userAccountId, String message) {
+        List<WebsocketSessionStorageDTO> list = getByUserAccountId(userAccountId);
+        for (WebsocketSessionStorageDTO dto : list) {
+            try{
+                dto.getSession().getAsyncRemote().sendText(message);
+            }catch (Exception e) {
+                dto.getSession().close();
+            }
+        }
     }
 
 }

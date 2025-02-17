@@ -151,6 +151,12 @@
 
         <dependency>
             <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-functional-message</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kantboot</groupId>
             <artifactId>kantboot-socket-websocket</artifactId>
             <version>${revision}</version>
         </dependency>

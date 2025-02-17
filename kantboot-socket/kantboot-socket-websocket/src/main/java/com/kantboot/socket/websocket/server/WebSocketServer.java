@@ -44,25 +44,41 @@ public class WebSocketServer {
         WebsocketSessionStorageUtil.add(new WebsocketSessionStorageDTO()
                 .setSessionId(session.getId())
                 .setMemory(memory)
+                .setUserAccountId(byMemory.getUserAccountId())
                 .setSession(session));
+        socketWebsocketService.update(memory,WebsocketStatusCodeConstants.CONNECTING);
     }
 
     @OnClose
     public void onClose(@PathParam("memory") String memory, Session session) {
         WebsocketSessionStorageDTO byMemory = WebsocketSessionStorageUtil.getByMemory(memory);
-        log.info("断开连接:{}",JSON.toJSONString(byMemory));
+        if(byMemory==null){
+            log.info("断开连接:{}",session.getId());
+            return;
+        }
+        log.info("断开连接:{},{}",byMemory.getMemory(),byMemory.getUserAccountId());
         WebsocketSessionStorageUtil.removeByMemory(memory);
+        socketWebsocketService.update(memory,WebsocketStatusCodeConstants.END);
     }
 
     @OnMessage
-    public void onMessage(String message, Session session) {
-        WebsocketSessionStorageDTO bySessionId = WebsocketSessionStorageUtil.getBySessionId(session.getId());
-        log.info("收到消息：{},{}", message,JSON.toJSONString(bySessionId));
+    public void onMessage(@PathParam("memory") String memory,String message, Session session) {
+        WebsocketSessionStorageDTO byMemory = WebsocketSessionStorageUtil.getByMemory(memory);
+        if(byMemory==null){
+            log.info("收到消息:{},{}",session.getId(),message);
+            return;
+        }
+        log.info("收到消息:{},{},{}",byMemory.getMemory(),byMemory.getUserAccountId(),message);
+        socketWebsocketService.heartbeat(memory);
     }
 
     @OnError
     public void onError(Session session, Throwable error) {
         WebsocketSessionStorageDTO bySessionId = WebsocketSessionStorageUtil.getBySessionId(session.getId());
+        if(bySessionId==null){
+            log.info("发生错误：{},{}",session.getId(),error.getMessage());
+            return;
+        }
         log.info("发生错误：{},{}", JSON.toJSONString(bySessionId),error.getMessage());
     }
 

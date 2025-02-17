@@ -73,4 +73,10 @@ public class SocketWebsocketRecord implements Serializable {
     @Column(name = "status_code")
     private String statusCode;
 
+    /**
+     * websocket的ID
+     */
+    @Column(name = "websocket_id")
+    private Long websocketId;
+
 }
