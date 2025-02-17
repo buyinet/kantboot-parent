@@ -22,6 +22,7 @@
         <module>kantboot-api</module>
         <module>kantboot-global</module>
         <module>kantboot-official-plugin</module>
+        <module>kantboot-socket</module>
     </modules>
 
     <properties>

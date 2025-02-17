@@ -113,4 +113,9 @@ public class BaseException extends RuntimeException
         return this;
     }
 
+    public RestResult<?> toRestResult() {
+        return new RestResult<>().setState(state).setErrMsg(message).setStateCode(stateCode)
+                .setMsgDictCode(stateCode);
+    }
+
 }

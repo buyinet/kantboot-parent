@@ -1,21 +1,24 @@
 package com.kantboot.business.ai.service.impl;
 
 import cn.hutool.core.thread.ThreadUtil;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
-import com.kantboot.business.ai.domain.entity.*;
+import com.kantboot.business.ai.domain.entity.BusAiChat;
+import com.kantboot.business.ai.domain.entity.BusAiChatMessage;
+import com.kantboot.business.ai.domain.entity.BusAiChatModel;
+import com.kantboot.business.ai.domain.entity.BusAiChatModelLanguageSupport;
 import com.kantboot.business.ai.exception.BusAiException;
 import com.kantboot.business.ai.repository.BusAiChatMessageRepository;
-import com.kantboot.business.ai.repository.BusAiChatModelPresetsRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelRepository;
 import com.kantboot.business.ai.repository.BusAiChatRepository;
 import com.kantboot.business.ai.service.IBusAiChatService;
 import com.kantboot.business.ai.util.AIRequestChatUtil;
+import com.kantboot.business.ai.util.BusAiChatUtil;
 import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.util.cache.CacheUtil;
-import com.kantboot.util.rest.exception.BaseException;
+import com.kantboot.util.http.HttpRequestHeaderUtil;
 import jakarta.annotation.Resource;
+import jakarta.transaction.Transactional;
 import lombok.SneakyThrows;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,7 +26,6 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class BusAiChatServiceImpl implements IBusAiChatService {
@@ -38,16 +40,23 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
     private BusAiChatModelRepository modelRepository;
 
     @Resource
-    private BusAiChatModelPresetsRepository modelPresetsRepository;
-
-    @Resource
     private CacheUtil cacheUtil;
 
     @Resource
     private IUserAccountService userAccountService;
 
+    @Resource
+    BusAiChatUtil busAiChatUtil;
+
+    @Resource
+    private HttpRequestHeaderUtil httpRequestHeaderUtil;
+
     @Override
     public void createChat(Long modelId, String languageCode) {
+        if (languageCode == null) {
+            languageCode = httpRequestHeaderUtil.getLanguageCode();
+        }
+
         BusAiChatModel busAiChatModel = modelRepository.findById(modelId).orElseThrow(() -> {
             throw BusAiException.MODEL_NOT_EXIST;
         });
@@ -73,66 +82,17 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
         }
     }
 
+    @Transactional
     @Override
     public ResponseEntity<StreamingResponseBody> sendMessage(BusAiChatDTO dto) {
         StreamingResponseBody stream = outputStream -> {
-            BusAiChat chat = repository.findById(dto.getChatId())
-                    .orElseThrow(() ->
-                            BaseException.of("chatRecordNotFound", "The chat record does not exist"));
-            // 获取模型
-            Long modelId = chat.getModelId();
-            // 查询模型是否存在
-            modelRepository.findById(modelId)
-                    .orElseThrow(() ->
-                            BaseException.of("modelNotFound", "The model does not exist"));
-            // 获取模型前置内容
-            List<BusAiChatModelPresets> presets
-                    = modelPresetsRepository.getByModelIdAndLanguageCode(modelId, chat.getLanguageCode());
-            if (presets.isEmpty()) {
-                // 如果没有完全创建
-                throw BaseException.of("modelNotComplete", "The model is not complete");
-            }
 
-            JSONObject json = new JSONObject();
-            json.put("model", "llama3.2-vision:latest");
-            json.put("stream", true);
-
-            JSONArray messagesOfJsonArray = new JSONArray();
-            for (BusAiChatModelPresets preset : presets) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("role", preset.getRole());
-                jsonObject.put("content", preset.getContent());
-                messagesOfJsonArray.add(jsonObject);
-            }
-            List<BusAiChatMessage> byChatId = messageRepository.getByChatId(dto.getChatId());
-            for (BusAiChatMessage message : byChatId) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("role", message.getRole());
-                jsonObject.put("content", message.getContent());
-                messagesOfJsonArray.add(jsonObject);
-            }
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("role", "user");
-            jsonObject.put("content", dto.getContent());
-            // 添加到数据库中
-            messageRepository.save(new BusAiChatMessage()
-                    .setChatId(dto.getChatId())
-                    .setRole("user")
-                    .setContent(dto.getContent()));
-            messagesOfJsonArray.add(jsonObject);
-
-            json.put("messages", messagesOfJsonArray);
+            JSONObject chatJson = busAiChatUtil.getChatJson(dto);
 
             final Boolean[] flag = {true};
 
             ThreadUtil.execute(() -> {
-                // 缓存锁
-                if (!cacheUtil.lock("busAiChatServiceImpl:sendMessage:" + dto.getChatId(), 30, TimeUnit.MINUTES)) {
-                    // 提示正在回答中
-                    throw BaseException.of("busAiChatServiceImpl:sendMessage:lock", "The request is being answered");
-                }
-                AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(json.toString()) {
+                AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(chatJson.toString()) {
                     @SneakyThrows
                     @Override
                     public void run(String responseStr, String str) {
@@ -151,10 +111,9 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                         try {
                             outputStream.close();
                         } catch (Exception e) {
-                            e.printStackTrace();
                         }
 
-                        busAiChatFinish(dto.getChatId(), str);
+                        busAiChatUtil.assistantChatFinish(dto.getChatId(), str);
                     }
                 };
             });
@@ -164,7 +123,6 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                     Thread.sleep(100);
                     System.err.print("·");
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
             }
         };
@@ -174,14 +132,5 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                 .body(stream);
     }
 
-    private void busAiChatFinish(Long chatId, String str) {
-        messageRepository.save(new BusAiChatMessage()
-                .setChatId(chatId)
-                .setRole("assistant")
-                .setContent(str));
-        // 解锁
-        cacheUtil.unlock("busAiChatServiceImpl:sendMessage:" + chatId);
-
-    }
 
 }

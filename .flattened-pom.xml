@@ -27,6 +27,7 @@
     <module>kantboot-api</module>
     <module>kantboot-global</module>
     <module>kantboot-official-plugin</module>
+    <module>kantboot-socket</module>
   </modules>
   <properties>
     <lombok.version>1.18.34</lombok.version>

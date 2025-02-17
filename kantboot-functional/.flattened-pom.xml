@@ -25,6 +25,7 @@
     <module>kantboot-functional-sms</module>
     <module>kantboot-functional-pay-order</module>
     <module>kantboot-functional-chain</module>
+    <module>kantboot-functional-message</module>
   </modules>
   <dependencyManagement>
     <dependencies>

@@ -20,16 +20,21 @@
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-chain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-email/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-file/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-message/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-pay-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-sms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-template/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-verification-code/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-functional/kantboot-functional-websocket/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-functional/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-global/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-official-plugin/kantboot-official-plugin-user-account/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-official-plugin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-official-plugin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-socket/kantboot-socket-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-socket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-socket/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-starter-parent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-starter-parent/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-system/kantboot-system-all/src/main/java" charset="UTF-8" />
@@ -38,6 +43,7 @@
     <file url="file://$PROJECT_DIR$/kantboot-system/kantboot-system-setting/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-system/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-system/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-tool/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-user/kantboot-user-account/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-user/kantboot-user-authority/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-user/kantboot-user-balance/src/main/java" charset="UTF-8" />

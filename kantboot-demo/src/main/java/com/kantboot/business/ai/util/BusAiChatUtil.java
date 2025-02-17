@@ -1,17 +1,22 @@
 package com.kantboot.business.ai.util;
 
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
+import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
+import com.kantboot.business.ai.domain.entity.BusAiChat;
 import com.kantboot.business.ai.domain.entity.BusAiChatMessage;
 import com.kantboot.business.ai.domain.entity.BusAiChatModelPresets;
 import com.kantboot.business.ai.exception.BusAiException;
 import com.kantboot.business.ai.repository.BusAiChatMessageRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelPresetsRepository;
 import com.kantboot.business.ai.repository.BusAiChatRepository;
+import com.kantboot.util.cache.CacheUtil;
+import com.kantboot.util.rest.exception.BaseException;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class BusAiChatUtil {
@@ -24,6 +29,9 @@ public class BusAiChatUtil {
 
     @Resource
     private BusAiChatModelPresetsRepository modelPresetsRepository;
+
+    @Resource
+    private CacheUtil cacheUtil;
 
     /**
      * 获取最上级JSON
@@ -72,6 +80,73 @@ public class BusAiChatUtil {
             messagesOfJsonArray.add(jsonObject);
         }
         return messagesOfJsonArray;
+    }
+
+    /**
+     * 获取初始化JSON
+     */
+    public JSONObject getChatJson(BusAiChatDTO dto) {
+        Long chatId = dto.getChatId();
+        // 根据chatId获取Chat信息
+        BusAiChat chat = chatRepository.findById(chatId).orElseThrow(() ->
+                BusAiException.CHAT_NOT_EXIST);
+        JSONObject rootJson = getRootJson(dto.getStream());
+        JSONArray messageArray = new JSONArray();
+        // 获取预设
+        JSONArray presets = getPresets(chat.getModelId(), chat.getLanguageCode());
+        for (int i = 0; i < presets.size(); i++) {
+            JSONObject preset = presets.getJSONObject(i);
+            messageArray.add(preset);
+        }
+        // 获取所有聊天记录
+        JSONArray messages = getMessages(chatId);
+        for (int i = 0; i < messages.size(); i++) {
+            JSONObject message = messages.getJSONObject(i);
+            messageArray.add(message);
+        }
+
+        // 添加新的消息
+        JSONObject newMessage = new JSONObject();
+        newMessage.put("role", "user");
+        newMessage.put("content", dto.getContent());
+        messageArray.add(newMessage);
+        messageRepository.save(new BusAiChatMessage()
+                .setChatId(chatId)
+                .setRole("user")
+                .setContent(dto.getContent()));
+        lock(chatId);
+
+        rootJson.put("messages", messageArray);
+        return rootJson;
+    }
+
+    /**
+     * 锁定
+     */
+    public void lock(Long chatId){
+        // 缓存锁
+        if (!cacheUtil.lock("busAiChatServiceImpl:sendMessage:" + chatId, 10, TimeUnit.MINUTES)) {
+            // 提示正在回答中
+            throw BaseException.of("busAiChatServiceImpl:sendMessage:lock", "The request is being answered");
+        }
+    }
+
+    /**
+     * 解锁
+     */
+    public void unlock(Long chatId){
+        cacheUtil.unlock("busAiChatServiceImpl:sendMessage:" + chatId);
+    }
+
+    /**
+     * 回复完成
+     */
+    public void assistantChatFinish(Long chatId, String content){
+        messageRepository.save(new BusAiChatMessage()
+                .setChatId(chatId)
+                .setRole("assistant")
+                .setContent(content));
+        unlock(chatId);
     }
 
 }

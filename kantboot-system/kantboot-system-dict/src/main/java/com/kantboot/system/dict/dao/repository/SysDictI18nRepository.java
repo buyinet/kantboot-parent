@@ -79,7 +79,7 @@ public interface SysDictI18nRepository extends JpaRepository<SysDictI18n, Long>
         and dictI18n.dictGroupCode = :dictGroupCode
         and dictI18n.languageCode = :languageCode
         """)
-    String findValue(
+    List<String> findValue(
             @Param("dictCode") String dictCode,
             @Param("dictGroupCode") String dictGroupCode,
             @Param("languageCode") String languageCode);

@@ -50,7 +50,11 @@ public class SysDictI18nServiceImpl implements ISysDictI18nService {
 
     @Override
     public String getDictText(String languageCode, String dictGroupCode, String dictCode) {
-        return dictI18nRepository.findValue(dictCode,dictGroupCode, languageCode);
+        List<String> value = dictI18nRepository.findValue(dictCode, dictGroupCode, languageCode);
+        if (0==value.size()) {
+            return null;
+        }
+        return value.get(0);
     }
 
     @Override
@@ -199,7 +203,7 @@ public class SysDictI18nServiceImpl implements ISysDictI18nService {
 
     @Override
     public String getTargetLanguageText(ToGobleDTO dto) {
-        String value = dictI18nRepository.findValue(dto.getDictCode(), dto.getDictGroupCode(), dto.getTargetLanguageCode());
+        String value = getDictText(dto.getDictCode(), dto.getDictGroupCode(), dto.getTargetLanguageCode());
         if(value != null){
             return dto.getText();
         }

@@ -25,4 +25,10 @@ public class BusAiChatDTO implements Serializable {
      * 如果为true，则发送继续，就忽略content字段
      */
     private Boolean isSendContinue = false;
+
+    /**
+     * 流
+     */
+    private Boolean stream = true;
+
 }
