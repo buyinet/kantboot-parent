@@ -22,6 +22,7 @@
         <module>kantboot-util-sc</module>
         <module>kantboot-util-all</module>
         <module>kantboot-util-event</module>
+        <module>kantboot-data-change</module>
     </modules>
 
     <dependencies>
