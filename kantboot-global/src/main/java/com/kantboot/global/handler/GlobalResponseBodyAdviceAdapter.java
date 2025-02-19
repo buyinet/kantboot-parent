@@ -54,12 +54,14 @@ public class GlobalResponseBodyAdviceAdapter implements ResponseBodyAdvice<Objec
                     sysDictI18nService.getDictText(languageCode, "requestSuccess", result.getMsgDictCode());
             if (text != null) {
                 result.setMsg(text);
+                return result;
             }
         } else {
             String text =
                     sysDictI18nService.getDictText(languageCode, "requestException", result.getMsgDictCode());
             if (text != null) {
                 result.setErrMsg(text);
+                return result;
             }
         }
 

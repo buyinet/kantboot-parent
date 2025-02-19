@@ -8,10 +8,10 @@ import java.io.Serializable;
 public class BusAiChatDTO implements Serializable {
 
     /**
-     * 聊天ID
+     * 会话ID
      * Chat ID
      */
-    private Long chatId;
+    private Long dialogId;
 
     /**
      * 聊天内容

@@ -74,12 +74,12 @@ public class WebSocketServer {
 
     @OnError
     public void onError(Session session, Throwable error) {
-        WebsocketSessionStorageDTO bySessionId = WebsocketSessionStorageUtil.getBySessionId(session.getId());
-        if(bySessionId==null){
-            log.info("发生错误：{},{}",session.getId(),error.getMessage());
-            return;
-        }
-        log.info("发生错误：{},{}", JSON.toJSONString(bySessionId),error.getMessage());
+//        WebsocketSessionStorageDTO bySessionId = WebsocketSessionStorageUtil.getBySessionId(session.getId());
+//        if(bySessionId==null){
+//            log.info("发生错误：{},{}",session.getId(),error.getMessage());
+//            return;
+//        }
+        log.info("发生错误：{}", error.getMessage());
     }
 
 }

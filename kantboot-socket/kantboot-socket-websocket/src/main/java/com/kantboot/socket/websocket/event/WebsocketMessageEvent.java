@@ -20,7 +20,7 @@ public class WebsocketMessageEvent {
     @Transactional
     @EventOn("functionalMessage:message:websocket")
     public void onSendMessage(FunctionalMessage message) {
-        log.info("websocket:message:websocket:onSendMessage:{}", JSON.toJSONString(message));
+        log.info("收到Websocket消息:{}", JSON.toJSONString(message));
         WebsocketSessionStorageUtil.sendMessageByUserAccountId(message.getUserAccountId(),message.getDataStr());
     }
 

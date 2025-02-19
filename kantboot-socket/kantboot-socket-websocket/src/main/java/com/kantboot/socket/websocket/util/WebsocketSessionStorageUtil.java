@@ -2,11 +2,13 @@ package com.kantboot.socket.websocket.util;
 
 import com.kantboot.socket.websocket.domain.dto.WebsocketSessionStorageDTO;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Slf4j
 public class WebsocketSessionStorageUtil {
 
     private static List<WebsocketSessionStorageDTO> sessionList = new ArrayList<>();
@@ -103,6 +105,7 @@ public class WebsocketSessionStorageUtil {
         for (WebsocketSessionStorageDTO dto : list) {
             try{
                 dto.getSession().getAsyncRemote().sendText(message);
+                log.info("发送消息给用户:{},消息:{},记忆体:{}",userAccountId,message,dto.getMemory());
             }catch (Exception e) {
                 dto.getSession().close();
             }

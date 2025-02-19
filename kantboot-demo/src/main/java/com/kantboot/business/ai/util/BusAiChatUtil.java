@@ -3,11 +3,11 @@ package com.kantboot.business.ai.util;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
-import com.kantboot.business.ai.domain.entity.BusAiChat;
-import com.kantboot.business.ai.domain.entity.BusAiChatMessage;
+import com.kantboot.business.ai.domain.entity.BusAiChatDialog;
+import com.kantboot.business.ai.domain.entity.BusAiChatDialogMessage;
 import com.kantboot.business.ai.domain.entity.BusAiChatModelPresets;
 import com.kantboot.business.ai.exception.BusAiException;
-import com.kantboot.business.ai.repository.BusAiChatMessageRepository;
+import com.kantboot.business.ai.repository.BusAiChatDialogMessageRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelPresetsRepository;
 import com.kantboot.business.ai.repository.BusAiChatRepository;
 import com.kantboot.util.cache.CacheUtil;
@@ -25,7 +25,7 @@ public class BusAiChatUtil {
     private BusAiChatRepository chatRepository;
 
     @Resource
-    private BusAiChatMessageRepository messageRepository;
+    private BusAiChatDialogMessageRepository messageRepository;
 
     @Resource
     private BusAiChatModelPresetsRepository modelPresetsRepository;
@@ -70,10 +70,10 @@ public class BusAiChatUtil {
     /**
      * 获取该聊天的消息
      */
-    public JSONArray getMessages(Long chatId) {
-        List<BusAiChatMessage> byChatId = messageRepository.getByChatId(chatId);
+    public JSONArray getMessages(Long dialogId) {
+        List<BusAiChatDialogMessage> byChatId = messageRepository.getByDialogId(dialogId);
         JSONArray messagesOfJsonArray = new JSONArray();
-        for (BusAiChatMessage message : byChatId) {
+        for (BusAiChatDialogMessage message : byChatId) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("role", message.getRole());
             jsonObject.put("content", message.getContent());
@@ -86,20 +86,20 @@ public class BusAiChatUtil {
      * 获取初始化JSON
      */
     public JSONObject getChatJson(BusAiChatDTO dto) {
-        Long chatId = dto.getChatId();
+        Long dialogId = dto.getDialogId();
         // 根据chatId获取Chat信息
-        BusAiChat chat = chatRepository.findById(chatId).orElseThrow(() ->
+        BusAiChatDialog dialog = chatRepository.findById(dialogId).orElseThrow(() ->
                 BusAiException.CHAT_NOT_EXIST);
         JSONObject rootJson = getRootJson(dto.getStream());
         JSONArray messageArray = new JSONArray();
         // 获取预设
-        JSONArray presets = getPresets(chat.getModelId(), chat.getLanguageCode());
+        JSONArray presets = getPresets(dialog.getModelId(), dialog.getLanguageCode());
         for (int i = 0; i < presets.size(); i++) {
             JSONObject preset = presets.getJSONObject(i);
             messageArray.add(preset);
         }
         // 获取所有聊天记录
-        JSONArray messages = getMessages(chatId);
+        JSONArray messages = getMessages(dialogId);
         for (int i = 0; i < messages.size(); i++) {
             JSONObject message = messages.getJSONObject(i);
             messageArray.add(message);
@@ -110,11 +110,7 @@ public class BusAiChatUtil {
         newMessage.put("role", "user");
         newMessage.put("content", dto.getContent());
         messageArray.add(newMessage);
-        messageRepository.save(new BusAiChatMessage()
-                .setChatId(chatId)
-                .setRole("user")
-                .setContent(dto.getContent()));
-        lock(chatId);
+        lock(dialogId);
 
         rootJson.put("messages", messageArray);
         return rootJson;
@@ -125,9 +121,9 @@ public class BusAiChatUtil {
      */
     public void lock(Long chatId){
         // 缓存锁
-        if (!cacheUtil.lock("busAiChatServiceImpl:sendMessage:" + chatId, 10, TimeUnit.MINUTES)) {
+        if (!cacheUtil.lock("busAiChatDialogService:sendMessage:" + chatId, 10, TimeUnit.MINUTES)) {
             // 提示正在回答中
-            throw BaseException.of("busAiChatServiceImpl:sendMessage:lock", "The request is being answered");
+            throw BaseException.of("busAiChatDialogService:sendMessage:lock", "The request is being answered");
         }
     }
 
@@ -135,18 +131,23 @@ public class BusAiChatUtil {
      * 解锁
      */
     public void unlock(Long chatId){
-        cacheUtil.unlock("busAiChatServiceImpl:sendMessage:" + chatId);
+        cacheUtil.unlock("busAiChatDialogService:sendMessage:" + chatId);
     }
 
     /**
      * 回复完成
      */
     public void assistantChatFinish(Long chatId, String content){
-        messageRepository.save(new BusAiChatMessage()
-                .setChatId(chatId)
+        messageRepository.save(new BusAiChatDialogMessage()
+                .setDialogId(chatId)
                 .setRole("assistant")
                 .setContent(content));
         unlock(chatId);
+    }
+
+    public void assistantChatFinish(BusAiChatDialogMessage dialogMessage){
+        messageRepository.save(dialogMessage);
+        unlock(dialogMessage.getDialogId());
     }
 
 }

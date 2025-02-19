@@ -53,6 +53,11 @@
             <artifactId>kantboot-util-event</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-util-all</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 
 </project>

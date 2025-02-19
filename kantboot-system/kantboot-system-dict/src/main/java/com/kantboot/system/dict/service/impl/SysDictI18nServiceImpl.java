@@ -51,10 +51,10 @@ public class SysDictI18nServiceImpl implements ISysDictI18nService {
     @Override
     public String getDictText(String languageCode, String dictGroupCode, String dictCode) {
         List<String> value = dictI18nRepository.findValue(dictCode, dictGroupCode, languageCode);
-        if (0==value.size()) {
+        if (value.isEmpty()) {
             return null;
         }
-        return value.get(0);
+        return value.getFirst();
     }
 
     @Override

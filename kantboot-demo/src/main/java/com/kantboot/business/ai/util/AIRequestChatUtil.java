@@ -2,6 +2,7 @@ package com.kantboot.business.ai.util;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
 import java.io.*;
@@ -9,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@Slf4j
 public abstract class AIRequestChatUtil {
 
     private final MediaType mediaType = MediaType.get("application/json; charset=utf-8");
@@ -19,7 +21,7 @@ public abstract class AIRequestChatUtil {
 
     private final String url = "http://localhost:11434/api/chat"; // Ollama的API端点，请根据实际情况修改URL和端口
 
-    public abstract void run(String responseStr, String str);
+    public abstract void run(String responseStr, String str,Boolean done);
 
     public abstract void finish(String str);
 
@@ -38,7 +40,7 @@ public abstract class AIRequestChatUtil {
 
         try (Response response = call.execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
+            log.info("回复中...");
             ResponseBody repBody = response.body();
 
             // 缓冲区
@@ -81,12 +83,13 @@ public abstract class AIRequestChatUtil {
                                 }
                                 System.err.print(responseStr);
                                 line[0] = new StringWriter();
-                                if (jsonObject.getBoolean("done")) {
+                                Boolean done = jsonObject.getBoolean("done");
+                                if (done) {
                                     break;
                                 }
-                                try {
-                                    this.run(responseStr, str.toString());
-                                } catch (Exception e) {
+                                try{
+                                    this.run(responseStr, str.toString(),done);
+                                }catch (Exception e){
                                     throw new RuntimeException(e);
                                 }
                             }

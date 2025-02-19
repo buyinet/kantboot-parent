@@ -3,17 +3,19 @@ package com.kantboot.business.ai.service.impl;
 import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson2.JSONObject;
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
-import com.kantboot.business.ai.domain.entity.BusAiChat;
-import com.kantboot.business.ai.domain.entity.BusAiChatMessage;
+import com.kantboot.business.ai.domain.entity.BusAiChatDialog;
+import com.kantboot.business.ai.domain.entity.BusAiChatDialogMessage;
 import com.kantboot.business.ai.domain.entity.BusAiChatModel;
 import com.kantboot.business.ai.domain.entity.BusAiChatModelLanguageSupport;
 import com.kantboot.business.ai.exception.BusAiException;
-import com.kantboot.business.ai.repository.BusAiChatMessageRepository;
+import com.kantboot.business.ai.repository.BusAiChatDialogMessageRepository;
 import com.kantboot.business.ai.repository.BusAiChatModelRepository;
 import com.kantboot.business.ai.repository.BusAiChatRepository;
-import com.kantboot.business.ai.service.IBusAiChatService;
+import com.kantboot.business.ai.service.IBusAiChatDialogService;
 import com.kantboot.business.ai.util.AIRequestChatUtil;
 import com.kantboot.business.ai.util.BusAiChatUtil;
+import com.kantboot.functional.message.domain.dto.MessageDTO;
+import com.kantboot.functional.message.service.IFunctionalMessageService;
 import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.http.HttpRequestHeaderUtil;
@@ -28,13 +30,13 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class BusAiChatServiceImpl implements IBusAiChatService {
+public class BusAiChatDialogServiceImpl implements IBusAiChatDialogService {
 
     @Resource
     private BusAiChatRepository repository;
 
     @Resource
-    private BusAiChatMessageRepository messageRepository;
+    private BusAiChatDialogMessageRepository dialogMessageRepository;
 
     @Resource
     private BusAiChatModelRepository modelRepository;
@@ -51,6 +53,9 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
     @Resource
     private HttpRequestHeaderUtil httpRequestHeaderUtil;
 
+    @Resource
+    private IFunctionalMessageService messageService;
+
     @Override
     public void createChat(Long modelId, String languageCode) {
         if (languageCode == null) {
@@ -66,14 +71,14 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
         for (BusAiChatModelLanguageSupport languageSupport : languageSupports) {
             if (languageSupport.getLanguageCode().equals(languageCode)) {
                 // 创建一个聊天记录
-                BusAiChat busAiChat = new BusAiChat()
+                BusAiChatDialog busAiChatDialog = new BusAiChatDialog()
                         .setModelId(modelId)
                         .setUserAccountId(userAccountService.getSelfId())
                         .setLanguageCode(languageCode);
-                repository.save(busAiChat);
+                repository.save(busAiChatDialog);
                 // 创建一个消息记录
-                messageRepository.save(new BusAiChatMessage()
-                        .setChatId(busAiChat.getId()));
+                dialogMessageRepository.save(new BusAiChatDialogMessage()
+                        .setDialogId(busAiChatDialog.getId()));
                 hasLanguageSupports = true;
             }
         }
@@ -84,7 +89,7 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
 
     @Transactional
     @Override
-    public ResponseEntity<StreamingResponseBody> sendMessage(BusAiChatDTO dto) {
+    public ResponseEntity<StreamingResponseBody> sendMessageOfStreamingResponse(BusAiChatDTO dto) {
         StreamingResponseBody stream = outputStream -> {
 
             JSONObject chatJson = busAiChatUtil.getChatJson(dto);
@@ -95,7 +100,7 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                 AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(chatJson.toString()) {
                     @SneakyThrows
                     @Override
-                    public void run(String responseStr, String str) {
+                    public void run(String responseStr, String str,Boolean done) {
                         try {
                             outputStream.write(responseStr.getBytes());
                             outputStream.flush();
@@ -106,14 +111,14 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                     @SneakyThrows
                     @Override
                     public void finish(String str) {
-                        final BusAiChatMessageRepository messageRepositoryIn = messageRepository;
+                        final BusAiChatDialogMessageRepository messageRepositoryIn = dialogMessageRepository;
                         flag[0] = false;
                         try {
                             outputStream.close();
                         } catch (Exception e) {
                         }
 
-                        busAiChatUtil.assistantChatFinish(dto.getChatId(), str);
+                        busAiChatUtil.assistantChatFinish(dto.getDialogId(), str);
                     }
                 };
             });
@@ -132,5 +137,47 @@ public class BusAiChatServiceImpl implements IBusAiChatService {
                 .body(stream);
     }
 
+    @Override
+    public BusAiChatDialogMessage sendMessage(BusAiChatDTO dto) {
+        JSONObject chatJson = busAiChatUtil.getChatJson(dto);
+        Long userId = userAccountService.getSelfId();
+        BusAiChatDialogMessage userMessage = new BusAiChatDialogMessage()
+                .setDialogId(dto.getDialogId())
+                .setUserAccountId(userId)
+                .setContent(dto.getContent())
+                .setRole("user");
+        BusAiChatDialogMessage save = dialogMessageRepository.save(userMessage);
+        BusAiChatDialogMessage assistantMessage = dialogMessageRepository.save(new BusAiChatDialogMessage()
+                .setDialogId(dto.getDialogId())
+                .setRole("assistant"));
+        Long assistantMessageId = assistantMessage.getId();
+        ThreadUtil.execute(() -> {
+        AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(chatJson.toString()) {
+            @Override
+            public void run(String responseStr, String str,Boolean done) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("text", responseStr);
+                jsonObject.put("dialogId", dto.getDialogId());
+                jsonObject.put("role", "assistant");
+                jsonObject.put("userId", userId);
+                jsonObject.put("dialogMessageId", assistantMessageId);
+                jsonObject.put("content", str);
+                jsonObject.put("done", done);
+                messageService.sendMessage(new MessageDTO()
+                        .setUserAccountId(userId)
+                        .setToolCode("websocket")
+                        .setEmit("aiAssistantChat")
+                        .setData(jsonObject.toJSONString())
+                );
+            }
+
+            @Override
+            public void finish(String str) {
+               busAiChatUtil.assistantChatFinish(assistantMessage.setContent(str));
+            }
+        };
+        });
+        return save;
+    }
 
 }

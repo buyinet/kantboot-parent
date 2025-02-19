@@ -11,14 +11,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@Table(name="bus_ai_chat")
+@Table(name="bus_ai_chat_dialog_message")
 @Entity
 @Getter
 @Setter
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
-public class BusAiChat implements Serializable {
+public class BusAiChatDialogMessage implements Serializable {
 
     /**
      * 主键
@@ -47,23 +48,49 @@ public class BusAiChat implements Serializable {
     private Date gmtModified;
 
     /**
+     * 会话ID
+     */
+    @Column(name = "dialog_id")
+    private Long dialogId;
+
+    /**
      * 模型ID
-     * Model ID
      */
     @Column(name = "model_id")
     private Long modelId;
 
     /**
-     * 默认语言编码
+     * 角色
      */
-    @Column(name = "language_code")
-    private String languageCode;
+    @Column(name = "role")
+    private String role;
+
+    /**
+     * 内容
+     */
+    @Column(name = "content",columnDefinition = "text")
+    private String content;
+
+    /**
+     * 图片IDS
+     */
+    @Column(name = "image_ids")
+    private List<Long> imageIds;
 
     /**
      * 用户账号ID
      */
     @Column(name = "user_account_id")
     private Long userAccountId;
+
+    /**
+     * 状态编码
+     * 思考中：thinking
+     * 进行中：doing
+     * 已完成：finished
+     */
+    @Column(name = "status_code")
+    private String statusCode;
 
 
 }

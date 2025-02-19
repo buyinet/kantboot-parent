@@ -101,7 +101,7 @@ public class BusOvoAiController {
                 AIRequestChatUtil ovoAIRequestChat = new AIRequestChatUtil(json.toString()) {
                     @SneakyThrows
                     @Override
-                    public void run(String responseStr, String str) {
+                    public void run(String responseStr, String str, Boolean done) {
                         try{
                             outputStream.write(responseStr.getBytes());
                             outputStream.flush();

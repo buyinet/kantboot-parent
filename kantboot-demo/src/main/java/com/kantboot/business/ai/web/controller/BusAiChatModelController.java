@@ -15,6 +15,14 @@ public class BusAiChatModelController {
     @Resource
     private IBusAiChatModelService IBusAiChatModelService;
 
+    @RequestMapping("/getById")
+    public RestResult<?> getById(@RequestParam("id") Long id) {
+        return RestResult.success(
+                IBusAiChatModelService.getById(id),
+                CommonSuccessStateCodeAndMsg.GET_SUCCESS
+        );
+    }
+
     @RequestMapping("/getByTypeId")
     public RestResult<?> getByTypeId(@RequestParam("typeId") Long typeId) {
         return RestResult.success(

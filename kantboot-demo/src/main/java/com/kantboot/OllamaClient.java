@@ -70,7 +70,6 @@ public class OllamaClient {
                                 JSONObject jsonObject = JSON.parseObject(jsonStr);
                                 String responseStr = jsonObject.getString("response");
                                 str += responseStr;
-                                System.err.print(responseStr);
                                 line.setLength(0);
                             }
                         }
@@ -155,7 +154,6 @@ public class OllamaClient {
                                     }
                                     String responseStr = jsonObject.getJSONObject("message").getString("content");
                                     str.append(responseStr);
-                                    System.err.print(responseStr);
                                     if (responseStr == null || responseStr.isEmpty()) {
                                         break;
                                     }
@@ -276,7 +274,6 @@ public class OllamaClient {
                                         break;
                                     }
 //                                    line.setLength(0);
-                                    System.err.print(responseStr);
                                     line = new StringWriter();
                                     if (jsonObject.getBoolean("done")) {
                                         break;

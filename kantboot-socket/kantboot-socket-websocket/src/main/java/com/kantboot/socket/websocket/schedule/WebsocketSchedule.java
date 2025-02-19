@@ -10,7 +10,6 @@ import com.kantboot.socket.websocket.util.WebsocketSessionStorageUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,7 +25,8 @@ public class WebsocketSchedule {
     @Resource
     private SocketWebsocketRecordRepository recordRepository;
 
-    @Scheduled(fixedRate = 1000 * 10)
+    // TODO 暂时关闭
+//    @Scheduled(fixedRate = 1000 * 10)
     public void websocketScheduleHandle() {
         int count = 0;
         List<SocketWebsocket> byStatusCode = repository.getByStatusCode(WebsocketStatusCodeConstants.WAITING);
