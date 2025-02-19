@@ -1,7 +1,7 @@
 package com.kantboot.business.ai.service.impl;
 
 import com.kantboot.business.ai.domain.entity.BusAiChatModelType;
-import com.kantboot.business.ai.repository.BusAiChatModelTypeRepository;
+import com.kantboot.business.ai.dao.repository.BusAiChatModelTypeRepository;
 import com.kantboot.business.ai.service.IBusAiChatModelTypeService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

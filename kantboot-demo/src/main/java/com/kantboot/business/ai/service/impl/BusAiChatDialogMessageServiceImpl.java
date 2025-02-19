@@ -2,7 +2,7 @@ package com.kantboot.business.ai.service.impl;
 
 import com.kantboot.business.ai.domain.dto.DialogMessageSearchDTO;
 import com.kantboot.business.ai.domain.entity.BusAiChatDialogMessage;
-import com.kantboot.business.ai.repository.BusAiChatDialogMessageRepository;
+import com.kantboot.business.ai.dao.repository.BusAiChatDialogMessageRepository;
 import com.kantboot.business.ai.service.IBusAiChatDialogMessageService;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;

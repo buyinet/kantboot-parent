@@ -1,7 +1,7 @@
 package com.kantboot.business.ai.web.admin.controller;
 
 import com.kantboot.business.ai.domain.entity.BusAiChatModelType;
-import com.kantboot.business.ai.repository.BusAiChatModelTypeRepository;
+import com.kantboot.business.ai.dao.repository.BusAiChatModelTypeRepository;
 import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.event.EventEmit;
 import com.kantboot.util.rest.common.CommonSuccessStateCodeAndMsg;

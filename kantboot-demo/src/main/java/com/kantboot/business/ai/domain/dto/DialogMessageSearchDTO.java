@@ -24,4 +24,14 @@ public class DialogMessageSearchDTO implements Serializable {
      */
     private Long dialogId;
 
+    /**
+     * 最大ID
+     */
+    private Long maxId;
+
+    /**
+     * 最小ID
+     */
+    private Long minId;
+
 }

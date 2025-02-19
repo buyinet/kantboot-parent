@@ -1,4 +1,4 @@
-package com.kantboot.business.ai.repository;
+package com.kantboot.business.ai.dao.repository;
 
 import com.kantboot.business.ai.domain.entity.BusAiChatModelPresets;
 import jakarta.transaction.Transactional;
