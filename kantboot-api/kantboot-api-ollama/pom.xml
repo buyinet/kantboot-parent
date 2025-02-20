@@ -15,7 +15,7 @@
 
     <modules>
         <module>kantboot-api-ollama-setting</module>
-        <module>kantboot-api-ollama-service</module>
+        <module>kantboot-api-ollama-chat</module>
     </modules>
 
 </project>

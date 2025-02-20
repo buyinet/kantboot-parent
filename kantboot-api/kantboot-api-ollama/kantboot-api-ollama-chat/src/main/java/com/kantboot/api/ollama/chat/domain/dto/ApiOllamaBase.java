@@ -1,11 +1,11 @@
-package com.kantboot.api.ollama.service.domain.dto;
+package com.kantboot.api.ollama.chat.domain.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
-// TODO 之后完善
 @Data
 @Accessors(chain = true)
 public class ApiOllamaBase implements Serializable {
@@ -24,5 +24,10 @@ public class ApiOllamaBase implements Serializable {
      * 是否开启流式
      */
     private Boolean stream;
+
+    /**
+     * 消息列表
+     */
+    private List<ApiOllamaMessage> messages;
 
 }

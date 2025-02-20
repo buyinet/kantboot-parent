@@ -37,6 +37,7 @@ public class KantbootStartApplication {
 //        System.setProperty("https.proxyHost", "127.0.0.1");
 //        System.setProperty("https.proxyPort", "7890");
         SpringApplication.run(KantbootStartApplication.class, args);
+
     }
 
 }

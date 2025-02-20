@@ -21,7 +21,7 @@ public abstract class AIRequestChatUtil {
 
     private final String url = "http://localhost:11434/api/chat"; // Ollama的API端点，请根据实际情况修改URL和端口
 
-    public abstract void run(String responseStr, String str,Boolean done);
+    public abstract void run(String responseStr, String str, Boolean done);
 
     public abstract void finish(String str);
 
@@ -47,55 +47,53 @@ public abstract class AIRequestChatUtil {
             if (repBody != null) {
                 try (InputStream inputStream = repBody.byteStream()) {
                     InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-                    {
-                        final StringWriter[] line = {new StringWriter()};
-                        final int[] data = {1};
-                        final AtomicBoolean[] found = {new AtomicBoolean(true)};
+                    final StringWriter[] line = {new StringWriter()};
+                    final int[] data = {1};
+                    final AtomicBoolean[] found = {new AtomicBoolean(true)};
 
-                        while (true) {
-                            try {
-                                // 执行 I/O 操作
+                    while (true) {
+                        try {
+                            // 执行 I/O 操作
 //                                    int result = inputStream.read();
-                                found[0].set((data[0] = reader.read()) != -1);
-                            } catch (InterruptedIOException e) {
-                                if (Thread.currentThread().isInterrupted()) {
-                                    throw new RuntimeException("I/O operation was interrupted", e);
-                                }
+                            found[0].set((data[0] = reader.read()) != -1);
+                        } catch (InterruptedIOException e) {
+                            if (Thread.currentThread().isInterrupted()) {
                                 throw new RuntimeException("I/O operation was interrupted", e);
-                            } catch (IOException e) {
-                                e.printStackTrace();
                             }
-                            if (!found[0].get()) {
+                            throw new RuntimeException("I/O operation was interrupted", e);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if (!found[0].get()) {
+                            break;
+                        }
+                        char dataChar = (char) data[0];
+                        line[0].append(dataChar);
+                        if (line[0].toString().endsWith("\n")) {
+                            String jsonStr = line[0].toString().strip();
+                            JSONObject jsonObject = JSON.parseObject(jsonStr);
+                            if (jsonObject == null) {
+                                continue;
+                            }
+                            String responseStr = jsonObject.getJSONObject("message").getString("content");
+                            str.append(responseStr);
+                            if (responseStr == null || responseStr.isEmpty()) {
                                 break;
                             }
-                            char dataChar = (char) data[0];
-                            line[0].append(dataChar);
-                            if (line[0].toString().endsWith("\n")) {
-                                String jsonStr = line[0].toString().strip();
-                                JSONObject jsonObject = JSON.parseObject(jsonStr);
-                                if (jsonObject == null) {
-                                    continue;
-                                }
-                                String responseStr = jsonObject.getJSONObject("message").getString("content");
-                                str.append(responseStr);
-                                if (responseStr == null || responseStr.isEmpty()) {
-                                    break;
-                                }
-                                line[0] = new StringWriter();
-                                Boolean done = jsonObject.getBoolean("done");
-                                if (done) {
-                                    break;
-                                }
-                                try{
-                                    this.run(responseStr, str.toString(),done);
-                                }catch (Exception e){
-                                    throw new RuntimeException(e);
-                                }
+                            line[0] = new StringWriter();
+                            Boolean done = jsonObject.getBoolean("done");
+                            if (done) {
+                                break;
+                            }
+                            try {
+                                this.run(responseStr, str.toString(), done);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
                             }
                         }
-
-
                     }
+
+
                 }
             }
         } catch (IOException e) {

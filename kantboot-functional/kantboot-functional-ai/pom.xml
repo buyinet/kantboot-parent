@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.kantboot</groupId>
-        <artifactId>kantboot-api-ollama</artifactId>
+        <artifactId>kantboot-functional</artifactId>
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>kantboot-api-ollama-service</artifactId>
+    <artifactId>kantboot-functional-ai</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

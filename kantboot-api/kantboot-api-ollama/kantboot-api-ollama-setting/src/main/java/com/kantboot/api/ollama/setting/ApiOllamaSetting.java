@@ -15,9 +15,13 @@ public class ApiOllamaSetting {
      * ollama的api的baseUrl
      */
     public String getBaseUrl() {
-        String value = settingService.getValue("apiOllama.baseUrl");
+        String value = settingService.getValue("apiOllamaBaseUrl");
         if(value==null){
             throw BaseException.of("ollamaBaseUrlNotConfig","Ollama's api baseUrl not config");
+        }
+        // 如果末尾不带/，则加上/
+        if(!value.endsWith("/")){
+            value+="/";
         }
         return value;
     }
@@ -26,7 +30,7 @@ public class ApiOllamaSetting {
      * ollama的api的默认模型
      */
     public String getDefaultModel() {
-        String value = settingService.getValue("apiOllama.defaultModel");
+        String value = settingService.getValue("apiOllamaDefaultModel");
         if(value==null){
             throw BaseException.of("ollamaDefaultModelNotConfig","Ollama's api default model not config");
         }

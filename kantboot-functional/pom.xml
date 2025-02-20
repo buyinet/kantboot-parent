@@ -21,6 +21,7 @@
         <module>kantboot-functional-pay-order</module>
         <module>kantboot-functional-chain</module>
         <module>kantboot-functional-message</module>
+        <module>kantboot-functional-ai</module>
     </modules>
 
     <dependencies>
