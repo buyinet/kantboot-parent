@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kantboot-api-ollama-chat</artifactId>
+    <artifactId>kantboot-api-ollama-setting</artifactId>
 
     <dependencies>
         <dependency>
