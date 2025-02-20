@@ -9,7 +9,8 @@ import com.kantboot.business.ai.domain.entity.BusAiChatModelPresets;
 import com.kantboot.business.ai.exception.BusAiException;
 import com.kantboot.business.ai.dao.repository.BusAiChatDialogMessageRepository;
 import com.kantboot.business.ai.dao.repository.BusAiChatModelPresetsRepository;
-import com.kantboot.business.ai.dao.repository.BusAiChatRepository;
+import com.kantboot.business.ai.dao.repository.BusAiChatDialogRepository;
+import com.kantboot.user.account.service.IUserAccountService;
 import com.kantboot.util.cache.CacheUtil;
 import com.kantboot.util.rest.exception.BaseException;
 import jakarta.annotation.Resource;
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class BusAiChatUtil {
 
     @Resource
-    private BusAiChatRepository chatRepository;
+    private BusAiChatDialogRepository chatRepository;
 
     @Resource
     private BusAiChatDialogMessageRepository messageRepository;
@@ -33,6 +34,9 @@ public class BusAiChatUtil {
     @Resource
     private CacheUtil cacheUtil;
 
+    @Resource
+    private IUserAccountService userAccountService;
+
     /**
      * 获取最上级JSON
      */
@@ -42,6 +46,7 @@ public class BusAiChatUtil {
         }
         JSONObject json = new JSONObject();
         json.put("model", "llama3.2-vision:latest");
+//        json.put("model", "qwen2.5-coder:1.5b");
         json.put("stream", stream);
         return json;
     }
@@ -110,6 +115,16 @@ public class BusAiChatUtil {
         newMessage.put("role", "user");
         newMessage.put("content", dto.getContent());
         messageArray.add(newMessage);
+
+        // 将数据存储到数据库中
+        BusAiChatDialogMessage userMessage = new BusAiChatDialogMessage()
+                .setDialogId(dto.getDialogId())
+                .setUserAccountId(userAccountService.getSelfId())
+                .setContent(dto.getContent())
+                .setRole("user");
+        messageRepository.save(userMessage);
+
+
         lock(dialogId);
 
         rootJson.put("messages", messageArray);

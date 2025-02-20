@@ -81,7 +81,6 @@ public abstract class AIRequestChatUtil {
                                 if (responseStr == null || responseStr.isEmpty()) {
                                     break;
                                 }
-                                System.err.print(responseStr);
                                 line[0] = new StringWriter();
                                 Boolean done = jsonObject.getBoolean("done");
                                 if (done) {

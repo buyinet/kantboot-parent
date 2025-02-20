@@ -21,7 +21,7 @@ public class WebsocketMessageEvent {
     @EventOn("functionalMessage:message:websocket")
     public void onSendMessage(FunctionalMessage message) {
         log.info("收到Websocket消息:{}", JSON.toJSONString(message));
-        WebsocketSessionStorageUtil.sendMessageByUserAccountId(message.getUserAccountId(),message.getDataStr());
+        WebsocketSessionStorageUtil.sendMessageByUserAccountId(message.getUserAccountId(),JSON.toJSONString(message));
     }
 
 }

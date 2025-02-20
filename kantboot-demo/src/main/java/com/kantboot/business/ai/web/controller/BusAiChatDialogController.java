@@ -1,6 +1,7 @@
 package com.kantboot.business.ai.web.controller;
 
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
+import com.kantboot.business.ai.domain.dto.DialogSearchDTO;
 import com.kantboot.business.ai.service.IBusAiChatDialogService;
 import com.kantboot.util.rest.common.CommonSuccessStateCodeAndMsg;
 import com.kantboot.util.rest.result.RestResult;
@@ -26,14 +27,29 @@ public class BusAiChatDialogController {
 
     @RequestMapping("/sendMessage")
     public RestResult<?> sendMessage(@RequestBody BusAiChatDTO dto) {
-        return RestResult.success(service.sendMessage(dto), CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+        service.sendMessage(dto);
+        return RestResult.success(null, CommonSuccessStateCodeAndMsg.SEND_SUCCESS);
     }
 
     @RequestMapping("/createDialog")
     public RestResult<?> createChat(@RequestParam("modelId") Long modelId,
             @RequestParam("languageCode") String languageCode) {
-        service.createChat(modelId, languageCode);
-        return RestResult.success(null, CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+        return RestResult.success(service.createChat(modelId, languageCode), CommonSuccessStateCodeAndMsg.OPERATION_SUCCESS);
+    }
+
+    @RequestMapping("/getBySelf")
+    public RestResult<?> getBySelf(@RequestBody DialogSearchDTO param) {
+        return RestResult.success(service.getBySelf(param), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    }
+
+    @RequestMapping("/getById")
+    public RestResult<?> getById(@RequestParam("id") Long id) {
+        return RestResult.success(service.getById(id), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
+    }
+
+    @RequestMapping("/getModelById")
+    public RestResult<?> getModelById(@RequestParam("id") Long id) {
+        return RestResult.success(service.getModelById(id), CommonSuccessStateCodeAndMsg.GET_SUCCESS);
     }
 
 }

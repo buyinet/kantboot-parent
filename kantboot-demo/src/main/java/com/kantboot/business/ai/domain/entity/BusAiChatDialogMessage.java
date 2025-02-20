@@ -87,7 +87,7 @@ public class BusAiChatDialogMessage implements Serializable {
      * 状态编码
      * 思考中：thinking
      * 进行中：doing
-     * 已完成：finished
+     * 已完成：finish
      */
     @Column(name = "status_code")
     private String statusCode;

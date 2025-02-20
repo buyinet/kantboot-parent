@@ -23,6 +23,8 @@ public interface BusAiChatDialogMessageRepository extends JpaRepository<BusAiCha
             WHERE (:#{#param.dialogId} IS NULL OR m.dialogId =:#{#param.dialogId})
             AND (:#{#param.content} IS NULL OR m.content LIKE %:#{#param.content}%)
             AND (:#{#param.role} IS NULL OR m.role =:#{#param.role})
+            AND (:#{#param.maxId} IS NULL OR m.id < :#{#param.maxId})
+            AND (:#{#param.minId} IS NULL OR m.id > :#{#param.minId})
             ORDER BY m.id ASC
     """)
     Page<BusAiChatDialogMessage> getBodyData(@Param("param") DialogMessageSearchDTO param, Pageable pageable);
@@ -33,8 +35,8 @@ public interface BusAiChatDialogMessageRepository extends JpaRepository<BusAiCha
             WHERE (:#{#param.dialogId} IS NULL OR m.dialogId =:#{#param.dialogId})
             AND (:#{#param.content} IS NULL OR m.content LIKE %:#{#param.content}%)
             AND (:#{#param.role} IS NULL OR m.role =:#{#param.role})
-            AND (:#{#param.maxId} IS NULL OR m.id <= :#{#param.maxId})
-            AND (:#{#param.minId} IS NULL OR m.id >= :#{#param.minId})
+            AND (:#{#param.maxId} IS NULL OR m.id < :#{#param.maxId})
+            AND (:#{#param.minId} IS NULL OR m.id > :#{#param.minId})
     """)
     Long getBodyDataCount(@Param("param") DialogMessageSearchDTO param);
 
