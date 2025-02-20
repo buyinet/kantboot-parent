@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>com.kantboot</groupId>
-            <artifactId>kantboot-api-ollama-chat</artifactId>
+            <artifactId>kantboot-api-ollama-setting</artifactId>
             <version>${revision}</version>
         </dependency>
         <!-- okhttp3 -->
