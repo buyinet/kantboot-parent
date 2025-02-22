@@ -18,18 +18,29 @@
             <id>alibaba</id>
             <url>https://maven.aliyun.com/repository/public</url>
         </repository>
-        <!-- 添加自定义的Nexus仓库 -->
-        <repository>
-            <id>maven-releases</id>
-            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>
-        </repository>
-        <repository>
-            <id>maven-snapshots</id>
-            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>
-        </repository>
+<!--        &lt;!&ndash; 添加自定义的Nexus仓库 &ndash;&gt;-->
+<!--        <repository>-->
+<!--            <id>maven-releases</id>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        <repository>-->
+<!--            <id>maven-snapshots</id>-->
+<!--            <url>https://maven.aaarfyh.com/repository/maven-snapshots/</url>-->
+<!--        </repository>-->
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.volcengine</groupId>
+            <artifactId>volcengine-java-sdk-ark-runtime</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kantboot</groupId>
+            <artifactId>kantboot-api-ollama-chat</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>io.springboot.ai</groupId>-->
 <!--            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>-->

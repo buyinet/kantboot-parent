@@ -45,7 +45,7 @@ public class BusAiChatUtil {
             stream=true;
         }
         JSONObject json = new JSONObject();
-        json.put("model", "llama3.2-vision:latest");
+        json.put("model", "chatglm3-130b-fc-v1.0");
         json.put("stream", stream);
         return json;
     }

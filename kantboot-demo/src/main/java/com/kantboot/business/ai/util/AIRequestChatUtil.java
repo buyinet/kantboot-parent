@@ -19,7 +19,7 @@ public abstract class AIRequestChatUtil {
             .writeTimeout(30, TimeUnit.MINUTES)   // 设置写入超时时间
             .readTimeout(60, TimeUnit.MINUTES).build();
 
-    private final String url = "http://localhost:11434/api/chat"; // Ollama的API端点，请根据实际情况修改URL和端口
+    private final String url = "https://ark.cn-beijing.volces.com/api/v3/chat/completions"; // Ollama的API端点，请根据实际情况修改URL和端口
 
     public abstract void run(String responseStr, String str, Boolean done);
 
@@ -30,9 +30,11 @@ public abstract class AIRequestChatUtil {
     }
 
     public void inChatStream(String json) {
+        System.err.println(json);
         RequestBody reqBody = RequestBody.create(mediaType, json);
         Request request = new Request.Builder()
                 .url(url)
+                .addHeader("Authorization", "Bearer f203011a-ef18-4d4f-9acb-72d4a9d5d0e4")
                 .post(reqBody)
                 .build();
         Call call = client.newCall(request);
@@ -69,24 +71,21 @@ public abstract class AIRequestChatUtil {
                         }
                         char dataChar = (char) data[0];
                         line[0].append(dataChar);
-                        if (line[0].toString().endsWith("\n")) {
+                        if (line[0].toString().endsWith("\n\n")) {
                             String jsonStr = line[0].toString().strip();
-                            JSONObject jsonObject = JSON.parseObject(jsonStr);
-                            if (jsonObject == null) {
-                                continue;
-                            }
-                            String responseStr = jsonObject.getJSONObject("message").getString("content");
-                            str.append(responseStr);
-                            if (responseStr == null || responseStr.isEmpty()) {
-                                break;
-                            }
-                            line[0] = new StringWriter();
-                            Boolean done = jsonObject.getBoolean("done");
-                            if (done) {
-                                break;
-                            }
+                            jsonStr = jsonStr.substring("data: ".length());
+                            JSONObject jsonObject = new JSONObject();
                             try {
-                                this.run(responseStr, str.toString(), done);
+                                jsonObject = JSON.parseObject(jsonStr);
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            String responseStr = jsonObject.getJSONArray("choices").getJSONObject(0).getJSONObject("delta").getString("content");
+                            str.append(responseStr);
+                            line[0] = new StringWriter();
+
+                            try {
+                                this.run(responseStr, str.toString(), false);
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             }

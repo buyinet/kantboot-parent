@@ -7,10 +7,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/kantboot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/kantboot-api/kantboot-api-ollama/pom.xml" />
+        <option value="$PROJECT_DIR$/kantboot-business/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/kantboot-business/business-ai-chat/pom.xml" />
+        <option value="$PROJECT_DIR$/kantboot-functional/kantboot-functional-ai/kantboot-functional-ai-chat/pom.xml" />
         <option value="$PROJECT_DIR$/kantboot-functional/kantboot-functional-websocket/pom.xml" />
         <option value="$PROJECT_DIR$/kantboot-tool/pom.xml" />
         <option value="$PROJECT_DIR$/kantboot-user/kantboot-user-authority/pom.xml" />

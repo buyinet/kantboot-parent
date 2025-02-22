@@ -1,6 +1,6 @@
 package com.kantboot.api.ollama.chat.service;
 
-import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaAbstract;
+import com.kantboot.api.ollama.chat.method.ApiOllamaMethod;
 import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaBase;
 
 public interface IApiOllamaService {
@@ -8,7 +8,7 @@ public interface IApiOllamaService {
     /**
      * 调用chat接口
      */
-    void chatHasStream(ApiOllamaBase dto, ApiOllamaAbstract ollamaAbstract);
+    void chatHasStream(ApiOllamaBase dto, ApiOllamaMethod ollamaAbstract);
 
     /**
      * 调用generate接口

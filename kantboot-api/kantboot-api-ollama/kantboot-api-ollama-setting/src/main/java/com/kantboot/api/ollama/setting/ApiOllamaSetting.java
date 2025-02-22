@@ -5,6 +5,10 @@ import com.kantboot.util.rest.exception.BaseException;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
+/**
+ * Ollama的设置，本地的AI
+ * 现阶段用于和火山引擎的AI互相辅助
+ */
 @Component
 public class ApiOllamaSetting {
 
@@ -18,10 +22,6 @@ public class ApiOllamaSetting {
         String value = settingService.getValue("apiOllamaBaseUrl");
         if(value==null){
             throw BaseException.of("ollamaBaseUrlNotConfig","Ollama's api baseUrl not config");
-        }
-        // 如果末尾不带/，则加上/
-        if(!value.endsWith("/")){
-            value+="/";
         }
         return value;
     }

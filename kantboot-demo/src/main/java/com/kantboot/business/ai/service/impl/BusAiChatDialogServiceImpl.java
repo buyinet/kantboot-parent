@@ -139,6 +139,7 @@ public class BusAiChatDialogServiceImpl implements IBusAiChatDialogService {
     @Transactional
     @Override
     public void sendMessage(BusAiChatDTO dto) {
+        dto.setStream(true);
         JSONObject chatJson = busAiChatUtil.getChatJson(dto);
         Long userId = userAccountService.getSelfId();
         BusAiChatDialogMessage assistantMessage = dialogMessageRepository.save(new BusAiChatDialogMessage()

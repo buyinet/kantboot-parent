@@ -1,6 +1,6 @@
 package com.kantboot.api.ollama.chat.service.impl;
 
-import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaAbstract;
+import com.kantboot.api.ollama.chat.method.ApiOllamaMethod;
 import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaBase;
 import com.kantboot.api.ollama.chat.service.IApiOllamaService;
 import com.kantboot.api.ollama.chat.util.ApiOllamaRequestUtil;
@@ -15,8 +15,17 @@ public class ApiOllamaServiceImpl implements IApiOllamaService {
     ApiOllamaSetting setting;
 
     @Override
-    public void chatHasStream(ApiOllamaBase dto, ApiOllamaAbstract ollamaAbstract) {
-        ApiOllamaRequestUtil.requestChatHasStream(dto, setting.getBaseUrl()+"api/chat", ollamaAbstract);
+    public void chatHasStream(ApiOllamaBase dto, ApiOllamaMethod ollamaAbstract) {
+        if(dto.getModel()==null){
+            // 设置默认模型
+            dto.setModel(setting.getDefaultModel());
+        }
+        if(dto.getStream()==null){
+            // 设置默认流式
+            dto.setStream(true);
+        }
+        String url = setting.getBaseUrl()+"/api/chat";
+        ApiOllamaRequestUtil.requestChatHasStream(dto, url, ollamaAbstract);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.kantboot.api.ollama.chat.util;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaBase;
+import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaMessage;
 
 /**
  * ApiOllamaUtil
@@ -18,7 +19,7 @@ public class ApiOllamaJsonUtil {
             stream=true;
         }
         JSONObject json = new JSONObject();
-        json.put("model", "llama3.2-vision:latest");
+        json.put("model", dto.getModel());
         json.put("stream", stream);
         return json;
     }
@@ -28,11 +29,10 @@ public class ApiOllamaJsonUtil {
      */
     public static JSONArray getMessages(ApiOllamaBase dto) {
         JSONArray messages = new JSONArray();
-        for (Object message : dto.getMessages()) {
+        for (ApiOllamaMessage message : dto.getMessages()) {
             JSONObject jsonObject = new JSONObject();
-            JSONObject messageJson = (JSONObject) message;
-            jsonObject.put("role", messageJson.get("role"));
-            jsonObject.put("content", messageJson.get("content"));
+            jsonObject.put("role", message.getRole());
+            jsonObject.put("content", message.getContent());
             messages.add(jsonObject);
         }
         return messages;

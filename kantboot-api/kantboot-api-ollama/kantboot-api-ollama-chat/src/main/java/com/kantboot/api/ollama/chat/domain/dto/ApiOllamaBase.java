@@ -30,4 +30,9 @@ public class ApiOllamaBase implements Serializable {
      */
     private List<ApiOllamaMessage> messages;
 
+    /**
+     * 是否重连
+     */
+    private Boolean isConnect;
+
 }

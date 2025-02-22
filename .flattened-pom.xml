@@ -35,6 +35,7 @@
     <hutool.version>5.8.24</hutool.version>
     <fastjson2.version>2.0.37</fastjson2.version>
     <spring-boot.version>3.3.5</spring-boot.version>
+    <kantboot.version>0.0.1</kantboot.version>
     <fastjson2-extension.version>2.0.9.graal</fastjson2-extension.version>
     <revision>0.0.1</revision>
   </properties>

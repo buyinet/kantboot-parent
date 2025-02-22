@@ -26,8 +26,9 @@
     <module>kantboot-util-crypto</module>
     <module>kantboot-util-jpa</module>
     <module>kantboot-util-sc</module>
-    <module>kantboot-util-all</module>
     <module>kantboot-util-event</module>
+    <module>kantboot-data-change</module>
+    <module>kantboot-util-all</module>
   </modules>
   <dependencies>
     <dependency>

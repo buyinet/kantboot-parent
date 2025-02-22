@@ -6,15 +6,14 @@
     <parent>
         <groupId>com.kantboot</groupId>
         <artifactId>kantboot-functional</artifactId>
-        <version>0.0.1</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>kantboot-functional-ai</artifactId>
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>kantboot-functiaonal-ai-chat</module>
+    </modules>
 
 </project>
