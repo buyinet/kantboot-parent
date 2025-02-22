@@ -10,12 +10,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kantboot-api-volcengine</artifactId>
+    <artifactId>kantboot-api-segmind</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>kantboot-api-volcengine-setting</module>
-        <module>kantboot-api-volcengine-ai-chat</module>
-        <module>kantboot-api-volcengine-ai-tts</module>
+        <module>kantboot-api-segmind-setting</module>
+        <module>kantboot-api-segmind-ai-chat</module>
     </modules>
 
 

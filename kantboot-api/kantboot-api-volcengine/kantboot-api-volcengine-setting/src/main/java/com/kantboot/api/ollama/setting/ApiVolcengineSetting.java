@@ -45,4 +45,15 @@ public class ApiVolcengineSetting {
         return value;
     }
 
+    /**
+     * accessToken
+     */
+    public String getAccountKey() {
+        String value = settingService.getValue("apiVolcengineAccountKey");
+        if (value == null) {
+            throw BaseException.of("ollamaAccountKeyNotConfig", "Volcengine's api account key not config");
+        }
+        return value;
+    }
+
 }

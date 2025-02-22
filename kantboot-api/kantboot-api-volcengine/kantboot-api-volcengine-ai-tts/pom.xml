@@ -5,18 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.kantboot</groupId>
-        <artifactId>kantboot-api</artifactId>
+        <artifactId>kantboot-api-volcengine</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kantboot-api-volcengine</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>kantboot-api-volcengine-setting</module>
-        <module>kantboot-api-volcengine-ai-chat</module>
-        <module>kantboot-api-volcengine-ai-tts</module>
-    </modules>
-
+    <artifactId>kantboot-api-volcengine-ai-tts</artifactId>
 
 </project>

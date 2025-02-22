@@ -136,4 +136,10 @@ public class BusAiChatModel implements Serializable {
     @Column(name = "source_language_code",length = 20)
     private String sourceLanguageCode;
 
+    /**
+     * 模型来源编码
+     */
+    @Column(name = "model_source_code",length = 64)
+    private String modelSourceCode;
+
 }

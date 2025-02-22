@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.thread.ThreadUtil;
 import com.alibaba.fastjson2.JSON;
 import com.kantboot.business.ai.constants.DialogMessageStatusCodeConstants;
+import com.kantboot.business.ai.constants.ModelSourceCodeConstants;
 import com.kantboot.business.ai.dao.repository.BusAiChatDialogMessageRepository;
 import com.kantboot.business.ai.dao.repository.BusAiChatDialogRepository;
 import com.kantboot.business.ai.dao.repository.BusAiChatModelRepository;
@@ -17,7 +18,10 @@ import com.kantboot.business.ai.domain.vo.ChatTransmissionVO;
 import com.kantboot.business.ai.exception.BusAiException;
 import com.kantboot.business.ai.method.BusAIChatMethod;
 import com.kantboot.business.ai.service.IBusAiChatDialogService;
-import com.kantboot.business.ai.slot.SendMessageSlot;
+import com.kantboot.business.ai.slot.ISendMessageSlot;
+import com.kantboot.business.ai.slot.impl.SendMessageSlotImplOfOllama;
+import com.kantboot.business.ai.slot.impl.SendMessageSlotImplOfSegmind;
+import com.kantboot.business.ai.slot.impl.SendMessageSlotImplOfVolcengine;
 import com.kantboot.business.ai.util.BusAiChatUtil;
 import com.kantboot.functional.message.domain.dto.MessageDTO;
 import com.kantboot.functional.message.service.IFunctionalMessageService;
@@ -58,8 +62,14 @@ public class BusAiChatDialogServiceImpl implements IBusAiChatDialogService {
     @Resource
     private HttpRequestHeaderUtil httpRequestHeaderUtil;
 
-    @Resource
-    private SendMessageSlot sendMessageSlot;
+    @Resource(type = SendMessageSlotImplOfVolcengine.class)
+    private ISendMessageSlot sendMessageSlotOfVolcengine;
+
+    @Resource(type = SendMessageSlotImplOfSegmind.class)
+    private ISendMessageSlot sendMessageSlotOfSegmind;
+
+    @Resource(type = SendMessageSlotImplOfOllama.class)
+    private ISendMessageSlot sendMessageSlotOfOllama;
 
     @Resource
     private BusAiChatUtil busAiChatUtil;
@@ -127,8 +137,22 @@ public class BusAiChatDialogServiceImpl implements IBusAiChatDialogService {
         dialog.setGmtModified(new Date());
         repository.save(dialog);
 
+        BusAiChatModel busAiChatModel = modelRepository.findById(dialog.getModelId()).orElseThrow(() -> {
+            throw BusAiException.MODEL_NOT_EXIST;
+        });
+
+        // 默认使用火山引擎
+        ISendMessageSlot sendMessageSlot = sendMessageSlotOfVolcengine;
+        String modelSourceCode = busAiChatModel.getModelSourceCode();
+        if(ModelSourceCodeConstants.SEGMIND.equals(modelSourceCode)){
+            sendMessageSlot = sendMessageSlotOfSegmind;
+        }else if(ModelSourceCodeConstants.OLLAMA.equals(modelSourceCode)){
+            sendMessageSlot = sendMessageSlotOfOllama;
+        }
+
+        ISendMessageSlot finalSendMessageSlot = sendMessageSlot;
         ThreadUtil.execute(() -> {
-            sendMessageSlot.sendMessageHasStream(dto, new BusAIChatMethod() {
+            finalSendMessageSlot.sendMessageHasStream(dto, new BusAIChatMethod() {
 
                 @Override
                 public void run(String text, String content, Boolean done) {

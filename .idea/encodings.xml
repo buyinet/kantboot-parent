@@ -14,7 +14,12 @@
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-ollama/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-ollama/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-qiniucloud/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-segmind/kantboot-api-segmind-ai-chat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-segmind/kantboot-api-segmind-setting/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-segmind/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-segmind/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-volcengine/kantboot-api-volcengine-ai-chat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-volcengine/kantboot-api-volcengine-ai-tts/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-volcengine/kantboot-api-volcengine-setting/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-volcengine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kantboot-api/kantboot-api-volcengine/src/main/resources" charset="UTF-8" />

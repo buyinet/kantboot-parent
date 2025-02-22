@@ -1,24 +1,25 @@
-package com.kantboot.business.ai.slot;
+package com.kantboot.business.ai.slot.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.kantboot.api.volcengine.ai.chat.domain.dto.ApiVolcengineBase;
-import com.kantboot.api.volcengine.ai.chat.domain.dto.ApiVolcengineMessage;
-import com.kantboot.api.volcengine.ai.chat.method.ApiVolcengineMethod;
-import com.kantboot.api.volcengine.ai.chat.service.IApiVolcengineService;
+import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaBase;
+import com.kantboot.api.ollama.chat.domain.dto.ApiOllamaMessage;
+import com.kantboot.api.ollama.chat.method.ApiOllamaMethod;
+import com.kantboot.api.ollama.chat.service.IApiOllamaService;
 import com.kantboot.business.ai.domain.dto.BusAiChatDTO;
 import com.kantboot.business.ai.domain.vo.ChatMessageAllVO;
 import com.kantboot.business.ai.method.BusAIChatMethod;
+import com.kantboot.business.ai.slot.ISendMessageSlot;
 import com.kantboot.business.ai.util.BusAiChatUtil;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
-public class SendMessageSlot {
+@Service
+public class SendMessageSlotImplOfOllama implements ISendMessageSlot {
 
     @Resource
-    private IApiVolcengineService volcengineService;
+    private IApiOllamaService ollamaService;
 
     @Resource
     private BusAiChatUtil busAiChatUtil;
@@ -29,13 +30,13 @@ public class SendMessageSlot {
     public void sendMessageHasStream(BusAiChatDTO dto, BusAIChatMethod method){
         // 根据会话ID获取会话
         List<ChatMessageAllVO> messages = busAiChatUtil.getMessagesAll(dto.getDialogId());
-        messages.add(new ChatMessageAllVO().setRole("user").setContent(dto.getContent()));
-        List<ApiVolcengineMessage> ollamaMessages = BeanUtil.copyToList(messages, ApiVolcengineMessage.class);
-        ApiVolcengineBase base = new ApiVolcengineBase()
+        List<ApiOllamaMessage> ollamaMessages = BeanUtil.copyToList(messages, ApiOllamaMessage.class);
+        ApiOllamaBase base = new ApiOllamaBase()
                 .setMessages(ollamaMessages)
                 .setStream(dto.getStream());
 
-        volcengineService.chatHasStream(base, new ApiVolcengineMethod() {
+
+        ollamaService.chatHasStream(base, new ApiOllamaMethod() {
 
             @Override
             public void run(String responseStr, String content, Boolean done) {

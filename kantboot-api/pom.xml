@@ -18,6 +18,7 @@
         <module>kantboot-api-baidu</module>
         <module>kantboot-api-ollama</module>
         <module>kantboot-api-volcengine</module>
+        <module>kantboot-api-segmind</module>
     </modules>
 
     <dependencies>
