@@ -16,6 +16,7 @@
     <modules>
         <module>business-ai</module>
         <module>business-start</module>
+        <module>business-philosophy</module>
     </modules>
 
 
